@@ -1,0 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% baa%   aaaaab%             %aab%     % %   %ba%
+%   a%%%%a%%%%%% %  % % %%  aaaaaaa%%%%  %  %%%a%
+%   a%b% aaa% b% %  % %  %  a%   %aaaaaaaaa %aaa%
+%aaaaaaaaaaaaaaa %baaaaa%%%%a%   %% b%%% %aaaa  %
+%a%%%%% %%%%%% a%%%%a% a   aaaaaab% a  %b %%%%%%%
+%b      %aaab% aaaaaab%a%%%a %%%%%% a% %a %aaa% %
+%%% %%  %a%%%%%%% %%%%%a%aaa %aab %%a% %aaaa%a% %
+%    %  %aaaaaa%  % aaaaaP% %%aaaaaaa%aaa%%%%a% %
+%baaaaaa%a  % a%  % a   %aaaaaa    %aaaaaaab%aaa%
+% % %%%aaa % %aaaa%%a%% %%% %% %  % %%%%%%%%%%%a%
+%   %baa %    %  aaaa        %    %        baaaa%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
