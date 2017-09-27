@@ -45,6 +45,7 @@ def computeheurestic1(i, j, fruits):
 
 def astarsearch(data, starti, startj, numrows, numcols, fruits):
 	#h = computeh(data, starti, startj, numrows, numcols, endi, endj)
+	count = 0
 	rowNum = [-1, 0, 0, 1]
 	colNum = [0, -1, 1, 0]
 	q = Q.PriorityQueue()
@@ -57,6 +58,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruits):
 	hashmap[(tuple(fruits), (starti, startj))] = True
 	while (q.qsize() > 0 and len(fruits)>0):
 		item = q.get()
+		count = count + 1
 		curri = item[1][0]
 		currj = item[1][1]
 		if (data[curri][currj] == '.'):
@@ -69,6 +71,8 @@ def astarsearch(data, starti, startj, numrows, numcols, fruits):
 			writemazetofileastar(data, curri, currj, starti, startj, camefrom)
 			if (len(fruits) == 0):
 				print("All fruits found")
+				print(count)
+				print(len(camefrom))
 				break
 		for i in range(4):
 			row = curri + rowNum[i]
@@ -87,7 +91,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruits):
 
 def main():
 	fruits = []
-	file =  open('mediumSearch.txt', 'r') 
+	file =  open('smallSearch.txt', 'r') 
 	board = file.read()
 	data = filter(None, board.splitlines())
 	numcols = max(len(r) for r in data)
@@ -109,24 +113,3 @@ def main():
 
 if __name__== "__main__":
   main()
-
-	# while (len(fruits) > 0):
-	# 	minitem = findnearestneighbour(fruitstarti, fruitstartj, fruits)
-	# 	fruits.remove(minitem)
-	# 	print(minitem)
-	# 	astarsearch(data, fruitstarti, fruitstartj, numrows, numcols, minitem[0], minitem[1])
-	# 	fruitstarti = minitem[0]
-	# 	fruitstartj = minitem[1]
-
-
-
-
- #  def findnearestneighbour(starti, startj, pointlist):
-	# minvalue = 10000000000000000000000
-	# minitem = (pointlist[0][0], pointlist[0][1])
-	# for item in pointlist:
-	# 	hvalue = manhattan_distance((starti, startj), item)
-	# 	if (hvalue < minvalue):
-	# 		minvalue = hvalue
-	# 		minitem = item
-	# return minitem

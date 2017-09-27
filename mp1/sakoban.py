@@ -8,14 +8,6 @@ def manhattan_distance(start, end):
     ex, ey = end
     return abs(ex - sx) + abs(ey - sy)
 
-
-def computeh(data, starti, startj, numrows, numcols, endi, endj):
-	h = [[False for i in range(numcols)] for j in range(numrows)]
-	for i in range(numrows):
-		for j in range(numcols):
-			h[i][j] = manhattan_distance((i, j), (endi, endj))
-	return h
-
 def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
 	curr = (endi, endj)
 	duplicate = data
@@ -37,12 +29,6 @@ def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
 	writefile.close()
 
 
-def computeheurestic1(i, j, fruits):
-	distances = []
-	for item in fruits:
-		distances.append(manhattan_distance(item, (i, j)))
-	return max(distances)
-
 def isComplete(destinations, boxes):
 	for item in destinations:
 		if (item not in boxes):
@@ -53,7 +39,7 @@ def computeheuristic(destinations, boxes):
 	sum = 0
 	for box in boxes:
 		distances = []
-		for item in distances:
+		for item in destinations:
 			distances.append(manhattan_distance(box, item))
 		sum = sum + min(distances)
 	return sum
@@ -68,8 +54,7 @@ def astarsearch(data, starti, startj, numrows, numcols, boxes, destinations):
 	camefrom[(starti, startj)] = (starti, startj)
 	costsofar[(starti, startj)] = 0
 	hashmap = {}
-	hashmap[(tuple(fruits), (starti, startj))] = True
-	while (q.qsize() > 0 and len(fruits)>0):
+	while (q.qsize() > 0):
 		item = q.get()
 		curri = item[1][0]
 		currj = item[1][1]
@@ -78,15 +63,20 @@ def astarsearch(data, starti, startj, numrows, numcols, boxes, destinations):
 		for i in range(4):
 			row = curri + rowNum[i]
 			col = currj + colNum[i]
-			newcost = costsofar[(curri, currj)] + 1
 			if (row > numrows or  col>numcols or data[row][col]=='%'):
 				continue
+			if ((row, col) in boxes):
+				boxnextrow = row + rowNum[i]
+				boxnextcol = col + colNum[i]
+				if (boxnextrow > numrows or  boxnextcol>numcols or data[boxnextrow][boxnextcol]=='%' or (boxnextrow, boxnextcol) in boxes):
+					continue
+			newcost = costsofar[(curri, currj)] + 1
 			if (((row, col) in costsofar) == False or newcost < costsofar[(row, col)]):
 				costsofar[(row, col)] = newcost
-				
-				priority = newcost + computeheurestic(destinations, boxes)
-				hashmap[(tuple(fruits), (row, col))] = True
-				if 
+				if ((row, col) in boxes):
+					boxes.remove((row, col))
+					boxes.append((row + rowNum[i], col + colNum[i]))
+				priority = newcost + computeheuristic(destinations, boxes)
 				q.put((priority, (row, col)))
 				camefrom[(row, col)] = (curri, currj)
 
@@ -112,7 +102,7 @@ def main():
 			if (data[i][j] == 'B'):
 				boxes.append((i, j))
 				destinations.append((i, j))
-	astarsearch(data, starti, startj, numrows, numcols, fruits)
+	astarsearch(data, starti, startj, numrows, numcols, boxes, destinations)
 
 
 if __name__== "__main__":

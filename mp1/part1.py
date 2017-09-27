@@ -2,45 +2,14 @@ from array import array
 from collections import deque
 import Queue as Q
 
-def isValid(data, i, j, visited):
-	numcols = max(len(r) for r in data)
-	numrows = len(data)
-	if (i< numrows and j <numcols and data[i][j]!='%' and visited[i][j] == False):
-		return True;
-	return False;
 
-# print(data[21][1])
-def bfs(data, starti, startj, numrows, numcols):
-	rowNum = [-1, 0, 0, 1]
-	colNum = [0, -1, 1, 0]
-	q = deque()
-	q.append((starti, startj))
-	visited = [[False for i in range(numcols)] for j in range(numrows)]
-	visited[starti][startj] = True
-	while (len(q) != 0 ):
-		item = q.pop();
-		curri = item[0]
-		currj = item[1]
-		if (data[curri][currj] == '.'):
-			print('found')
-			print(curri, " ", currj)
-			break
-		for i in range(4):
-			row = curri + rowNum[i]
-			col = currj + colNum[i]
-			if (isValid(data, row, col, visited)):
-				visited[row][col] = True
-				q.append((row, col))
-
-# def dfs(data, starti, startj, numrows, numcols):
-
-def manhattan_distance(start, end):
-    sx, sy = start
-    ex, ey = end
-    return abs(ex - sx) + abs(ey - sy)
 
 
 
+def manhattan_distance(start, end):
+	sx, sy = start
+	ex, ey = end
+	return abs(ex - sx) + abs(ey - sy)
 
 def computeh(data, starti, startj, numrows, numcols, endi, endj):
 	h = [[False for i in range(numcols)] for j in range(numrows)]
@@ -103,6 +72,59 @@ def astarsearch(data, starti, startj, numrows, numcols, endi, endj):
 				q.put((priority, (row, col)))
 				camefrom[(row, col)] = (curri, currj)
 
+
+def isValid(data, i, j, visited):
+	numcols = max(len(r) for r in data)
+	numrows = len(data)
+	if (i< numrows and j <numcols and data[i][j]!='%' and visited[i][j] == False):
+		return True;
+	return False;
+
+
+
+count = 0 
+# print(data[21][1])
+def bfs(data, starti, startj, numrows, numcols):
+	rowNum = [-1, 0, 0, 1]
+	colNum = [0, -1, 1, 0]
+	q = deque()
+	q.append((starti, startj))
+	visited = [[False for i in range(numcols)] for j in range(numrows)]
+	visited[starti][startj] = True
+	while (len(q) != 0 ):
+		item = q.popleft();
+		curri = item[0]
+		currj = item[1]
+		if (data[curri][currj] == '.'):
+			print('found')
+			print(curri, " ", currj)
+			break
+		for i in range(4):
+			row = curri + rowNum[i]
+			col = currj + colNum[i]
+			if (isValid(data, row, col, visited)):
+				visited[row][col] = True
+				q.append((row, col))
+
+
+def dfs(data, curri, currj, numrows, numcols, visited):
+	rowNum = [-1, 0, 0, 1]
+	colNum = [0, -1, 1, 0]
+	visited[curri][currj] = True
+	if (data[curri][currj] == '.'):
+		print('found')
+		print(curri, " ", currj)
+		res = (curri, currj)
+		print res
+		return res
+	for i in range(4):
+		row = curri + rowNum[i]
+		col = currj + colNum[i]
+		if (isValid(data, row, col, visited)):
+			dfs(data, row, col, numrows, numcols, visited)
+
+
+
 def main():
 	file =  open('maze1.txt', 'r') 
 	board = file.read()
@@ -119,8 +141,13 @@ def main():
 			if (data[i][j] == '.'):
 				endi = i
 				endj = j
-	# bfs(data, starti, startj, numrows, numcols)
-	astarsearch(data, starti, startj, numrows, numcols, endi, endj)
+	#bfs(data, starti, startj, numrows, numcols)
+	#astarsearch(data, starti, startj, numrows, numcols, endi, endj)
+
+	visited = [[False for i in range(numcols)] for j in range(numrows)]
+	visited[starti][startj] = True
+	dfsres = dfs(data, starti, startj, numrows, numcols, visited)
+
 
 if __name__== "__main__":
   main()
