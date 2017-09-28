@@ -43,24 +43,25 @@ def computeheurestic1(i, j, fruits):
 		distances.append(manhattan_distance(item, (i, j)))
 	return max(distances)
 
-def astarsearch(data, starti, startj, numrows, numcols, fruits):
+def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 	#h = computeh(data, starti, startj, numrows, numcols, endi, endj)
 	count = 0
 	rowNum = [-1, 0, 0, 1]
 	colNum = [0, -1, 1, 0]
 	q = Q.PriorityQueue()
-	q.put(((0,(starti,startj))  ))
+	q.put(    ((0,(starti,startj), fruitsinit)  ))
 	camefrom = {}
 	costsofar = {}
-	camefrom[(starti, startj)] = (starti, startj)
-	costsofar[(starti, startj)] = 0
-	hashmap = {}
-	hashmap[(tuple(fruits), (starti, startj))] = True
-	while (q.qsize() > 0 and len(fruits)>0):
+	camefrom[(tuple(fruitsinit), (starti, startj))] = (starti, startj)
+	costsofar[(tuple(fruitsinit), (starti, startj))] = 0
+	visited = {}
+	visited[(tuple(fruitsinit), (starti, startj))] = True
+	while (q.qsize() > 0):
 		item = q.get()
 		count = count + 1
 		curri = item[1][0]
 		currj = item[1][1]
+		fruits = item[2]
 		if (data[curri][currj] == '.'):
 			print('found1: ')
 			print(curri, " ", currj)
@@ -68,26 +69,27 @@ def astarsearch(data, starti, startj, numrows, numcols, fruits):
 			strlist[currj] = 'b'
 			data[curri] = "".join(strlist)
 			fruits.remove((curri, currj))
-			writemazetofileastar(data, curri, currj, starti, startj, camefrom)
+			#writemazetofileastar(data, curri, currj, starti, startj, camefrom)
 			if (len(fruits) == 0):
 				print("All fruits found")
-				print(count)
-				print(len(camefrom))
 				break
 		for i in range(4):
 			row = curri + rowNum[i]
 			col = currj + colNum[i]
-			newcost = costsofar[(curri, currj)] + 1
 			if (row > numrows or  col>numcols or data[row][col]=='%'):
 				continue
-			if ((tuple(fruits), (row, col)) in hashmap):
+			if ((tuple(fruits), (row, col)) in visited):
 				continue
-			if (((row, col) in costsofar) == False or newcost < costsofar[(row, col)]):
-				costsofar[(row, col)] = newcost
+			#newcost = costsofar[(curri, currj)] + 1
+			newcost = costsofar[(tuple(fruits), (curri, currj))] + 1
+			#if (((row, col) in costsofar) == False or newcost < costsofar[(row, col)]):
+			if (((tuple(fruits), (row, col)) in costsofar) == False or newcost < costsofar[(tuple(fruits), (row, col))]):
+				#costsofar[(row, col)] = newcost
+				costsofar[(tuple(fruits), (row, col))] = newcost
 				priority = newcost + computeheurestic1(row, col, fruits)
-				hashmap[(tuple(fruits), (row, col))] = True
-				q.put((priority, (row, col)))
-				camefrom[(row, col)] = (curri, currj)
+				visited[(tuple(fruits), (row, col))] = True
+				q.put((priority, (row, col), fruits))
+				camefrom[(tuple(fruits), (row, col))] = (curri, currj)
 
 def main():
 	fruits = []

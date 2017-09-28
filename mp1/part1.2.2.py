@@ -1,12 +1,23 @@
 from array import array
 from collections import deque
 import Queue as Q
-
+import copy
+import numpy as np
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import minimum_spanning_tree
 
 def manhattan_distance(start, end):
     sx, sy = start
     ex, ey = end
     return abs(ex - sx) + abs(ey - sy)
+
+
+def computeh(data, starti, startj, numrows, numcols, endi, endj):
+	h = [[False for i in range(numcols)] for j in range(numrows)]
+	for i in range(numrows):
+		for j in range(numcols):
+			h[i][j] = manhattan_distance((i, j), (endi, endj))
+	return h
 
 def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
 	curr = (endi, endj)
@@ -29,69 +40,49 @@ def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
 	writefile.close()
 
 
-def isComplete(destinations, boxes):
-	for item in destinations:
-		if (item not in boxes):
-			return False
-	return True
+def computeheurestic1(i, j, fruits):
+	distances = []
+	for item in fruits:
+		distances.append(manhattan_distance(item, (i, j)))
+	return max(distances)
 
-def computeheuristic(destinations, boxes):
-	sum = 0
-	for box in boxes:
-		distances = []
-		for item in destinations:
-			distances.append(manhattan_distance(box, item))
-		sum = sum + min(distances)
-	return sum
-
-# def astarsearch(data, starti, startj, numrows, numcols, boxes, destinations):
-# 	rowNum = [-1, 0, 0, 1]
-# 	colNum = [0, -1, 1, 0]
-# 	q = Q.PriorityQueue()
-# 	q.put(((0,(starti,startj))  ))
-# 	camefrom = {}
-# 	costsofar = {}
-# 	camefrom[(starti, startj)] = (starti, startj)
-# 	costsofar[(starti, startj)] = 0
-# 	hashmap = {}
-# 	while (q.qsize() > 0):
-# 		item = q.get()
-# 		curri = item[1][0]
-# 		currj = item[1][1]
-# 		if (isComplete(boxes, destinations)):
-# 			print('Complete')
-# 		for i in range(4):
-# 			row = curri + rowNum[i]
-# 			col = currj + colNum[i]
-# 			if (row > numrows or  col>numcols or data[row][col]=='%'):
-# 				continue
-# 			if ((row, col) in boxes):
-# 				boxnextrow = row + rowNum[i]
-# 				boxnextcol = col + colNum[i]
-# 				if (boxnextrow > numrows or  boxnextcol>numcols or data[boxnextrow][boxnextcol]=='%' or (boxnextrow, boxnextcol) in boxes):
-# 					continue
-# 			newcost = costsofar[(curri, currj)] + 1
-# 			if (((row, col) in costsofar) == False or newcost < costsofar[(row, col)]):
-# 				costsofar[(row, col)] = newcost
-# 				if ((row, col) in boxes):
-# 					boxes.remove((row, col))
-# 					boxes.append((row + rowNum[i], col + colNum[i]))
-# 				priority = newcost + computeheuristic(destinations, boxes)
-# 				q.put((priority, (row, col)))
-# 				camefrom[(row, col)] = (curri, currj)
+def getMSTWeight(i, j, fruits):
+	nodes = [(i, j)] + fruits
+	G = np.zeros((len(nodes), len(nodes)))
+	for idx1, node1 in enumerate(nodes):
+		for idx2, node2 in enumerate(nodes):
+			G[idx1][idx2] = abs(node1[0]-node2[0]) + abs(node1[1]-node2[1])
+	G_sparse = csr_matrix(G)
+	G_MST = minimum_spanning_tree(G_sparse)
+	return sum(sum(G_MST.toarray().astype(int)))
 
 
-def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations):
+
+def countsollength(data, camefrom, resultstate, starti, startj):
+	count = 0
+	while True:
+		prev = camefrom[resultstate]
+		count = count + 1
+		if (data[prev[1][0]][prev[1][1]] == '%'):
+			print("Error")
+		if ((prev[1][0], prev[1][1]) == (starti, startj)):
+			break
+		resultstate = prev
+	return count
+
+
+def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
+	#h = computeh(data, starti, startj, numrows, numcols, endi, endj)
 	count = 0
 	count2 = 0
 	rowNum = [-1, 0, 0, 1]
 	colNum = [0, -1, 1, 0]
 	q = Q.PriorityQueue()
-	q.put(    ((0,(starti,startj), frozenset(boxesinit))  ))
+	q.put(    ((0,(starti,startj), frozenset(fruitsinit))  ))
 	camefrom = {}
 	costsofar = {}
-	camefrom[(frozenset(boxesinit), (starti, startj))] = (starti, startj)
-	costsofar[(frozenset(boxesinit), (starti, startj))] = 0
+	camefrom[(frozenset(fruitsinit), (starti, startj))] = (starti, startj)
+	costsofar[(frozenset(fruitsinit), (starti, startj))] = 0
 	visited = {}
 	visited[(frozenset(fruitsinit), (starti, startj))] = True
 	while (q.qsize() > 0):
@@ -115,7 +106,8 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 			row = curri + rowNum[i]
 			col = currj + colNum[i]
 			if (row > numrows or  col>numcols or data[row][col]=='%'):
-				continue			
+				continue
+			
 			newcost = costsofar[(frozenset(oldparentfruits), (curri, currj))] + 1
 
 			if ((frozenset(parentfruits), (row, col)) in visited):
@@ -127,10 +119,10 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 				q.put((priority, (row, col), frozenset(parentfruits)))
 				camefrom[(frozenset(parentfruits), (row, col))] = (frozenset(oldparentfruits), (curri, currj))
 
+
 def main():
-	boxes = []
-	destinations = []
-	file =  open('sakoban1.txt', 'r') 
+	fruits = []
+	file =  open('smallSearch.txt', 'r') 
 	board = file.read()
 	data = filter(None, board.splitlines())
 	numcols = max(len(r) for r in data)
@@ -142,14 +134,12 @@ def main():
 			if (data[i][j] == 'P'):
 				starti = i
 				startj = j
-			if (data[i][j] == 'b'):
-				boxes.append((i, j))
 			if (data[i][j] == '.'):
-				destinations.append((i, j))
-			if (data[i][j] == 'B'):
-				boxes.append((i, j))
-				destinations.append((i, j))
-	astarsearch(data, starti, startj, numrows, numcols, boxes, destinations)
+				fruits.append((i, j))
+	
+	fruitstarti = starti
+	fruitstartj = startj
+	astarsearch(data, starti, startj, numrows, numcols, fruits)
 
 
 if __name__== "__main__":
