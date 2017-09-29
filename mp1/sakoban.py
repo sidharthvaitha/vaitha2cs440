@@ -1,7 +1,7 @@
 from array import array
 from collections import deque
 import Queue as Q
-
+import copy
 
 def manhattan_distance(start, end):
     sx, sy = start
@@ -44,41 +44,31 @@ def computeheuristic(destinations, boxes):
 		sum = sum + min(distances)
 	return sum
 
-# def astarsearch(data, starti, startj, numrows, numcols, boxes, destinations):
-# 	rowNum = [-1, 0, 0, 1]
-# 	colNum = [0, -1, 1, 0]
-# 	q = Q.PriorityQueue()
-# 	q.put(((0,(starti,startj))  ))
-# 	camefrom = {}
-# 	costsofar = {}
-# 	camefrom[(starti, startj)] = (starti, startj)
-# 	costsofar[(starti, startj)] = 0
-# 	hashmap = {}
-# 	while (q.qsize() > 0):
-# 		item = q.get()
-# 		curri = item[1][0]
-# 		currj = item[1][1]
-# 		if (isComplete(boxes, destinations)):
-# 			print('Complete')
-# 		for i in range(4):
-# 			row = curri + rowNum[i]
-# 			col = currj + colNum[i]
-# 			if (row > numrows or  col>numcols or data[row][col]=='%'):
-# 				continue
-# 			if ((row, col) in boxes):
-# 				boxnextrow = row + rowNum[i]
-# 				boxnextcol = col + colNum[i]
-# 				if (boxnextrow > numrows or  boxnextcol>numcols or data[boxnextrow][boxnextcol]=='%' or (boxnextrow, boxnextcol) in boxes):
-# 					continue
-# 			newcost = costsofar[(curri, currj)] + 1
-# 			if (((row, col) in costsofar) == False or newcost < costsofar[(row, col)]):
-# 				costsofar[(row, col)] = newcost
-# 				if ((row, col) in boxes):
-# 					boxes.remove((row, col))
-# 					boxes.append((row + rowNum[i], col + colNum[i]))
-# 				priority = newcost + computeheuristic(destinations, boxes)
-# 				q.put((priority, (row, col)))
-# 				camefrom[(row, col)] = (curri, currj)
+def cornerhelper(data, boxes, direction):
+	#or (direction[0], direction[1]) in boxes
+	if (data[direction[0]][direction[1]] == '%' ):
+		return True
+	return False
+
+
+def iscorner(curri, currj, data, boxes):
+	rowNum = [-1, 0, 0, 1]
+	colNum = [0, -1, 1, 0]
+	count= 0
+	up = (curri - 1, currj)
+	down = (curri + 1, currj)
+	left = (curri, currj - 1)
+	right= (curri, currj + 1)
+	if (cornerhelper(data, boxes, up)  and cornerhelper(data, boxes, left)):
+		return True
+	elif (cornerhelper(data, boxes, up)  and cornerhelper(data, boxes, right)):
+		return True
+	elif (cornerhelper(data, boxes, down)  and cornerhelper(data, boxes, right)):
+		return True
+	elif (cornerhelper(data, boxes, down)  and cornerhelper(data, boxes, left)):
+		return True
+	else:
+		return False
 
 
 def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations):
@@ -93,44 +83,58 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 	camefrom[(frozenset(boxesinit), (starti, startj))] = (starti, startj)
 	costsofar[(frozenset(boxesinit), (starti, startj))] = 0
 	visited = {}
-	visited[(frozenset(fruitsinit), (starti, startj))] = True
+	visited[(frozenset(boxesinit), (starti, startj))] = True
 	while (q.qsize() > 0):
 		item = q.get()
 		count = count + 1
-		if (count % 10000 == 0):
-			print('Ten Thousand')
 		curri = item[1][0]
 		currj = item[1][1]
-		parentfruits = list(item[2])
-		oldparentfruits = copy.deepcopy(parentfruits)
-		if (len(parentfruits) == 1 and parentfruits[0][0] == curri and parentfruits[0][1] == currj ):
+		print(curri, ' ', currj)
+		parentboxes = list(item[2])
+		oldparentboxes = copy.deepcopy(parentboxes)
+
+		if (isComplete(destinations, parentboxes)):
 				print("All fruits found")
-				resitem = (frozenset(oldparentfruits), (curri, currj))
-				print(countsollength(data, camefrom, resitem, starti, startj))
-				break
-		elif ((curri, currj) in parentfruits):
-				parentfruits.remove((curri, currj))
+				resitem = (frozenset(oldparentboxes), (curri, currj))
+				#print(countsollength(data, camefrom, resitem, starti, startj))
+				return
 
 		for i in range(4):
+			parentboxes = copy.deepcopy(oldparentboxes)
 			row = curri + rowNum[i]
 			col = currj + colNum[i]
-			if (row > numrows or  col>numcols or data[row][col]=='%'):
-				continue			
-			newcost = costsofar[(frozenset(oldparentfruits), (curri, currj))] + 1
-
-			if ((frozenset(parentfruits), (row, col)) in visited):
+			if (row >= numrows or  col>=numcols or data[row][col]=='%'):
 				continue
-			if (((frozenset(parentfruits), (row, col)) in costsofar) == False or newcost < costsofar[(frozenset(parentfruits), (row, col))]):
-				costsofar[(frozenset(parentfruits), (row, col))] = newcost
-				priority = newcost + getMSTWeight(row, col, parentfruits)
-				visited[(frozenset(parentfruits), (row, col))] = True
-				q.put((priority, (row, col), frozenset(parentfruits)))
-				camefrom[(frozenset(parentfruits), (row, col))] = (frozenset(oldparentfruits), (curri, currj))
+
+			if ((row, col) in parentboxes):
+				boxnextrow = row + rowNum[i]
+				boxnextcol = col + colNum[i]
+				if (boxnextrow >= numrows or  boxnextcol>=numcols or data[boxnextrow][boxnextcol]=='%' or (boxnextrow, boxnextcol) in parentboxes):
+					continue
+				tempboxes = copy.deepcopy(parentboxes)
+				tempboxes.remove((row, col))
+				tempboxes.append((row + rowNum[i], col + colNum[i]))
+				if (iscorner(row + rowNum[i], col + colNum[i], data, tempboxes) and (row + rowNum[i], col + colNum[i]) not in destinations):
+					print('iscorner ', row + rowNum[i], col + colNum[i])
+					continue
+				else:
+					parentboxes.remove((row, col))
+					parentboxes.append((row + rowNum[i], col + colNum[i]))
+
+			newcost = costsofar[(frozenset(oldparentboxes), (curri, currj))] + 1
+			# if ((frozenset(parentboxes), (row, col)) in visited):
+			# 	continue
+			if (((frozenset(parentboxes), (row, col)) in costsofar) == False or newcost < costsofar[(frozenset(parentboxes), (row, col))]):
+				costsofar[(frozenset(parentboxes), (row, col))] = newcost
+				priority = newcost + computeheuristic(destinations, parentboxes)
+				visited[(frozenset(parentboxes), (row, col))] = True
+				q.put((priority, (row, col), frozenset(parentboxes)))
+				camefrom[(frozenset(parentboxes), (row, col))] = (frozenset(oldparentboxes), (curri, currj))
 
 def main():
 	boxes = []
 	destinations = []
-	file =  open('sakoban1.txt', 'r') 
+	file =  open('sakoban4.txt', 'r') 
 	board = file.read()
 	data = filter(None, board.splitlines())
 	numcols = max(len(r) for r in data)

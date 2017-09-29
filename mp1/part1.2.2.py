@@ -122,7 +122,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 
 def main():
 	fruits = []
-	file =  open('smallSearch.txt', 'r') 
+	file =  open('tinySearch.txt', 'r') 
 	board = file.read()
 	data = filter(None, board.splitlines())
 	numcols = max(len(r) for r in data)
