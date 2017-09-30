@@ -6,6 +6,9 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 
+inputfile = "tinySearch.txt"
+
+
 def manhattan_distance(start, end):
     sx, sy = start
     ex, ey = end
@@ -33,6 +36,7 @@ def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
 		duplicate[prev[0]] = "".join(strlist)
 		curr = (prev[0], prev[1])
 	numrows = len(data)
+	outputfile = 'sol_' + inputfile
 	writefile = open('output2.txt', 'w')
 	for line in duplicate:
 		writefile.write(line)
@@ -70,11 +74,23 @@ def maxdistance(i, j, fruits):
 	return max_distance
 
 
+def calculate_startchar(fruitsinit):
+	n = len(fruitsinit)
+	startMark = '0'
+	for i in range(n):
+		if(startMark == '9'):
+			startMark = 'a'
+		elif(startMark == 'z'):
+			startMark = 'A'
+		else:
+			startMark = chr(ord(startMark) + 1)
+	return chr(ord(startMark) + 1)
 
-def countsollength(data, camefrom, resultstate, starti, startj):
+
+def countsollength(data, camefrom, resultstate, starti, startj, fruitsinit):
 	count = 0
 	duplicate = copy.deepcopy(data)
-	startMark = 'd'
+	startMark = calculate_startchar(fruitsinit)
 	while True:
 		prev = camefrom[resultstate]
 		if (data[prev[1][0]][prev[1][1]] == '%'):
@@ -97,7 +113,8 @@ def countsollength(data, camefrom, resultstate, starti, startj):
 			strlist[prev[1][1]] = '.'
 			duplicate[prev[1][0]] = "".join(strlist)
 		resultstate = prev
-	writefile = open('outputtinySearch.txt', 'w')
+	outputfile = 'sol_' + inputfile
+	writefile = open(outputfile, 'w')
 	for line in duplicate:
 		writefile.write(line)
 		writefile.write('\n')
@@ -132,7 +149,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 				#resitem = (frozenset(oldparentfruits), (curri, currj))
 				resitem = (frozenset([]), (curri, currj))
 				camefrom[(frozenset([]), (curri, currj))] = (frozenset(oldparentfruits), (curri, currj))
-				print(countsollength(data, camefrom, resitem, starti, startj))
+				print(countsollength(data, camefrom, resitem, starti, startj, fruitsinit))
 				break
 		elif ((curri, currj) in parentfruits):
 				parentfruits.remove((curri, currj))
@@ -157,7 +174,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 
 def main():
 	fruits = []
-	file =  open('tinySearch.txt', 'r') 
+	file =  open(inputfile, 'r') 
 	board = file.read()
 	data = filter(None, board.splitlines())
 	numcols = max(len(r) for r in data)

@@ -84,17 +84,18 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 	costsofar[(frozenset(boxesinit), (starti, startj))] = 0
 	visited = {}
 	visited[(frozenset(boxesinit), (starti, startj))] = True
+	count = 0
 	while (q.qsize() > 0):
 		item = q.get()
 		count = count + 1
 		curri = item[1][0]
 		currj = item[1][1]
-		print(curri, ' ', currj)
 		parentboxes = list(item[2])
 		oldparentboxes = copy.deepcopy(parentboxes)
-
+		if (count % 10000 == 0):
+			print('Ten Thousand')
 		if (isComplete(destinations, parentboxes)):
-				print("All fruits found")
+				print("All boxes in destination")
 				resitem = (frozenset(oldparentboxes), (curri, currj))
 				#print(countsollength(data, camefrom, resitem, starti, startj))
 				return
@@ -115,7 +116,7 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 				tempboxes.remove((row, col))
 				tempboxes.append((row + rowNum[i], col + colNum[i]))
 				if (iscorner(row + rowNum[i], col + colNum[i], data, tempboxes) and (row + rowNum[i], col + colNum[i]) not in destinations):
-					print('iscorner ', row + rowNum[i], col + colNum[i])
+					# print('iscorner ', row + rowNum[i], col + colNum[i])
 					continue
 				else:
 					parentboxes.remove((row, col))
