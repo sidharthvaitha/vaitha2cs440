@@ -9,46 +9,38 @@ from scipy.sparse.csgraph import minimum_spanning_tree
 inputfile = "smallSearch.txt"
 fruitdict = {}
 
+fruitdict2 = {}
+
 def buildfruitdict(fruits):
 	count = 0
 	for i in range(len(fruits)):
 		fruitdict[fruits[i]] = i
+	for i in range(len(fruits)):
+		fruitdict2[i] = fruits[i]
 	#print fruitdict
+
+def check_if_bitset(val, n):
+	return val & (1<<n)
+
+def clear_bit(value, bit):
+    return value & ~(1<<bit)
+
+def ispow2(value):
+	return value & (value - 1)
 
 def manhattan_distance(start, end):
     sx, sy = start
     ex, ey = end
     return abs(ex - sx) + abs(ey - sy)
 
+def set_bit(value, bit):
+    return value | (1<<bit)
 
-def computeh(data, starti, startj, numrows, numcols, endi, endj):
-	h = [[False for i in range(numcols)] for j in range(numrows)]
-	for i in range(numrows):
-		for j in range(numcols):
-			h[i][j] = manhattan_distance((i, j), (endi, endj))
-	return h
-
-def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
-	curr = (endi, endj)
-	duplicate = data
-	while True:
-		prev = camefrom[(curr[0], curr[1])]
-		if (data[prev[0]][prev[1]] == '%'):
-			print("Error")
-		if (prev == (starti, startj)):
-			break;
-		strlist = list(duplicate[prev[0]])
-		strlist[prev[1]] = 'a'
-		duplicate[prev[0]] = "".join(strlist)
-		curr = (prev[0], prev[1])
-	numrows = len(data)
-	outputfile = 'sol_' + inputfile
-	writefile = open('output2.txt', 'w')
-	for line in duplicate:
-		writefile.write(line)
-		writefile.write('\n')
-	writefile.close()
-
+def set_all_bits(n):
+	value = 0
+	for i in range(n):
+		value = set_bit(value, i)
+	return value
 
 def computeheurestic1(i, j, fruits):
 	distances = []
@@ -68,7 +60,10 @@ def getMSTWeight(i, j, fruits):
 	return sum(sum(G_MST.toarray().astype(int)))
 
 def maxdistance(i, j, fruits):
-	items = [(i, j)] + fruits
+	items = [(i, j)]
+	for i in range(len(fruitdict)):
+		if (check_if_bitset(fruits, i) != 0):
+			items.append(fruitdict2[i])
 	max_distance = 0
 	for i in range(len(items)):
 		for j in range(i, len(items)):
@@ -128,38 +123,50 @@ def countsollength(data, camefrom, resultstate, starti, startj, fruitsinit):
 	return count
 
 
+def checklastfruitfound(parentfruit, curri, currj):
+	for i in range(len(fruitdict)):
+		if (check_if_bitset(parentfruit, i) != 0):
+			if (fruitdict2[i] == (curri, currj)):
+				return True
+	return False
+
+
 def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 	count = 0
 	count2 = 0
 	rowNum = [-1, 0, 0, 1]
 	colNum = [0, -1, 1, 0]
 	q = Q.PriorityQueue()
-	q.put(    ((0,(starti,startj), frozenset(fruitsinit))  ))
+	complete_fruitbitmask = set_all_bits(len(fruitsinit))
+	print ('Complete FruitMask is ', complete_fruitbitmask)
+	q.put(    ((0,(starti,startj), complete_fruitbitmask)  ))
 	camefrom = {}
 	costsofar = {}
-	camefrom[(frozenset(fruitsinit), (starti, startj))] = (starti, startj)
-	costsofar[(frozenset(fruitsinit), (starti, startj))] = 0
+	camefrom[(complete_fruitbitmask, (starti, startj))] = (starti, startj)
+	costsofar[(complete_fruitbitmask, (starti, startj))] = 0
 	visited = {}
-	visited[(frozenset(fruitsinit), (starti, startj))] = True
+	visited[(complete_fruitbitmask, (starti, startj))] = True
 	while (q.qsize() > 0):
 		item = q.get()
 		count = count + 1
-		if (count % 10000 == 0):
-			print('Ten Thousand')
+		if (count % 100000 == 0):
+			print('Hundred Thousand')
 		curri = item[1][0]
 		currj = item[1][1]
-		parentfruits = list(item[2])
-		oldparentfruits = copy.deepcopy(parentfruits)
-		if (len(parentfruits) == 1 and parentfruits[0][0] == curri and parentfruits[0][1] == currj ):
+		parentfruits = item[2]
+		oldparentfruits = parentfruits
+		#and parentfruits[0][0] == curri and parentfruits[0][1] == currj
+		if (ispow2(parentfruits) == 0 and checklastfruitfound(parentfruits, curri, currj)):
 				print("All fruits found")
-				print ('NUmber of nodes expanded is ', count)
+				print ('Number of nodes expanded is ', count)
 				#resitem = (frozenset(oldparentfruits), (curri, currj))
-				resitem = (frozenset([]), (curri, currj))
-				camefrom[(frozenset([]), (curri, currj))] = (frozenset(oldparentfruits), (curri, currj))
+				resitem = (0, (curri, currj))
+				camefrom[(0, (curri, currj))] = (oldparentfruits, (curri, currj))
 				print(countsollength(data, camefrom, resitem, starti, startj, fruitsinit))
 				break
-		elif ((curri, currj) in parentfruits):
-				parentfruits.remove((curri, currj))
+		elif ((curri, currj) in fruitdict):
+				bit_to_clear = fruitdict[(curri, currj)]
+				parentfruits = clear_bit(parentfruits, bit_to_clear)
 
 		for i in range(4):
 			row = curri + rowNum[i]
@@ -167,16 +174,16 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 			if (row > numrows or  col>numcols or data[row][col]=='%'):
 				continue
 			
-			newcost = costsofar[(frozenset(oldparentfruits), (curri, currj))] + 1
+			newcost = costsofar[(oldparentfruits, (curri, currj))] + 1
 
-			if ((frozenset(parentfruits), (row, col)) in visited):
+			if ((parentfruits, (row, col)) in visited):
 				continue
-			if (((frozenset(parentfruits), (row, col)) in costsofar) == False or newcost < costsofar[(frozenset(parentfruits), (row, col))]):
-				costsofar[(frozenset(parentfruits), (row, col))] = newcost
+			if (((parentfruits, (row, col)) in costsofar) == False or newcost < costsofar[(parentfruits, (row, col))]):
+				costsofar[(parentfruits, (row, col))] = newcost
 				priority = newcost + maxdistance(row, col, parentfruits)
-				visited[(frozenset(parentfruits), (row, col))] = True
-				q.put((priority, (row, col), frozenset(parentfruits)))
-				camefrom[(frozenset(parentfruits), (row, col))] = (frozenset(oldparentfruits), (curri, currj))
+				visited[(parentfruits, (row, col))] = True
+				q.put((priority, (row, col), parentfruits))
+				camefrom[(parentfruits, (row, col))] = (oldparentfruits, (curri, currj))
 
 
 def main():
@@ -202,7 +209,7 @@ def main():
 	# n = len(fruits)
 	# val = 0
 	# for i in range(n):
-
+	buildfruitdict(fruits)
 	astarsearch(data, starti, startj, numrows, numcols, fruits)
 
 
