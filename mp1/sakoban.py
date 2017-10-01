@@ -33,6 +33,8 @@ def isComplete(destinations, boxes):
 	for item in destinations:
 		if (item not in boxes):
 			return False
+	print (destinations)
+	print (boxes)
 	return True
 
 def computeheuristic(destinations, boxes):

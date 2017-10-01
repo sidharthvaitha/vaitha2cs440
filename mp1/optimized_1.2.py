@@ -6,8 +6,14 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 
-inputfile = "tinySearch.txt"
+inputfile = "smallSearch.txt"
+fruitdict = {}
 
+def buildfruitdict(fruits):
+	count = 0
+	for i in range(len(fruits)):
+		fruitdict[fruits[i]] = i
+	#print fruitdict
 
 def manhattan_distance(start, end):
     sx, sy = start
@@ -54,7 +60,7 @@ def getMSTWeight(i, j, fruits):
 	nodes = [(i, j)] + fruits
 	G = np.zeros((len(nodes), len(nodes)))
 	for idx1, node1 in enumerate(nodes):
-		for idx2 in range(i, len(nodes)):
+		for idx2, node2 in enumerate(nodes):
 			node2 = nodes[idx2]
 			G[idx1][idx2] = abs(node1[0]-node2[0]) + abs(node1[1]-node2[1])
 	G_sparse = csr_matrix(G)
@@ -146,6 +152,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 		oldparentfruits = copy.deepcopy(parentfruits)
 		if (len(parentfruits) == 1 and parentfruits[0][0] == curri and parentfruits[0][1] == currj ):
 				print("All fruits found")
+				print ('NUmber of nodes expanded is ', count)
 				#resitem = (frozenset(oldparentfruits), (curri, currj))
 				resitem = (frozenset([]), (curri, currj))
 				camefrom[(frozenset([]), (curri, currj))] = (frozenset(oldparentfruits), (curri, currj))
@@ -191,6 +198,11 @@ def main():
 	
 	fruitstarti = starti
 	fruitstartj = startj
+	#buildfruitdict(fruits)
+	# n = len(fruits)
+	# val = 0
+	# for i in range(n):
+
 	astarsearch(data, starti, startj, numrows, numcols, fruits)
 
 

@@ -6,7 +6,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 
-inputfile = "tinySearch.txt"
+inputfile = "smallSearch.txt"
 
 
 
@@ -74,11 +74,23 @@ def maxdistance(i, j, fruits):
 	return max_distance
 
 
+def calculate_startchar(fruitsinit):
+	n = len(fruitsinit)
+	startMark = '0'
+	for i in range(n):
+		if(startMark == '9'):
+			startMark = 'a'
+		elif(startMark == 'z'):
+			startMark = 'A'
+		else:
+			startMark = chr(ord(startMark) + 1)
+	return chr(ord(startMark) + 1)
 
-def countsollength(data, camefrom, resultstate, starti, startj):
+
+def countsollength(data, camefrom, resultstate, starti, startj, fruitsinit):
 	count = 0
 	duplicate = copy.deepcopy(data)
-	startMark = 'd'
+	startMark = calculate_startchar(fruitsinit)
 	while True:
 		prev = camefrom[resultstate]
 		if (data[prev[1][0]][prev[1][1]] == '%'):
@@ -101,7 +113,7 @@ def countsollength(data, camefrom, resultstate, starti, startj):
 			strlist[prev[1][1]] = '.'
 			duplicate[prev[1][0]] = "".join(strlist)
 		resultstate = prev
-	writefile = open('outputtinySearch.txt', 'w')
+	outputfile = 'sol_' + inputfile
 	for line in duplicate:
 		writefile.write(line)
 		writefile.write('\n')
@@ -133,10 +145,11 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 		oldparentfruits = copy.deepcopy(parentfruits)
 		if (len(parentfruits) == 1 and parentfruits[0][0] == curri and parentfruits[0][1] == currj ):
 				print("All fruits found")
+				print ('Number of nodes expanded is ', count)
 				#resitem = (frozenset(oldparentfruits), (curri, currj))
 				resitem = (frozenset([]), (curri, currj))
 				camefrom[(frozenset([]), (curri, currj))] = (frozenset(oldparentfruits), (curri, currj))
-				print(countsollength(data, camefrom, resitem, starti, startj))
+				print(countsollength(data, camefrom, resitem, starti, startj, fruitsinit))
 				break
 		elif ((curri, currj) in parentfruits):
 				parentfruits.remove((curri, currj))
