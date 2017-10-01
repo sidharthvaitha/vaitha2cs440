@@ -1,0 +1,4 @@
+Ten Thousand
+All fruits found
+('Number of nodes expanded is ', 15098)
+36

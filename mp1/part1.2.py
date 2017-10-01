@@ -6,7 +6,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 
-inputfile = "smallSearch.txt"
+inputfile = "mediumSearch.txt"
 
 
 
@@ -113,7 +113,8 @@ def countsollength(data, camefrom, resultstate, starti, startj, fruitsinit):
 			strlist[prev[1][1]] = '.'
 			duplicate[prev[1][0]] = "".join(strlist)
 		resultstate = prev
-	outputfile = 'sol_' + inputfile
+	outfile = 'sol_' + inputfile
+	writefile = open(outfile, 'w')
 	for line in duplicate:
 		writefile.write(line)
 		writefile.write('\n')
