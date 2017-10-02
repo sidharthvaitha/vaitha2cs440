@@ -8,8 +8,8 @@ from scipy.sparse.csgraph import minimum_spanning_tree
 
 inputfile = "smallSearch.txt"
 fruitdict = {}
-
 fruitdict2 = {}
+f = open('internallog.txt', 'w')
 
 def buildfruitdict(fruits):
 	count = 0
@@ -97,7 +97,7 @@ def countsollength(data, camefrom, resultstate, starti, startj, fruitsinit):
 	while True:
 		prev = camefrom[resultstate]
 		if (data[prev[1][0]][prev[1][1]] == '%'):
-			print("Error")
+			f.write("Error\n")
 		if ((prev[1][0], prev[1][1]) == (starti, startj)):
 			break
 		count = count + 1
@@ -140,7 +140,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 	colNum = [0, -1, 1, 0]
 	q = Q.PriorityQueue()
 	complete_fruitbitmask = set_all_bits(len(fruitsinit))
-	print ('Complete FruitMask is ', complete_fruitbitmask)
+	f.write (str('Complete FruitMask is ' + str(complete_fruitbitmask)))
 	q.put(    ((0,(starti,startj), complete_fruitbitmask)  ))
 	camefrom = {}
 	costsofar = {}
@@ -152,19 +152,19 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 		item = q.get()
 		count = count + 1
 		if (count % 100000 == 0):
-			print('Hundred Thousand')
+			f.write('Hundred Thousand\n')
 		curri = item[1][0]
 		currj = item[1][1]
 		parentfruits = item[2]
 		oldparentfruits = parentfruits
 		#and parentfruits[0][0] == curri and parentfruits[0][1] == currj
 		if (ispow2(parentfruits) == 0 and checklastfruitfound(parentfruits, curri, currj)):
-				print("All fruits found")
-				print ('Number of nodes expanded is ', count)
+				f.write("All fruits found\n")
+				f.write (str('Number of nodes expanded is ' + str(count) + '\n'))
 				#resitem = (frozenset(oldparentfruits), (curri, currj))
 				resitem = (0, (curri, currj))
 				camefrom[(0, (curri, currj))] = (oldparentfruits, (curri, currj))
-				print(countsollength(data, camefrom, resitem, starti, startj, fruitsinit))
+				f.write(str(countsollength(data, camefrom, resitem, starti, startj, fruitsinit)) + '\n')
 				break
 		elif ((curri, currj) in fruitdict):
 				bit_to_clear = fruitdict[(curri, currj)]
@@ -213,6 +213,7 @@ def main():
 	# for i in range(n):
 	buildfruitdict(fruits)
 	astarsearch(data, starti, startj, numrows, numcols, fruits)
+	f.close()
 
 
 if __name__== "__main__":
