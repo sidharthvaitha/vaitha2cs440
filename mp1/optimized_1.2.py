@@ -49,11 +49,13 @@ def computeheurestic1(i, j, fruits):
 	return max(distances)
 
 def getMSTWeight(i, j, fruits):
-	nodes = [(i, j)] + fruits
+	nodes = [(i, j)]
+	for i in range(len(fruitdict)):
+		if (check_if_bitset(fruits, i) != 0):
+			nodes.append(fruitdict2[i])
 	G = np.zeros((len(nodes), len(nodes)))
 	for idx1, node1 in enumerate(nodes):
 		for idx2, node2 in enumerate(nodes):
-			node2 = nodes[idx2]
 			G[idx1][idx2] = abs(node1[0]-node2[0]) + abs(node1[1]-node2[1])
 	G_sparse = csr_matrix(G)
 	G_MST = minimum_spanning_tree(G_sparse)
@@ -180,7 +182,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 				continue
 			if (((parentfruits, (row, col)) in costsofar) == False or newcost < costsofar[(parentfruits, (row, col))]):
 				costsofar[(parentfruits, (row, col))] = newcost
-				priority = newcost + maxdistance(row, col, parentfruits)
+				priority = newcost + getMSTWeight(row, col, parentfruits)
 				visited[(parentfruits, (row, col))] = True
 				q.put((priority, (row, col), parentfruits))
 				camefrom[(parentfruits, (row, col))] = (oldparentfruits, (curri, currj))
