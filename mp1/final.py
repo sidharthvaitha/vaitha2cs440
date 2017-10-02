@@ -5,8 +5,9 @@ import copy
 import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
+import heapq
 
-inputfile = "tinySearch.txt"
+inputfile = "smallSearch.txt"
 fruitdict = {}
 fruitdict2 = {}
 f = open('internallog.txt', 'w')
@@ -52,6 +53,7 @@ def getMSTWeight(i, j, fruits):
 	nodes = [(i, j)]
 	for i in range(len(fruitdict)):
 		if (check_if_bitset(fruits, i) != 0):
+			if (fruitdict2[i])
 			nodes.append(fruitdict2[i])
 	G = np.zeros((len(nodes), len(nodes)))
 	for idx1, node1 in enumerate(nodes):
@@ -139,10 +141,11 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 	count2 = 0
 	rowNum = [-1, 0, 0, 1]
 	colNum = [0, -1, 1, 0]
-	q = Q.PriorityQueue()
+	q = []
+	# q = Q.PriorityQueue()
 	complete_fruitbitmask = set_all_bits(len(fruitsinit))
 	print (str('Complete FruitMask is ' + str(complete_fruitbitmask)))
-	q.put(    ((0,(starti,startj), complete_fruitbitmask)  ))
+	heapq.heappush(q, ((0,(starti,startj), complete_fruitbitmask)  ))
 	camefrom = {}
 	costsofar = {}
 	camefrom[(complete_fruitbitmask, (starti, startj))] = (starti, startj)
@@ -150,50 +153,60 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 	visited = {}
 	#visited[(complete_fruitbitmask, (starti, startj))] = True
 	count_added = 0
-	while (q.qsize() > 0):
-		item = q.get()
-		
+	while (len(q) > 0):
+		item = heapq.heappop(q)
+
 		if (count % 100000 == 0):
 			print('Hundred Thousand\n')
 		curri = item[1][0]
 		currj = item[1][1]
 		parentfruits = item[2]
-
+		oldparentfruits = parentfruits
 
 		if ((parentfruits, (curri, currj)) in visited):
 			continue
-
+		count = count + 1
+		
 		visited[(parentfruits, (curri, currj))] = True
 
-		count = count + 1
-
-		oldparentfruits = parentfruits
 		#and parentfruits[0][0] == curri and parentfruits[0][1] == currj
 		if (ispow2(parentfruits) == 0 and checklastfruitfound(parentfruits, curri, currj)):
 				print("All fruits found\n")
 				print (str('Number of nodes expanded is ' + str(count) + '\n'))
+				#resitem = (frozenset(oldparentfruits), (curri, currj))
 				resitem = (0, (curri, currj))
 				camefrom[(0, (curri, currj))] = (oldparentfruits, (curri, currj))
 				print(str(countsollength(data, camefrom, resitem, starti, startj, fruitsinit)) + '\n')
 				break
-		# elif ((curri, currj) in fruitdict):
-		# 		bit_to_clear = fruitdict[(curri, currj)]
-		# 		parentfruits = clear_bit(parentfruits, bit_to_clear)
+		elif ((curri, currj) in fruitdict):
+				bit_to_clear = fruitdict[(curri, currj)]
+				parentfruits = clear_bit(parentfruits, bit_to_clear)
 
 		for i in range(4):
-			parentfruits = oldparentfruits
 			row = curri + rowNum[i]
 			col = currj + colNum[i]
 			if (row > numrows or  col>numcols or data[row][col]=='%'):
 				continue
-			if ((row, col) in fruitdict):
-				bit_to_clear = fruitdict[(row, col)]
-				parentfruits = clear_bit(parentfruits, bit_to_clear)
 			newcost = costsofar[(oldparentfruits, (curri, currj))] + 1
-			if (((parentfruits, (row, col)) in costsofar) == False or newcost < costsofar[(parentfruits, (row, col))]):
+
+
+			if ((parentfruits, (row, col)) in visited):
+				continue
+
+			if (((parentfruits, (row, col)) in costsofar) == False ):
 				costsofar[(parentfruits, (row, col))] = newcost
 				priority = newcost + getMSTWeight(row, col, parentfruits)
-				q.put((priority, (row, col), parentfruits))
+				new_item = (priority, (row, col), parentfruits)
+				heapq.heappush(q, (priority, (row, col), parentfruits))
+				camefrom[(parentfruits, (row, col))] = (oldparentfruits, (curri, currj))
+
+			elif (newcost < costsofar[(parentfruits, (row, col))]):
+				costsofar[(parentfruits, (row, col))] = newcost
+				priority = newcost + getMSTWeight(row, col, parentfruits)
+				# old_item = (priority, (row, col), parentfruits)
+				# old_cost = costsofar[(parentfruits, (row, col))]
+				heapq.heappush(q, (priority, (row, col), parentfruits))
+				#heapq.heapify(q)
 				camefrom[(parentfruits, (row, col))] = (oldparentfruits, (curri, currj))
 	
 
