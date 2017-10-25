@@ -6,7 +6,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 
-inputfile = "tinySearch.txt"
+inputfile = "bigDots.txt"
 fruitdict = {}
 fruitdict2 = {}
 f = open('internallog.txt', 'w')
@@ -198,7 +198,7 @@ def astarsearch(data, starti, startj, numrows, numcols, fruitsinit):
 				continue
 			if (((parentfruits, (row, col)) in costsofar) == False or newcost < costsofar[(parentfruits, (row, col))]):
 				costsofar[(parentfruits, (row, col))] = newcost
-				priority = newcost + getMSTWeight(row, col, parentfruits)
+				priority = newcost + 50 * getMSTWeight(row, col, parentfruits)
 				q.put((priority, (row, col), parentfruits, newcost))
 				camefrom[(parentfruits, (row, col))] = (oldparentfruits, (curri, currj))
 	
@@ -207,7 +207,7 @@ def main():
 	file =  open(inputfile, 'r') 
 	board = file.read()
 	data = filter(None, board.splitlines())
-	numcols = max(len(r) for r in data) 
+	numcols = max(len(r) for r in data) - 1
 	numrows = len(data)
 	print numrows
 	print numcols

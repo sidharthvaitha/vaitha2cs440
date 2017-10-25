@@ -29,6 +29,18 @@ def writemazetofileastar(data, endi, endj, starti, startj, camefrom):
 	writefile.close()
 
 
+def countsollength(data, camefrom, resultstate, starti, startj, fruitsinit):
+	count = 0
+	while True:
+		prev = camefrom[resultstate]
+		if (data[prev[1][0]][prev[1][1]] == '%'):
+			print("Error\n")
+		if ((prev[1][0], prev[1][1]) == (starti, startj)):
+			break
+		count = count + 1
+		resultstate = prev
+	return count
+
 def isComplete(destinations, boxes):
 	for item in destinations:
 		if (item not in boxes):
@@ -98,8 +110,9 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 			print('Ten Thousand')
 		if (isComplete(destinations, parentboxes)):
 				print("All boxes in destination")
-				resitem = (frozenset(oldparentboxes), (curri, currj))
-				#print(countsollength(data, camefrom, resitem, starti, startj))
+				print count
+				resitem = (frozenset(parentboxes), (curri, currj))
+				print(countsollength(data, camefrom, resitem, starti, startj, boxesinit))
 				return
 
 		for i in range(4):
@@ -129,7 +142,7 @@ def astarsearch(data, starti, startj, numrows, numcols, boxesinit, destinations)
 			# 	continue
 			if (((frozenset(parentboxes), (row, col)) in costsofar) == False or newcost < costsofar[(frozenset(parentboxes), (row, col))]):
 				costsofar[(frozenset(parentboxes), (row, col))] = newcost
-				priority = newcost + computeheuristic(destinations, parentboxes)
+				priority = newcost + 50 * computeheuristic(destinations, parentboxes)
 				visited[(frozenset(parentboxes), (row, col))] = True
 				q.put((priority, (row, col), frozenset(parentboxes)))
 				camefrom[(frozenset(parentboxes), (row, col))] = (frozenset(oldparentboxes), (curri, currj))
@@ -161,3 +174,5 @@ def main():
 
 if __name__== "__main__":
   main()
+
+  
