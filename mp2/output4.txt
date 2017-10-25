@@ -1,0 +1,572 @@
+****************************************
+a a a a a a a a
+a a a a a a a a
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+b b b b b b b b
+b b b b b b b b
+****************************************
+MinMove
+****************************************
+a a a a a a a a
+a a a a a a a a
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * b * * *
+b b b * b b b b
+b b b b b b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a a a a a
+a * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * b * * *
+b b b * b b b b
+b b b b b b b b
+****************************************
+('counter ', 1, ' Max positions len ', 16, ' Min positions len ', 16)
+MinMove
+****************************************
+a a a a a a a a
+a * a a a a a a
+a * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * b * * b
+b b b * b b * b
+b b b b b b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a a a * a
+a * * * * a * *
+* * * * * * * *
+* * * * * * * *
+* * * * b * * b
+b b b * b b * b
+b b b b b b b b
+****************************************
+('counter ', 2, ' Max positions len ', 16, ' Min positions len ', 16)
+MinMove
+****************************************
+a a a a a a a a
+a * a a a a * a
+a * * * * a * *
+* * * * * * * *
+* * * * * * * *
+* * * * b * * b
+b b b b b b * b
+b b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a a * * a
+a * * * * a a *
+* * * * * * * *
+* * * * * * * *
+* * * * b * * b
+b b b b b b * b
+b b b b * b b b
+****************************************
+('counter ', 3, ' Max positions len ', 16, ' Min positions len ', 16)
+MinMove
+****************************************
+a a a a a a a a
+a * a a a * * a
+a * * * * a a *
+* * * * * * * *
+* * * * * * * *
+* b * * b * * b
+b * b b b b * b
+b b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a a * * a
+a * * * * a * *
+* * * * * a * *
+* * * * * * * *
+* b * * b * * b
+b * b b b b * b
+b b b b * b b b
+****************************************
+('counter ', 4, ' Max positions len ', 16, ' Min positions len ', 16)
+MinMove
+****************************************
+a a a a a a a a
+a * a a a * * a
+a * * * * a * *
+* * * * * a * *
+* * * * * * * *
+* b * * b * * b
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a a * * a
+a * * * * a * *
+* * * * * * * *
+* * * * * * a *
+* b * * b * * b
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 5, ' Max positions len ', 16, ' Min positions len ', 16)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a a a * * a
+a * * * * a * *
+* * * * * * * *
+* * * * * * b *
+* b * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a * * * a
+a * * a * a * *
+* * * * * * * *
+* * * * * * b *
+* b * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 6, ' Max positions len ', 15, ' Min positions len ', 16)
+MinMove
+****************************************
+a a a a a a a a
+a * a a * * * a
+a * * a * a * *
+* * * * * * * *
+b * * * * * b *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a a * * * a
+* * * a * a * *
+* a * * * * * *
+b * * * * * b *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 7, ' Max positions len ', 15, ' Min positions len ', 16)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a a * * * a
+* * * a * a * *
+b a * * * * * *
+* * * * * * b *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+* * a a * * * a
+* a * a * a * *
+b a * * * * * *
+* * * * * * b *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 8, ' Max positions len ', 15, ' Min positions len ', 16)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+* * a a * * * a
+b a * a * a * *
+* a * * * * * *
+* * * * * * b *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a a a a a
+* a a a * * * a
+b a * a * a * *
+* a * * * * * *
+* * * * * * b *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 9, ' Max positions len ', 15, ' Min positions len ', 16)
+MinMove
+Min captures max player
+****************************************
+a a * a a a a a
+* a a a * * * a
+b a * a * a * *
+* a * * * * * b
+* * * * * * * *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a * a a a a a
+* * a a * * * a
+a a * a * a * *
+* a * * * * * b
+* * * * * * * *
+* * * * b * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 10, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+****************************************
+a a * a a a a a
+* * a a * * * a
+a a * a * a * *
+* a * * * * * b
+* * * * * b * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a a a a a
+* * a a * * * a
+a a * * * a * *
+* a * * a * * b
+* * * * * b * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 11, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a * a a a a a
+* * a a * * * a
+a a * * * a * *
+* a * * a b * b
+* * * * * * * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a a a a a
+* * a * * * * a
+a a * * a a * *
+* a * * a b * b
+* * * * * * * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 12, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a * a a a a a
+* * a * * * * a
+a a * * b a * *
+* a * * a * * b
+* * * * * * * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a a a * a
+* * a * * a * a
+a a * * b a * *
+* a * * a * * b
+* * * * * * * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 13, ' Max positions len ', 14, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a * a a a * a
+* * a * * b * a
+a a * * * a * *
+* a * * a * * b
+* * * * * * * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a * a * a * a
+* * a * * a * a
+a a * * * a * *
+* a * * a * * b
+* * * * * * * *
+* * * * * * * *
+b b b b b b * b
+* b b b * b b b
+****************************************
+('counter ', 14, ' Max positions len ', 13, ' Min positions len ', 14)
+MinMove
+****************************************
+a a * a * a * a
+* * a * * a * a
+a a * * * a * *
+* a * * a * * b
+* * * * * * * *
+* * b * * * * *
+b b * b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a * a * a
+* * a * * a * *
+a a * * * a a *
+* a * * a * * b
+* * * * * * * *
+* * b * * * * *
+b b * b b b * b
+* b b b * b b b
+****************************************
+('counter ', 15, ' Max positions len ', 13, ' Min positions len ', 14)
+MinMove
+Min captures max player
+****************************************
+a a * a * a * a
+* * a * * a * *
+a a * * * a a b
+* a * * a * * *
+* * * * * * * *
+* * b * * * * *
+b b * b b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a * a * *
+* * a * * a a *
+a a * * * a a b
+* a * * a * * *
+* * * * * * * *
+* * b * * * * *
+b b * b b b * b
+* b b b * b b b
+****************************************
+('counter ', 16, ' Max positions len ', 13, ' Min positions len ', 14)
+MinMove
+Min captures max player
+****************************************
+a a * a * a * *
+* * a * * a a *
+a a * * * a a b
+* a * * a * * *
+* * * * * * * *
+* * b * b * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a * a * a * *
+* * a * * a * *
+a a * * * a a a
+* a * * a * * *
+* * * * * * * *
+* * b * b * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 17, ' Max positions len ', 13, ' Min positions len ', 13)
+MinMove
+****************************************
+a a * a * a * *
+* * a * * a * *
+a a * * * a a a
+* a * * a * * *
+* * * * b * * *
+* * b * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a * a * *
+* * a * * a * *
+a a * * * * a a
+* a * * a a * *
+* * * * b * * *
+* * b * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 18, ' Max positions len ', 13, ' Min positions len ', 13)
+MinMove
+Min captures max player
+****************************************
+a a * a * a * *
+* * a * * a * *
+a a * * * * a a
+* a * b a a * *
+* * * * * * * *
+* * b * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a * a * *
+* * a * * a * *
+a a * * * * a a
+* a * b * a * *
+* * * a * * * *
+* * b * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 19, ' Max positions len ', 13, ' Min positions len ', 13)
+MinMove
+Min captures max player
+****************************************
+a a * a * a * *
+* * a * * a * *
+a a * * * * a a
+* a * b * a * *
+* * * b * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a * a * *
+* * a * * * * *
+a a * * a * a a
+* a * b * a * *
+* * * b * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 20, ' Max positions len ', 12, ' Min positions len ', 13)
+MinMove
+Min captures max player
+****************************************
+a a * a * a * *
+* * a * * * * *
+a a b * a * a a
+* a * * * a * *
+* * * b * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+a a * a * a * *
+* * a * * * * *
+a a b * * * a a
+* a * * a a * *
+* * * b * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 21, ' Max positions len ', 12, ' Min positions len ', 13)
+MinMove
+Min captures max player
+****************************************
+a a * a * a * *
+* * a * * * * *
+a a b * * * a a
+* a * * b a * *
+* * * * * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+****************************************
+* a * a * a * *
+* a a * * * * *
+a a b * * * a a
+* a * * b a * *
+* * * * * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 22, ' Max positions len ', 11, ' Min positions len ', 13)
+MinMove
+Min captures max player
+****************************************
+* a * a * a * *
+* b a * * * * *
+a a * * * * a a
+* a * * b a * *
+* * * * * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* a * a * a * *
+* b a * * * * *
+a a * * * * a a
+* a * * b a * *
+* * * * * * * *
+* * * * * * * *
+b b * * b b * b
+* b b b * b b b
+****************************************
+('counter ', 23, ' Max positions len ', 10, ' Min positions len ', 13)
+MinMove
+Game over winner is Min
+{(6, 4): True, (6, 7): True, (7, 1): True, (6, 1): True, (7, 7): True, (6, 0): True, (7, 5): True, (6, 5): True, (7, 3): True, (3, 4): True, (7, 6): True, (7, 2): True, (1, 1): True}
+****************************************
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+reached break condition 1
+{}

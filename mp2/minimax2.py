@@ -73,6 +73,45 @@ def defensiveheuristic2(curstate, isplayer1):
 	score =  2 * (num_remaining) + 3 * num_covered + random.random()
 	return score
 
+
+def offensiveheuristic2(curstate, isplayer1):
+	num_remaining = 0
+	num_opponent_remaining = 0
+	if (isplayer1==False):
+		num_opponent_remaining = len(curstate.player1positions)
+		num_remaining = len(curstate.player2positions)
+	else:
+		num_opponent_remaining = len(curstate.player2positions)
+		num_remaining = len(curstate.player1positions)
+
+	num_covered = 0
+	hash_covered = [False] * WIDTH
+	min_distance = 0 
+	if (isplayer1 == False):
+		for item in curstate.player1positions.keys():
+			row = item[0]
+			col = item[1]
+			hash_covered[col] = True
+		for i in range(8):
+			if (hash_covered[i] == True):
+				num_covered = num_covered + 1
+
+		# for item in curstate.player2positions.keys():
+		# 	row = item[0]
+		# 	col = item[1]
+
+
+	if (isplayer1):
+		for item in curstate.player2positions.keys():
+			row = item[0]
+			col = item[1]
+			hash_covered[col] = True
+		for i in range(8):
+			if (hash_covered[i] == True):
+				num_covered = num_covered + 1
+	score =  (30 - num_opponent_remaining) + (16 - num_covered) + random.random()
+	return score
+
 def offensiveheuristic(curstate, isplayer1):
 	num_remaining = 0
 	if (isplayer1==False):
@@ -88,7 +127,7 @@ def offensiveheuristic(curstate, isplayer1):
 
 
 def calulateScoreMaxHeuristic(curstate):
-	 return defensiveheuristic2(curstate, True)
+	 return offensiveheuristic2(curstate, True)
 	# offensiveheuristic(curstate, isplayer1)
 
 
@@ -248,7 +287,7 @@ def getPlayer1MoveState(curstate):
 
 def calulateScoreMinHeuristic(curstate):
 	#defensiveheuristic(curstate, True)
-	return offensiveheuristic(curstate, False)
+	return defensiveheuristic(curstate, False)
 
 
 def getLevel3Player2MoveState(curstate):

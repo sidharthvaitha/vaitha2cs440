@@ -23,7 +23,7 @@ MaxMove
 ****************************************
 a a a a a a a a
 a a a a a * a a
-* * * * a * * *
+* * * * * a * *
 * * * * * * * *
 * * * * * * * *
 * * * * * * b *
@@ -35,780 +35,2415 @@ MinMove
 ****************************************
 a a a a a a a a
 a a a a a * a a
-* * * * a * * *
+* * * * * a * *
 * * * * * * * *
 * * * * * * * *
-* b * * * * b *
-b b * b b b b *
+* * * * * * b b
+b b b b b b * *
 b b b b b b b b
 ****************************************
 MaxMove
 ****************************************
 a a a a a a a a
-* a a a a * a a
-a * * * a * * *
+a a a a a * a *
+* * * * * a * a
 * * * * * * * *
 * * * * * * * *
-* b * * * * b *
-b b * b b b b *
+* * * * * * b b
+b b b b b b * *
 b b b b b b b b
 ****************************************
 ('counter ', 2, ' Max positions len ', 16, ' Min positions len ', 16)
 MinMove
 ****************************************
 a a a a a a a a
-* a a a a * a a
-a * * * a * * *
+a a a a a * a *
+* * * * * a * a
 * * * * * * * *
 * * * * * * * *
-* b * * * b b *
-b b * b * b b *
+* b * * * * b b
+b b * b b b * *
 b b b b b b b b
 ****************************************
 MaxMove
 ****************************************
 a a a a a a a a
-* a a a a * a a
-* * * * a * * *
-* a * * * * * *
+a a a a * * a *
+* * * a * a * a
 * * * * * * * *
-* b * * * b b *
-b b * b * b b *
+* * * * * * * *
+* b * * * * b b
+b b * b b b * *
 b b b b b b b b
 ****************************************
 ('counter ', 3, ' Max positions len ', 16, ' Min positions len ', 16)
 MinMove
 ****************************************
 a a a a a a a a
-* a a a a * a a
-* * * * a * * *
-* a * * * * * *
+a a a a * * a *
+* * * a * a * a
 * * * * * * * *
-b b * * * b b *
-b * * b * b b *
+* * b * * * * *
+* * * * * * b b
+b b * b b b * *
 b b b b b b b b
 ****************************************
 MaxMove
 ****************************************
 a a a a a a a a
-* * a a a * a a
-* * a * a * * *
-* a * * * * * *
-* * * * * * * *
-b b * * * b b *
-b * * b * b b *
+a a a a * * a *
+* * * * * a * a
+* * * a * * * *
+* * b * * * * *
+* * * * * * b b
+b b * b b b * *
 b b b b b b b b
 ****************************************
 ('counter ', 4, ' Max positions len ', 16, ' Min positions len ', 16)
 MinMove
+Min captures max player
 ****************************************
 a a a a a a a a
-* * a a a * a a
-* * a * a * * *
-* a * * * * * *
-* * * * * * * b
-b b * * * b * *
-b * * b * b b *
-b b b b b b b b
-****************************************
-MaxMove
-****************************************
-* a a a a a a a
-a * a a a * a a
-* * a * a * * *
-* a * * * * * *
-* * * * * * * b
-b b * * * b * *
-b * * b * b b *
-b b b b b b b b
-****************************************
-('counter ', 5, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a a a a a
-a * a a a * a a
-* * a * a * * *
-* a * * * * * *
-* * * * * * * b
-b b * * b b * *
-b * * b * * b *
-b b b b b b b b
-****************************************
-MaxMove
-****************************************
-* a a a a a a a
-a * a a a * a a
-* * a * * * * *
-* a * * a * * *
-* * * * * * * b
-b b * * b b * *
-b * * b * * b *
-b b b b b b b b
-****************************************
-('counter ', 6, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a a a a a
-a * a a a * a a
-* * a * * * * *
-* a * * a * * *
-* * * * * * * b
-b b * * b b b *
-b * * b * * * *
-b b b b b b b b
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * a a a a a a
-* * a * * * * *
-* a * * a * * *
-* * * * * * * b
-b b * * b b b *
-b * * b * * * *
-b b b b b b b b
-****************************************
-('counter ', 7, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * a a a a a a
-* * a * * * * *
-* a * * a * * *
-* * * * * * * b
-b b * * b b b *
-b * * b * * b *
-b b b b b b * b
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * a a a a a a
+a a a a * * a *
+* * * * * a * a
+* * * b * * * *
 * * * * * * * *
-* a a * a * * *
-* * * * * * * b
-b b * * b b b *
-b * * b * * b *
-b b b b b b * b
+* * * * * * b b
+b b * b b b * *
+b b b b b b b b
 ****************************************
-('counter ', 8, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
+MaxMove
 ****************************************
-* a a a * a a a
-a * a a a a a a
+a a a a a a a a
+a * a a * * a *
+* * a * * a * a
+* * * b * * * *
 * * * * * * * *
-* a a * a * * *
-* * * * * * * b
+* * * * * * b b
+b b * b b b * *
+b b b b b b b b
+****************************************
+('counter ', 5, ' Max positions len ', 15, ' Min positions len ', 16)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a a * * a *
+* * a * * a * a
+* * * b * * * *
+* * * * * * * *
+* * * * * * b b
 b b * b b b b *
-b * * * * * b *
-b b b b b b * b
+b b b b b b b *
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a a a a a a a
+a * a a * * a *
+* * * * * a * a
+* * * a * * * *
+* * * * * * * *
+* * * * * * b b
+b b * b b b b *
+b b b b b b b *
+****************************************
+('counter ', 6, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+****************************************
+a a a a a a a a
+a * a a * * a *
+* * * * * a * a
+* * * a * * * *
+* * * * * * * *
+* * * * * b b b
+b b * b * b b *
+b b b b b b b *
 ****************************************
 MaxMove
 ****************************************
-* a a a * a a a
-a * a a a a a *
+a a a a a a a a
+a * a * * * a *
+* * * a * a * a
+* * * a * * * *
+* * * * * * * *
+* * * * * b b b
+b b * b * b b *
+b b b b b b b *
+****************************************
+('counter ', 7, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * a
+* * * a * * * *
+* * * * * * * *
+* b * * * b b b
+* b * b * b b *
+b b b b b b b *
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * a
+* * * * * * * *
+* * * * a * * *
+* b * * * b b b
+* b * b * b b *
+b b b b b b b *
+****************************************
+('counter ', 8, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * a
+* * * * * * * *
+* * * * a b * *
+* b * * * * b b
+* b * b * b b *
+b b b b b b b *
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * a
+* * * * * * * *
+* * * * * b * *
+* b * * * a b b
+* b * b * b b *
+b b b b b b b *
+****************************************
+('counter ', 9, ' Max positions len ', 15, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * a
+* * * * * * * *
+* * * * * b * *
+* b * * * b b b
+* b * b * b * *
+b b b b b b b *
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * *
 * * * * * * a *
-* a a * a * * *
-* * * * * * * b
-b b * b b b b *
-b * * * * * b *
-b b b b b b * b
+* * * * * b * *
+* b * * * b b b
+* b * b * b * *
+b b b b b b b *
 ****************************************
-('counter ', 9, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * a a a a a *
-* * * * * * a *
-* a a * a * * *
-* * * * * * * b
-b b * b b b b *
-b * b * * * b *
-b * b b b b * b
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * * a a a a *
-* * * a * * a *
-* a a * a * * *
-* * * * * * * b
-b b * b b b b *
-b * b * * * b *
-b * b b b b * b
-****************************************
-('counter ', 10, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * * a a a a *
-* * * a * * a *
-* a a * a * * *
-* * b * * * * b
-b * * b b b b *
-b * b * * * b *
-b * b b b b * b
-****************************************
-MaxMove
-Max captures min player
-****************************************
-* a a a * a a a
-a * * a a a a *
-* * * a * * a *
-* * a * a * * *
-a * b * * * * b
-b * * b b b b *
-b * b * * * b *
-b * b b b b * b
-****************************************
-('counter ', 11, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * * a a a a *
-* * * a * * a *
-* * a * a * * *
-a * b * * * * b
-b * * b b b b b
-b * b * * * * *
-b * b b b b * b
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * * a a a * *
-* * * a * * a a
-* * a * a * * *
-a * b * * * * b
-b * * b b b b b
-b * b * * * * *
-b * b b b b * b
-****************************************
-('counter ', 12, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * * a a a * *
-* * * a * * a a
-* * a * a * * *
-a * b * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * * a * a * *
-* * * a * a a a
-* * a * a * * *
-a * b * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-('counter ', 13, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * * a * a * *
-* * * a * a a a
-* b a * a * * *
-a * * * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * * a * a * *
-* * * a * * a a
-* b a * a a * *
-a * * * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-('counter ', 14, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a * * a * a * *
-b * * a * * a a
-* * a * a a * *
-a * * * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-MaxMove
-****************************************
-* a a a * a a a
-a * * a * * * *
-b * * a * a a a
-* * a * a a * *
-a * * * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-('counter ', 15, ' Max positions len ', 16, ' Min positions len ', 16)
-MinMove
-****************************************
-* a a a * a a a
-a b * a * * * *
-* * * a * a a a
-* * a * a a * *
-a * * * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-MaxMove
-Max captures min player
-****************************************
-* a * a * a a a
-a a * a * * * *
-* * * a * a a a
-* * a * a a * *
-a * * * * * * b
-b * * b b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-('counter ', 16, ' Max positions len ', 16, ' Min positions len ', 15)
-MinMove
-****************************************
-* a * a * a a a
-a a * a * * * *
-* * * a * a a a
-* * a * a a * *
-a * * b * * * b
-b * * * b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-MaxMove
-Max captures min player
-Max captures min player
-****************************************
-* a * a * a a a
-a a * a * * * *
-* * * a * a a *
-* * a * a a a *
-a * * b * * * b
-b * * * b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-('counter ', 17, ' Max positions len ', 16, ' Min positions len ', 15)
-MinMove
-Min captures max player
-Min captures max player
-Min captures max player
-****************************************
-* a * a * a a a
-a a * a * * * *
-* * * a * a a *
-* * a * b a a *
-a * * * * * * b
-b * * * b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-MaxMove
-Max captures min player
-Max captures min player
-Max captures min player
-****************************************
-* a * a * a a a
-a a * a * * * *
-* * * a * * a *
-* * a * a a a *
-a * * * * * * b
-b * * * b b b b
-b * b * * * b *
-b * b b b b * *
-****************************************
-('counter ', 18, ' Max positions len ', 15, ' Min positions len ', 14)
+('counter ', 10, ' Max positions len ', 14, ' Min positions len ', 15)
 MinMove
 Min captures max player
 ****************************************
-* a * a * a a a
-a a * a * * * *
-* * * a * * a *
-* * a * a a b *
-a * * * * * * *
-b * * * b b b b
-b * b * * * b *
-b * b b b b * *
+a a a a a a a a
+a * a * * * a *
+* * * a * a * *
+* * * * * b a *
+* * * * * * * *
+* b * * * b b b
+* b * b * b * *
+b b b b b b b *
 ****************************************
 MaxMove
 ****************************************
-* a * a * a a a
-a a * * * * * *
-* * a a * * a *
-* * a * a a b *
-a * * * * * * *
-b * * * b b b b
-b * b * * * b *
-b * b b b b * *
+a a a a a a a a
+a * a * * * a *
+* * * a * a * *
+* * * * * b * *
+* * * * * * * a
+* b * * * b b b
+* b * b * b * *
+b b b b b b b *
 ****************************************
-('counter ', 19, ' Max positions len ', 14, ' Min positions len ', 14)
+('counter ', 11, ' Max positions len ', 14, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * a * a * *
+* * * * * b * *
+* * * * * b * a
+* b * * * b * b
+* b * b * b * *
+b b b b b b b *
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * a b * *
+* * * * * b * a
+* b * * * b * b
+* b * b * b * *
+b b b b b b b *
+****************************************
+('counter ', 12, ' Max positions len ', 14, ' Min positions len ', 15)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * a b * *
+* * * * * b * a
+* b * * * b * b
+b b * b * b * *
+* b b b b b b *
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+* * * * * a * a
+* b * * * b * b
+b b * b * b * *
+* b b b b b b *
+****************************************
+('counter ', 13, ' Max positions len ', 14, ' Min positions len ', 14)
 MinMove
 ****************************************
-* a * a * a a a
-a a * * * * * *
-* * a a * * a *
-* * a * a a b *
-a * * * * * * *
-b * * * b b b b
-b * b b * * b *
-b * b * b b * *
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+* * * * * a * a
+* b * * * b * b
+b b b b * b * *
+* * b b b b b *
 ****************************************
 MaxMove
 ****************************************
-* a * a * a a a
-a a * * * * * *
-* * a a * * a *
-* * * * a a b *
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+* * * * * a * *
+* b * * * b a b
+b b b b * b * *
+* * b b b b b *
+****************************************
+('counter ', 14, ' Max positions len ', 14, ' Min positions len ', 14)
+MinMove
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+b * * * * a * *
+* * * * * b a b
+b b b b * b * *
+* * b b b b b *
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+b * * * * a * *
+* * * * * b * b
+b b b b * a * *
+* * b b b b b *
+****************************************
+('counter ', 15, ' Max positions len ', 14, ' Min positions len ', 13)
+MinMove
+Min captures max player
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+b * * * * a * *
+* * * * * b * b
+b b b b * b * *
+* * b b b b * *
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+b * * * * * * *
+* * * * a b * b
+b b b b * b * *
+* * b b b b * *
+****************************************
+('counter ', 16, ' Max positions len ', 13, ' Min positions len ', 13)
+MinMove
+Min captures max player
+Min captures max player
+****************************************
+a a a a a a a a
+a * a * * * a *
+* * * * * a * *
+* * * * * b * *
+b * * * * * * *
+* * * * b b * b
+b b b * * b * *
+* * b b b b * *
+****************************************
+MaxMove
+****************************************
+a a a a a a a a
 a * a * * * * *
-b * * * b b b b
-b * b b * * b *
-b * b * b b * *
+* * * * * a a *
+* * * * * b * *
+b * * * * * * *
+* * * * b b * b
+b b b * * b * *
+* * b b b b * *
 ****************************************
-('counter ', 20, ' Max positions len ', 14, ' Min positions len ', 14)
-MinMove
-****************************************
-* a * a * a a a
-a a * * * * * *
-* * a a * * a *
-* * * * a a b *
-a * a * * * b *
-b * * * b b b *
-b * b b * * b *
-b * b * b b * *
-****************************************
-MaxMove
-Max captures min player
-****************************************
-* a * a * a * a
-a a * * * a * *
-* * a a * * a *
-* * * * a a b *
-a * a * * * b *
-b * * * b b b *
-b * b b * * b *
-b * b * b b * *
-****************************************
-('counter ', 21, ' Max positions len ', 14, ' Min positions len ', 14)
+('counter ', 17, ' Max positions len ', 12, ' Min positions len ', 13)
 MinMove
 Min captures max player
 ****************************************
-* a * a * a * a
-a a * * * a * *
-* * a a * * a *
-* * * * a b b *
+a a a a a a a a
 a * a * * * * *
-b * * * b b b *
-b * b b * * b *
-b * b * b b * *
-****************************************
-MaxMove
-Max captures min player
-****************************************
-* a * a * a * a
-a a * * * a * *
-* * a a * * * *
-* * * * a a b *
-a * a * * * * *
-b * * * b b b *
-b * b b * * b *
-b * b * b b * *
-****************************************
-('counter ', 22, ' Max positions len ', 13, ' Min positions len ', 13)
-MinMove
-****************************************
-* a * a * a * a
-a a * * * a * *
-* * a a * * * *
-* * * * a a b *
-a * a * * * * *
-b * b * b b b *
-b * * b * * b *
-b * b * b b * *
+* * * * b a a *
+* * * * * * * *
+b * * * * * * *
+* * * * b b * b
+b b b * * b * *
+* * b b b b * *
 ****************************************
 MaxMove
 ****************************************
-* a * a * a * a
-a a * * * * * *
-* * a a * * a *
-* * * * a a b *
-a * a * * * * *
-b * b * b b b *
-b * * b * * b *
-b * b * b b * *
+a a a a a a * a
+a * a * * a * *
+* * * * b a a *
+* * * * * * * *
+b * * * * * * *
+* * * * b b * b
+b b b * * b * *
+* * b b b b * *
 ****************************************
-('counter ', 23, ' Max positions len ', 13, ' Min positions len ', 13)
-MinMove
-****************************************
-* a * a * a * a
-a a * * * * * *
-* * a a * * a *
-* * * * a a b *
-a * a * * * * b
-b * b * b b * *
-b * * b * * b *
-b * b * b b * *
-****************************************
-MaxMove
-****************************************
-* a * a * a * a
-a * * * * * * *
-a * a a * * a *
-* * * * a a b *
-a * a * * * * b
-b * b * b b * *
-b * * b * * b *
-b * b * b b * *
-****************************************
-('counter ', 24, ' Max positions len ', 13, ' Min positions len ', 13)
-MinMove
-****************************************
-* a * a * a * a
-a * * * * * * *
-a * a a * * a *
-* * * * a a b *
-a * a * * * * b
-b * b * b b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-MaxMove
-****************************************
-* a * a * a * *
-a * * * * * * a
-a * a a * * a *
-* * * * a a b *
-a * a * * * * b
-b * b * b b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-('counter ', 25, ' Max positions len ', 13, ' Min positions len ', 13)
-MinMove
-****************************************
-* a * a * a * *
-a * * * * * * a
-a * a a * * a b
-* * * * a a * *
-a * a * * * * b
-b * b * b b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-MaxMove
-****************************************
-* a * a * * * *
-a * * * * a * a
-a * a a * * a b
-* * * * a a * *
-a * a * * * * b
-b * b * b b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-('counter ', 26, ' Max positions len ', 13, ' Min positions len ', 13)
-MinMove
-****************************************
-* a * a * * * *
-a * * * * a * a
-a * a a * * a b
-* * * * a a * *
-a b a * * * * b
-* * b * b b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-MaxMove
-****************************************
-* a * a * * * *
-a * * * * a * a
-a * a a * * a b
-* * * * a a * *
-* b a * * * * b
-a * b * b b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-('counter ', 27, ' Max positions len ', 13, ' Min positions len ', 13)
-MinMove
-****************************************
-* a * a * * * *
-a * * * * a * a
-a * a a * * a b
-* * * * a a * *
-* b a * * b * b
-a * b * * b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-MaxMove
-Max captures min player
-****************************************
-* a * a * * * *
-a * * * * * * a
-a * a a a * a b
-* * * * a a * *
-* b a * * b * b
-a * b * * b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-('counter ', 28, ' Max positions len ', 13, ' Min positions len ', 13)
+('counter ', 18, ' Max positions len ', 12, ' Min positions len ', 13)
 MinMove
 Min captures max player
 ****************************************
-* a * a * * * *
-a * * * * * * a
-a * a a a * a b
+a a a a a a * a
+a * a * * a * *
+* * * * b a a *
+* * * * * * * *
+b * * * * * * *
+* * * * b b * b
+b b b * b b * *
+* * b b * b * *
+****************************************
+MaxMove
+Max captures min player
+****************************************
+a a a a a a * a
+a * a * * * * *
+* * * * a a a *
+* * * * * * * *
+b * * * * * * *
+* * * * b b * b
+b b b * b b * *
+* * b b * b * *
+****************************************
+('counter ', 19, ' Max positions len ', 12, ' Min positions len ', 12)
+MinMove
+****************************************
+a a a a a a * a
+a * a * * * * *
+* * * * a a a *
+b * * * * * * *
+* * * * * * * *
+* * * * b b * b
+b b b * b b * *
+* * b b * b * *
+****************************************
+MaxMove
+****************************************
+a a a a a a * a
+* * a * * * * *
+* a * * a a a *
+b * * * * * * *
+* * * * * * * *
+* * * * b b * b
+b b b * b b * *
+* * b b * b * *
+****************************************
+('counter ', 20, ' Max positions len ', 12, ' Min positions len ', 12)
+MinMove
+Min captures max player
+****************************************
+a a a a a a * a
+* * a * * * * *
+b a * * a a a *
+* * * * * * * *
+* * * * * * * *
+* * * * b b * b
+b b b * b b * *
+* * b b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* a a * * * * *
+b a * * a a a *
+* * * * * * * *
+* * * * * * * *
+* * * * b b * b
+b b b * b b * *
+* * b b * b * *
+****************************************
+('counter ', 21, ' Max positions len ', 12, ' Min positions len ', 12)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* a a * * * * *
+b a * * a a a *
+* * * * * * * *
+* * * * * * * *
+* * * b b b * b
+b b b * * b * *
+* * b b * b * *
+****************************************
+MaxMove
+Max captures min player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * a a a *
+* * * * * * * *
+* * * * * * * *
+* * * b b b * b
+b b b * * b * *
+* * b b * b * *
+****************************************
+('counter ', 22, ' Max positions len ', 12, ' Min positions len ', 11)
+MinMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * a a a *
+* * * * * * * *
+* * * * * b * *
+* * * b b * * b
+b b b * * b * *
+* * b b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * * a a *
+* * * * a * * *
+* * * * * b * *
+* * * b b * * b
+b b b * * b * *
+* * b b * b * *
+****************************************
+('counter ', 23, ' Max positions len ', 12, ' Min positions len ', 11)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * * a a *
+* * * * a * * *
+* * * * * b * *
+* * b b b * * b
+b b * * * b * *
+* * b b * b * *
+****************************************
+MaxMove
+Max captures min player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * * a a *
+* * * * * * * *
+* * * * * a * *
+* * b b b * * b
+b b * * * b * *
+* * b b * b * *
+****************************************
+('counter ', 24, ' Max positions len ', 12, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * * a a *
+* * * * * * * *
 * * * * b a * *
-* b a * * * * b
-a * b * * b b *
-b * * b * * * *
-b * b * b b * *
+* * b b * * * b
+b b * * * b * *
+* * b b * b * *
 ****************************************
 MaxMove
-Max captures min player
 ****************************************
-* a * a * * * *
-a * * * * * * a
-a * a * a * a b
-* * * * a a * *
-* b a * * * * b
-a * b * * b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-('counter ', 29, ' Max positions len ', 12, ' Min positions len ', 12)
-MinMove
-****************************************
-* a * a * * * *
-a * * * * * * a
-a * a * a * a b
-* * * * a a * *
-* b a b * * * b
-a * * * * b b *
-b * * b * * * *
-b * b * b b * *
-****************************************
-MaxMove
-Max captures min player
-****************************************
-* a * a * * * *
-a * * * * * * a
-a * a * a * a b
+* a a a a a * a
+* * a * * * * *
+a a * * * a * *
 * * * * * a * *
-* b a a * * * b
-a * * * * b b *
-b * * b * * * *
-b * b * b b * *
+* * * * b a * *
+* * b b * * * b
+b b * * * b * *
+* * b b * b * *
 ****************************************
-('counter ', 30, ' Max positions len ', 12, ' Min positions len ', 11)
+('counter ', 25, ' Max positions len ', 12, ' Min positions len ', 10)
 MinMove
+Min captures max player
 ****************************************
-* a * a * * * *
-a * * * * * * a
-a * a * a * a b
+* a a a a a * a
+* * a * * * * *
+a a * * * a * *
+* * * * * b * *
 * * * * * a * *
-* b a a * * * b
-a * * * * b b *
-b * b b * * * *
-b * * * b b * *
+* * b b * * * b
+b b * * * b * *
+* * b b * b * *
 ****************************************
 MaxMove
 ****************************************
-* a * a * * * *
-a * * * * * * a
-a * * * a * a b
-* a * * * a * *
-* b a a * * * b
-a * * * * b b *
-b * b b * * * *
-b * * * b b * *
+* a a a a a * a
+* * a * * * * *
+a a * * * a * *
+* * * * * b * *
+* * * * * * * *
+* * b b a * * b
+b b * * * b * *
+* * b b * b * *
 ****************************************
-('counter ', 31, ' Max positions len ', 12, ' Min positions len ', 11)
+('counter ', 26, ' Max positions len ', 11, ' Min positions len ', 10)
 MinMove
+Min captures max player
 ****************************************
-* a * a * * * *
-a * * * * * * a
-a * * * a * a b
-* a b * * a * *
-* * a a * * * b
-a * * * * b b *
-b * b b * * * *
-b * * * b b * *
+* a a a a a * a
+* * a * * * * *
+a a * * * a * *
+* * * * * b * *
+* * * * * * * *
+* * b b a b * b
+b b * * * * * *
+* * b b * b * *
 ****************************************
 MaxMove
 ****************************************
-* a * * * * * *
-a * * a * * * a
-a * * * a * a b
-* a b * * a * *
-* * a a * * * b
-a * * * * b b *
-b * b b * * * *
-b * * * b b * *
+* a a a a a * a
+* * a * * * * *
+a a * * * a * *
+* * * * * b * *
+* * * * * * * *
+* * b b * b * b
+b b * a * * * *
+* * b b * b * *
 ****************************************
-('counter ', 32, ' Max positions len ', 12, ' Min positions len ', 11)
+('counter ', 27, ' Max positions len ', 11, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a a * * * a * *
+* * * * * b * *
+* * * * * * * *
+* * b b * b * b
+b b * b * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * a * *
+* * a * * b * *
+* * * * * * * *
+* * b b * b * b
+b b * b * * * *
+* * * b * b * *
+****************************************
+('counter ', 28, ' Max positions len ', 10, ' Min positions len ', 10)
 MinMove
 ****************************************
-* a * * * * * *
-a * * a * * * a
-a * * * a * a b
-* a b * * a * *
-* * a a * * * b
-a * * * * b b *
-b b b b * * * *
-* * * * b b * *
+* a a a a a * a
+* * a * * * * *
+a * * * * a * *
+* * a * * b * *
+* * * * * * * *
+* * b b b b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * a * *
+* * * * * b * *
+* * * a * * * *
+* * b b b b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 29, ' Max positions len ', 10, ' Min positions len ', 10)
+MinMove
+Min captures max player
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * a * *
+* * * * * b * *
+* * * b * * * *
+* * b b * b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * * * *
+* * * * a b * *
+* * * b * * * *
+* * b b * b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 30, ' Max positions len ', 9, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * * * *
+* * b * a b * *
+* * * * * * * *
+* * b b * b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * * * *
+* * b * * b * *
+* * * a * * * *
+* * b b * b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 31, ' Max positions len ', 9, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * * * *
+* * b * * b * *
+* * b a * * * *
+* * * b * b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * * * *
+* * b * * b * *
+* * b * * * * *
+* * a b * b * b
+b b * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 32, ' Max positions len ', 9, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+a * * * * * * *
+* * b * * b * *
+* * b * * * * *
+* * b b * b * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * a * * * * *
+* * * * * * * *
+* a b * * b * *
+* * b * * * * *
+* * b b * b * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 33, ' Max positions len ', 8, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * a * * * * *
+* * * * * * * *
+* a b b * b * *
+* * * * * * * *
+* * b b * b * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a a a a * a
+* * * * * * * *
+* * a * * * * *
+* a b b * b * *
+* * * * * * * *
+* * b b * b * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 34, ' Max positions len ', 8, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a a a a * a
+* * * * * * * *
+* * b * * * * *
+* a b * * b * *
+* * * * * * * *
+* * b b * b * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+MaxMove
+****************************************
+* a a * a a * a
+* * * a * * * *
+* * b * * * * *
+* a b * * b * *
+* * * * * * * *
+* * b b * b * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 35, ' Max positions len ', 7, ' Min positions len ', 10)
+MinMove
+Min captures max player
+****************************************
+* a a * a a * a
+* * * a * * * *
+* * b * * * * *
+* a b * * b * *
+* * * * b * * *
+* * b b * * * b
+b * * * * * * *
+* * * b * b * *
 ****************************************
 MaxMove
 Max captures min player
 ****************************************
-* a * * * * * *
-a * * a * * * a
-a * * * a * a b
-* a b * * a * *
-* * a a * * * b
+* a a * a a * a
+* * * * * * * *
+* * a * * * * *
+* a b * * b * *
+* * * * b * * *
+* * b b * * * b
+b * * * * * * *
+* * * b * b * *
+****************************************
+('counter ', 36, ' Max positions len ', 7, ' Min positions len ', 9)
+MinMove
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * a * * * * *
+* a b * * b * *
+* * * * b * * *
+* * b b * * * b
+b * * * * * b *
+* * * b * * * *
+****************************************
+MaxMove
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* a b a * b * *
+* * * * b * * *
+* * b b * * * b
+b * * * * * b *
+* * * b * * * *
+****************************************
+('counter ', 37, ' Max positions len ', 7, ' Min positions len ', 9)
+MinMove
+Min captures max player
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* a b a b b * *
+* * * * * * * *
+* * b b * * * b
+b * * * * * b *
+* * * b * * * *
+****************************************
+MaxMove
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* * b a b b * *
+* * a * * * * *
+* * b b * * * b
+b * * * * * b *
+* * * b * * * *
+****************************************
+('counter ', 38, ' Max positions len ', 7, ' Min positions len ', 9)
+MinMove
+Min captures max player
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* * b a b b * *
+* * a b * * * *
+* * b * * * * b
+b * * * * * b *
+* * * b * * * *
+****************************************
+MaxMove
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* * b a b b * *
+* * * b * * * *
+* a b * * * * b
+b * * * * * b *
+* * * b * * * *
+****************************************
+('counter ', 39, ' Max positions len ', 7, ' Min positions len ', 9)
+MinMove
+Min captures max player
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* * b a b b * *
+* * * b * * * *
+b a b * * * * b
+* * * * * * b *
+* * * b * * * *
+****************************************
+MaxMove
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* * b a b b * *
+* * * b * * * *
+b * b * * * * b
+* * a * * * b *
+* * * b * * * *
+****************************************
+('counter ', 40, ' Max positions len ', 7, ' Min positions len ', 9)
+MinMove
+Min captures max player
+****************************************
+* a a * a a * a
+* * * * * * * *
+* * * * * * * *
+* * b a b b * *
+* * * b * * * *
+b * b * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* a a * a * * a
+* * * * * * a *
+* * * * * * * *
+* * b a b b * *
+* * * b * * * *
+b * b * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+('counter ', 41, ' Max positions len ', 6, ' Min positions len ', 9)
+MinMove
+****************************************
+* a a * a * * a
+* * * * * * a *
+* * * b * * * *
+* * * a b b * *
+* * * b * * * *
+b * b * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* a a * a * * a
+* * * * * * * *
+* * * b * a * *
+* * * a b b * *
+* * * b * * * *
+b * b * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+('counter ', 42, ' Max positions len ', 6, ' Min positions len ', 9)
+MinMove
+Min captures max player
+****************************************
+* a a * a * * a
+* * * * * * * *
+* * * b b a * *
+* * * a * b * *
+* * * b * * * *
+b * b * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* a a * * * * a
+* * * a * * * *
+* * * b b a * *
+* * * a * b * *
+* * * b * * * *
+b * b * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+('counter ', 43, ' Max positions len ', 6, ' Min positions len ', 9)
+MinMove
+Min captures max player
+****************************************
+* a a * * * * a
+* * * a * * * *
+* * * b b a * *
+* * * a * b * *
+* * b b * * * *
+b * * * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+MaxMove
+Max captures min player
+Max captures min player
+****************************************
+* a a * * * * a
+* * * * * * * *
+* * * b a a * *
+* * * a * b * *
+* * b b * * * *
+b * * * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+('counter ', 44, ' Max positions len ', 6, ' Min positions len ', 8)
+MinMove
+Min captures max player
+Min captures max player
+****************************************
+* a a * * * * a
+* * b * * * * *
+* * * * a a * *
+* * * a * b * *
+* * b b * * * *
+b * * * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+MaxMove
+Max captures min player
+Max captures min player
+Max captures min player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * a a * *
+* * * a * b * *
+* * b b * * * *
+b * * * * * * b
+* * b * * * b *
+* * * * * * * *
+****************************************
+('counter ', 45, ' Max positions len ', 6, ' Min positions len ', 7)
+MinMove
+Min captures max player
+Min captures max player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * a a * *
+* * * a * b * *
+* * b b * * * *
+b * * * * b * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+Max captures min player
+Max captures min player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * a * * *
+* * * a a b * *
+* * b b * * * *
+b * * * * b * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+('counter ', 46, ' Max positions len ', 6, ' Min positions len ', 7)
+MinMove
+Min captures max player
+Min captures max player
+Min captures max player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * a * * *
+* * b a a b * *
+* * * b * * * *
+b * * * * b * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+Max captures min player
+Max captures min player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * * * * *
+* * b a a a * *
+* * * b * * * *
+b * * * * b * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+('counter ', 47, ' Max positions len ', 6, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * * * * *
+* * b a b a * *
+* * * * * * * *
+b * * * * b * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * * * * *
+* * b * b a * *
+* * * * a * * *
+b * * * * b * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+('counter ', 48, ' Max positions len ', 5, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * * * * *
+* * b * b a * *
+* * * * a b * *
+b * * * * * * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * * * * *
+* * b * b * * *
+* * * * a b a *
+b * * * * * * b
+* * b * * * * *
+* * * * * * * *
+****************************************
+('counter ', 49, ' Max positions len ', 5, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * a * * * * a
+* * a * * * * *
+* * * * * * * *
+* * b * b * * *
+* * * * a b b *
+b * * * * * * *
+* * b * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * a * * * * *
+* * a * * * * a
+* * * * * * * *
+* * b * b * * *
+* * * * a b b *
+b * * * * * * *
+* * b * * * * *
+* * * * * * * *
+****************************************
+('counter ', 50, ' Max positions len ', 4, ' Min positions len ', 6)
+MinMove
+****************************************
+* * a * * * * *
+* * a * * * * a
+* * * * * * * *
+* * b * b * * *
+* * * * a b b *
+b * b * * * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * a * * * * *
+* * a * * * * a
+* * * * * * * *
+* * b * b * * *
 * * * * * b b *
-b a b b * * * *
-* * * * b b * *
+b * b * a * * *
+* * * * * * * *
+* * * * * * * *
 ****************************************
-('counter ', 33, ' Max positions len ', 12, ' Min positions len ', 10)
+('counter ', 51, ' Max positions len ', 4, ' Min positions len ', 6)
+MinMove
+****************************************
+* * a * * * * *
+* * a * * * * a
+* * * * * * * *
+* * b * b * * *
+b * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* a a * * * * a
+* * * * * * * *
+* * b * b * * *
+b * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 52, ' Max positions len ', 4, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* a a * * * * a
+* * * * * b * *
+* * b * * * * *
+b * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * a * * * * a
+* a * * * b * *
+* * b * * * * *
+b * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 53, ' Max positions len ', 4, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * * * * * * *
+* * a * * * * a
+* a b * * b * *
+* * * * * * * *
+b * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * a * * * * a
+* * b * * b * *
+* a * * * * * *
+b * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 54, ' Max positions len ', 4, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * * * * * * *
+* * a * * * * a
+* * b * * b * *
+* b * * * * * *
+* * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * a * * * * *
+* * b * * b * a
+* b * * * * * *
+* * * * * b b *
+* * b * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 55, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* * a * * * * *
+* * b * * b * a
+* b * * * * * *
+* b * * * b b *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * a * * * * *
+* * b * * b * *
+* b * * * * * a
+* b * * * b b *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 56, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * * * * * * *
+* * a * * * * *
+* * b * * b * *
+* b * * * b * a
+* b * * * b * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* a b * * b * *
+* b * * * b * a
+* b * * * b * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 57, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* a b * * b * *
+* b * * * b b a
+* b * * * * * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* * b * * b * *
+* b a * * b b a
+* b * * * * * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 58, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+Min captures max player
+****************************************
+* * * * * * * *
+* * * * * * * *
+* * b * * b * *
+b b a * * b b a
+* * * * * * * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* * b * * b * *
+b b * * * b b a
+* * a * * * * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 59, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* b b * * b * *
+* b * * * b b a
+* * a * * * * *
+* * * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* b b * * b * *
+* b * * * b b a
+* * * * * * * *
+* a * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 60, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* b b * * b * b
+* b * * * b * a
+* * * * * * * *
+* a * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* b b * * b * b
+* b * * * b * *
+* * * * * * a *
+* a * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 61, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* b b * b b * b
+* b * * * * * *
+* * * * * * a *
+* a * * a * * *
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+* b b * b b * b
+* b * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 62, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 63, ' Max positions len ', 3, ' Min positions len ', 6)
 MinMove
 testbool is false for min
 ****************************************
-* a * * * * * *
-a * * a * * * a
-a * * * a * a b
-* a b * * a * *
-* * a a * * * b
-* * * * * b b *
-b a b b * * * *
-* * * * b b * *
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
 ****************************************
 MaxMove
-Game over winner is Max
+testbool is false for max
 ****************************************
 * * * * * * * *
 * * * * * * * *
+b b b * b b * b
 * * * * * * * *
 * * * * * * * *
-* * * * * * * *
-* * * * * * * *
+* a * * a * * a
 * * * * * * * *
 * * * * * * * *
 ****************************************
-reached break condition 3
-{}
+('counter ', 64, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 65, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 66, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 67, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 68, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 69, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 70, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 71, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 72, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 73, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 74, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 75, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 76, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 77, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 78, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 79, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 80, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 81, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 82, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 83, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 84, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 85, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 86, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 87, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 88, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 89, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 90, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 91, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 92, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 93, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 94, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 95, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 96, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 97, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 98, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+('counter ', 99, ' Max positions len ', 3, ' Min positions len ', 6)
+MinMove
+testbool is false for min
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
+MaxMove
+testbool is false for max
+****************************************
+* * * * * * * *
+* * * * * * * *
+b b b * b b * b
+* * * * * * * *
+* * * * * * * *
+* a * * a * * a
+* * * * * * * *
+* * * * * * * *
+****************************************
