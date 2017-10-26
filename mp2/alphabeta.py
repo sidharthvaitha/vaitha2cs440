@@ -125,10 +125,10 @@ def offensiveheuristic(curstate, isplayer1):
 
 
 def calulateScorePlayer1Heuristic(curstate):
-	 return defensiveheuristic(curstate, True)
+	 return offensiveheuristic(curstate, True)
 
 def calulateScorePlayer2Heuristic(curstate):
-	 return -1 * offensiveheuristic(curstate, False)
+	 return -1 * defensiveheuristic2(curstate, False)
 
 
 def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuristic):
@@ -140,6 +140,8 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 		else:
 			return calulateScorePlayer2Heuristic(curstate), copy.deepcopy(curstate)
 
+
+	isbreak = False
 	if (isPlayer1):
 		bestVal = -1 * float("inf")
 		bestState = copy.deepcopy(curstate)
@@ -171,6 +173,7 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 								bestState = copy.deepcopy(newstate)
 								alpha = max(alpha, bestVal)
 								if beta <= alpha:
+									isbreak = True
 									break
 
 					elif ((nextrow, nextcol) in curstate.player2positions):
@@ -191,6 +194,7 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 									bestState = copy.deepcopy(newstate)
 									alpha = max(alpha, bestVal)
 									if beta <= alpha:
+										isbreak = True
 										break
 						else:
 							curscore, stateresult = alphabeta(newstate, False, alpha, beta, curdepth + 1, maxdepth, Player1Heuristic)
@@ -201,6 +205,7 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 									bestState = copy.deepcopy(newstate)
 									alpha = max(alpha, bestVal)
 									if beta <= alpha:
+										isbreak = True
 										break
 					else:
 						newstate.player1positions = copy.deepcopy(curstate.player1positions)
@@ -215,7 +220,11 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 							bestState = copy.deepcopy(newstate)
 							alpha = max(alpha, bestVal)
 							if beta <= alpha:
+								isbreak = True
 								break
+			if (isbreak):
+				isbreak = False
+				break
 		return bestVal, bestState
 
 	else:
@@ -247,8 +256,9 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 							if (curscore < bestVal):
 								bestVal = curscore
 								bestState = copy.deepcopy(newstate)
-								beta = min(alpha, bestVal)
+								beta = min(beta, bestVal)
 								if beta <= alpha:
+									isbreak = True
 									break
 					elif ((nextrow, nextcol) in curstate.player1positions):
 						#print('Min captures max player')
@@ -266,8 +276,9 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 								if (curscore < bestVal):
 									bestVal = curscore
 									bestState = copy.deepcopy(newstate)
-									beta = min(alpha, bestVal)
+									beta = min(beta, bestVal)
 									if beta <= alpha:
+										isbreak = True
 										break
 						else:
 							curscore, stateresult = alphabeta(newstate, True, alpha, beta, curdepth + 1, maxdepth, Player1Heuristic)
@@ -276,8 +287,9 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 								topos = (nextrow, nextcol)
 								bestVal = curscore
 								bestState = copy.deepcopy(newstate)
-								beta = min(alpha, bestVal)
+								beta = min(beta, bestVal)
 								if beta <= alpha:
+									isbreak = True
 									break
 					else:
 						newstate.player1positions = copy.deepcopy(curstate.player1positions)
@@ -290,9 +302,13 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 							topos = (nextrow, nextcol)
 							bestVal = curscore
 							bestState = copy.deepcopy(newstate)
-							beta = min(alpha, bestVal)
+							beta = min(beta, bestVal)
 							if beta <= alpha:
+								isbreak = True
 								break
+			if (isbreak):
+				isbreak = False
+				break
 		return bestVal, bestState
 
 
@@ -351,25 +367,17 @@ def main():
 		counter = counter + 1
 		score, player1movestate = alphabeta(player2movestate, True, -1 * float("inf"), float("inf"), 0, 3, True)
 		printstate(player1movestate)
-		if (diff1(player2movestate.player1positions.keys(), player1movestate.player1positions.keys()) == False):
-			print('diff failed')
-		if (diff1(player2movestate.player2positions.keys(), player1movestate.player2positions.keys()) == False):
-			print('diff1 failed')
 		if (len(player1movestate.player1positions) == 0):
 			print('reached break condition 1')
 			break
-		score, player2movestate = alphabeta(player1movestate, False, -1 * float("inf"), float("inf"), 0, 3, True)
-		if (diff1(player2movestate.player1positions.keys(), player1movestate.player1positions.keys()) == False):
-			print('diff2 failed')
-		if (diff1(player2movestate.player2positions.keys(), player1movestate.player2positions.keys()) == False):
-			print('diff3 failed')
+		score, player2movestate = alphabeta(player1movestate, False, -1 * float("inf"), float("inf"), 0, 3, False)
 		printstate(player2movestate)
 		if (len(player2movestate.player1positions) == 0):
 			print('reached break condition 3')
 			break
 		if (counter == 100):
 			break
-		print('counter ', counter, ' Max positions len ', len(player2movestate.player1positions), ' Min positions len ', len(player2movestate.player2positions))
+		print('counter ', counter, ' Player1 positions len ', len(player2movestate.player1positions), ' Player2 positions len ', len(player2movestate.player2positions))
 
 
 if __name__ == "__main__":
