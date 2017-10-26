@@ -3,12 +3,12 @@ import random
 import sys
 
 
-WIDTH = 8
-HEIGHT = 8
+# WIDTH = 8
+# HEIGHT = 8
 
 
-# WIDTH = 5
-# HEIGHT = 10
+WIDTH = 5
+HEIGHT = 10
 
 movesx = [-1, 0, 1]
 
@@ -63,7 +63,7 @@ def defensiveheuristic2(curstate, isplayer1):
 			row = item[0]
 			col = item[1]
 			hash_covered[col] = True
-		for i in range(8):
+		for i in range(WIDTH):
 			if (hash_covered[i] == True):
 				num_covered = num_covered + 1
 
@@ -72,7 +72,7 @@ def defensiveheuristic2(curstate, isplayer1):
 			row = item[0]
 			col = item[1]
 			hash_covered[col] = True
-		for i in range(8):
+		for i in range(WIDTH):
 			if (hash_covered[i] == True):
 				num_covered = num_covered + 1
 	score =  2 * (num_remaining) + 3 * num_covered + random.random()
@@ -97,7 +97,7 @@ def offensiveheuristic2(curstate, isplayer1):
 			row = item[0]
 			col = item[1]
 			hash_covered[col] = True
-		for i in range(8):
+		for i in range(WIDTH):
 			if (hash_covered[i] == True):
 				num_covered = num_covered + 1
 
@@ -117,7 +117,7 @@ def offensiveheuristic2(curstate, isplayer1):
 			row = item[0]
 			col = item[1]
 			hash_covered[col] = True
-		for i in range(8):
+		for i in range(WIDTH):
 			if (hash_covered[i] == True):
 				num_covered = num_covered + 1
 
@@ -142,10 +142,10 @@ def offensiveheuristic(curstate, isplayer1):
 
 
 def calulateScorePlayer1Heuristic(curstate):
-	 return offensiveheuristic2(curstate, True)
+	 return defensiveheuristic2(curstate, True)
 
 def calulateScorePlayer2Heuristic(curstate):
-	 return -1 * defensiveheuristic(curstate, False)
+	 return -1 * offensiveheuristic(curstate, False)
 
 
 def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuristic):
@@ -331,7 +331,7 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 
 
 def printstate(curstate):
-	w, h = 8, 8
+	w, h = WIDTH, HEIGHT
 	data = [['*' for x in range(w)] for y in range(h)] 
 
 	print'****************************************'
