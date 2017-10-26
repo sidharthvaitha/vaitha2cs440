@@ -97,6 +97,12 @@ def offensiveheuristic2(curstate, isplayer1):
 			if (hash_covered[i] == True):
 				num_covered = num_covered + 1
 
+		min_distance = 16
+		for item in curstate.player1positions.keys():
+			row = item[0]
+			col = item[1]
+			distance = row
+			min_distance = min(distance, min_distance)
 		# for item in curstate.player2positions.keys():
 		# 	row = item[0]
 		# 	col = item[1]
@@ -110,7 +116,14 @@ def offensiveheuristic2(curstate, isplayer1):
 		for i in range(8):
 			if (hash_covered[i] == True):
 				num_covered = num_covered + 1
-	score =  (30 - num_opponent_remaining) + (16 - num_covered) + random.random()
+
+		for item in curstate.player1positions.keys():
+			row = item[0]
+			col = item[1]
+			distance = abs(HEIGHT - 1 - row)
+			min_distance = min(distance, min_distance)
+
+	score =  2 * (30 - min_distance) + (2 * num_remaining) + random.random()
 	return score
 
 def offensiveheuristic(curstate, isplayer1):
@@ -125,10 +138,10 @@ def offensiveheuristic(curstate, isplayer1):
 
 
 def calulateScorePlayer1Heuristic(curstate):
-	 return offensiveheuristic(curstate, True)
+	 return offensiveheuristic2(curstate, True)
 
 def calulateScorePlayer2Heuristic(curstate):
-	 return -1 * defensiveheuristic2(curstate, False)
+	 return -1 * defensiveheuristic(curstate, False)
 
 
 def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuristic):
