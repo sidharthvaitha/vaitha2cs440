@@ -59,10 +59,11 @@ def getFile(name):
             board.append([])
     height = r+1
     file.close()
-    print(temp_color)
     board_data[0] = height
     board_data[1] = width
     board_data[2] = temp_color
+
+    
     return
 
 
@@ -532,7 +533,6 @@ def selectVar(board_temp, const_num, dumb):
                         old_most = most
                         most_list[:]=[]
                     most_list.append([i,j])
-    #    print(most_list)
         var = mostConstrainingVariable(board_temp,most_list)
 #    print(A)
         return var
@@ -712,7 +712,7 @@ def backTracking(board, const, const_num, dumb):
     if A == None:
 #        print("Full Failure")
         return False
-    
+
     [row, col] = [A[0],A[1]]
     curr_var = [row, col]
 #    print("Placing: ",curr_var)
@@ -722,6 +722,7 @@ def backTracking(board, const, const_num, dumb):
             curr_value = random.choice(const[row][col])
         elif dumb == 2 or dumb == 3:
             curr_value = leastConstrainingValue(const,row,col)
+        print(curr_value)
 #        print(const[row][col])
 #        curr_value = leastConstrainingValue(const,row,col)
 #        print(curr_value)
@@ -778,12 +779,13 @@ def flowFree(filename, dumb):
     mostConstrainedVariable(board)
 #    print(const_board_num)
 #    selectVar(board)
-    #createQueue()
+    #print(const_board_num)
+    # createQueue()
     
     temp = copy.deepcopy(const_board)      
     print(backTracking(board, temp, const_board_num, dumb))
     printBoard() 
-    print(big_count[0])      
+    # print(big_count[0])      
 
     return
 
@@ -798,7 +800,7 @@ def flowFree(filename, dumb):
 #print(time.time() - start_time)
 
 start_time = time.time()
-flowFree("input55.txt",3)
+flowFree("input55.txt",2)
 print(time.time() - start_time)
 
 

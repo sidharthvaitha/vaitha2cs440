@@ -5,8 +5,8 @@ board = []
 colors = set()
 listcolors = []
 num_colors = 0
-WIDTH = 0
-HEIGHT = 0
+WIDTH = 5
+HEIGHT = 5
 filename = "input55.txt"
 remaining_colors = []
 num_remaining = []
@@ -25,7 +25,7 @@ def initialize():
 			break
 		if (c != '\n'):
 			board[nr].append(c)
-			if (c != '_'):
+			if (c != '_' and c!='\r'):
 				if (c not in colors):
 					colors.add(c)
 					listcolors.append(c)
@@ -42,7 +42,7 @@ def initialize():
 			board.append([])
 	HEIGHT = nr
 	file.close()
-	colors.remove('\r')
+	#colors.remove('\r')
 	num_colors = len(colors)
 	for item in board:
 		if (len(item) == 6):
@@ -71,15 +71,6 @@ def initialize():
 def printboard():
 	for item in board:
 		print ''.join(item)
-
-# def findMostConstrainedVariable():
-# 	temp = copy.deepcopy(board)
-# 	for i in range(HEIGHT):
-# 		for j in range(WIDTH):
-# 			if (temp[i][j] == '_'):
-# 				for item in colors:
-# 					if (consistencycheck(temp, (i, j), val)):
-
 
 def isValid(row, col):
 	if (row < 0 or row > HEIGHT - 1):
@@ -135,7 +126,7 @@ def checkSpurs(temp, pos, value):
 	if (isValid(row + 1, col - 1) and isValid(row - 1, col - 1)):
 		if (temp[row + 1][col - 1] == value and temp[row][col - 1] == value and temp[row - 1][col - 1] == value):
 			return False
-	return False
+	return True
 
 
 def checkZigZags(temp, pos, value):
@@ -194,7 +185,13 @@ def checkSourcesInflux(temp):
 	return True
 
 def checkconsistency(temp, pos, value):
-	if (checkAdjConstraint == False or checkSpurs == False or checkZigZags == False or checkSourcesInflux == False):
+	if (checkAdjConstraint(temp, pos, value) == False):
+		return False
+	if (checkSpurs(temp, pos, value) == False):
+		return False
+	if (checkZigZags(temp, pos, value) == False):
+		return False
+	if (checkSourcesInflux(temp) == False):
 		return False
 	return True
 
@@ -225,7 +222,7 @@ def checkarea(temp, pos):
 	return True
 
 def checkStrongConsistency(temp, pos, value):
-	if (checkconsistency(temp, pos, value)):
+	if (checkconsistency(temp, pos, value) == False):
 		return False
 	temp2 = copy.deepcopy(temp)
 	temp2[pos[0]][pos[1]] = value
@@ -243,13 +240,13 @@ def getLeastConstrainingValue(temp_remaining_colors, pos):
 	for i in range(len(temp_remaining_colors[row][col])):
 		value = temp_remaining_colors[row][col][i]
 		temp = copy.deepcopy(board)
-		temp[row][col] = val
+		temp[row][col] = value
 
 		rowNum = [-1, 0, 0, 1, -1, -1, 1, 1]
 		colNum = [0, -1, 1, 0, 1, -1, 1, -1]
-		for i in range(8):
-			newrow = row + rowNum[i]
-			newcol = col + colNum[i]
+		for j in range(8):
+			newrow = row + rowNum[j]
+			newcol = col + colNum[j]
 			if (isValid(newrow, newcol) and temp[newrow][newcol] == '_'):
 				cur = cur + checkconstraints(temp, (newrow, newcol))
 
@@ -270,28 +267,28 @@ def getMostConstrainingVariable(temp, varlist):
 
 		rowNum = [-1, 0, 0, 1, -1, -1, 1, 1]
 		colNum = [0, -1, 1, 0, 1, -1, 1, -1]
-		for i in range(8):
-			newrow = row + rowNum[i]
-			newcol = col + colNum[i]
+		for j in range(8):
+			newrow = row + rowNum[j]
+			newcol = col + colNum[j]
 			if (isValid(newrow, newcol) and temp[newrow][newcol] == '_'):
 				cur = cur + checkconstraints(temp, (newrow, newcol))
-
 		if (cur < curmax):
 			curmax = cur
 			bestindex = i
-	return varlist[bestindex]
+		return varlist[bestindex]
 
 
 def getnextvar(temp, num_colors_remaining):
 	curmax = 100000
-	temp = 10000
+	temp1 = 10000
 	varlist = []
 	for i in range(HEIGHT):
 		for j in range(WIDTH):
-			if (num_colors_remaining[i][j] != 0 and num_colors_remaining <= curmax):
-				temp = num_colors_remaining[i][j]
-				if (temp != curmax):
-					curmax = temp
+			if (num_colors_remaining[i][j] != 0 and num_colors_remaining[i][j] <= curmax):
+				temp1 = num_colors_remaining[i][j]
+				if (temp1 != curmax):
+					curmax = temp1
+					varlist[:] = []
 				varlist.append((i, j))
 	return getMostConstrainingVariable(temp, varlist)
 
@@ -320,10 +317,10 @@ def isContinuous(temp, colorindex):
 		colNum = [0, -1, 1, 0]
 		flag = False
 		for i in range(4):
-			newrow = currow + newrow[i]
-			newcol = curcol + newcol[i]
+			newrow = currow + rowNum[i]
+			newcol = curcol + colNum[i]
 			if (isValid(newrow, newcol) and temp[newrow][newcol] == value):
-				temp[newrow][newcol] == '*'
+				temp[newrow][newcol] = '*'
 				flag = True
 				currow = newrow
 				curcol = newcol
@@ -340,14 +337,79 @@ def isComplete():
 			if (board[i][j] == '_'):
 				return False
 	temp = copy.deepcopy(board)
-	for i in len(listcolors):
+	for i in range(len(listcolors)):
 		if (isContinuous(temp, i) == False):
 			return False
 	return True
 
 
+def updateRemainingColors(pos, temp_colors, temp_num):
+	row = pos[0]
+	col = pos[1]
+	temp_colors[row][col][:] = []
+	temp_num[row][col] = 0
+
+	rowNum = [-1, 0, 0, 1, -1, -1, 1, 1]
+	colNum = [0, -1, 1, 0, 1, -1, 1, -1]
+	for i in range(8):
+		newrow = row + rowNum[i]
+		newcol = col + colNum[i]
+		if (isValid(newrow, newcol)):
+			temp2 = list(temp_colors[newrow][newcol])
+			for j in range(len(temp2)):
+				value = temp2[j]
+				if (checkconsistency(board, (newrow, newcol), value) == False):
+					temp_colors[newrow][newcol].remove(value)
+					temp_num[newrow][newcol] -= 1
+	return
+
+def initializecolorlist(temp):
+	for i in range(HEIGHT):
+		for j in range(WIDTH):
+			if (temp[i][j] == '_'):
+				for value in listcolors:
+					if (checkconsistency(temp, (i, j), value)):
+						remaining_colors[i][j].append(value)
+						num_remaining[i][j] += 1
+
+
+def backtrack(board, remcolor, remnum):
+	if (isComplete()):
+		return board
+	temp = copy.deepcopy(board)
+	var = getnextvar(board, remnum)
+	if (var == None):
+		print('full failiure')
+		return False
+	row = var[0]
+	col = var[1]
+	while (len(remcolor[row][col]) != 0):
+		value = getLeastConstrainingValue(remcolor, (row, col))
+		remcolor[row][col].remove(value)
+		if (checkStrongConsistency(board, (row, col), value)):
+			board[row][col] = value
+			tempremcolor = copy.deepcopy(remcolor)
+			tempremnum = copy.deepcopy(remnum)
+			updateRemainingColors((row, col), tempremcolor, tempremnum)
+			if (forwardChecking(tempremnum)):
+				result = backtrack(board, tempremcolor, tempremnum)
+				if (result):
+					return result
+				else:
+					board[row][col] = '_'
+			else:
+				board[row][col] = '_'
+	return False
+
+
+
 def main():
 	initialize()
+	printboard()
+	WIDTH = len(board)
+	HEIGHT = len(board[0])
+	initializecolorlist(board)
+	print(backtrack(board, remaining_colors, num_remaining))
 	printboard()
 
 

@@ -533,7 +533,7 @@ def selectVar(board_temp, const_num, dumb):
                         old_most = most
                         most_list[:]=[]
                     most_list.append([i,j])
-    #    print(most_list)
+        print(most_list)
         var = mostConstrainingVariable(board_temp,most_list)
 #    print(A)
         return var
@@ -779,12 +779,13 @@ def flowFree(filename, dumb):
     mostConstrainedVariable(board)
 #    print(const_board_num)
 #    selectVar(board)
-    createQueue()
+    print(const_board_num)
+    # createQueue()
     
-    temp = copy.deepcopy(const_board)      
-    print(backTracking(board, temp, const_board_num, dumb))
-    printBoard() 
-    print(big_count[0])      
+    # temp = copy.deepcopy(const_board)      
+    # print(backTracking(board, temp, const_board_num, dumb))
+    # printBoard() 
+    # print(big_count[0])      
 
     return
 
@@ -799,7 +800,7 @@ def flowFree(filename, dumb):
 #print(time.time() - start_time)
 
 start_time = time.time()
-flowFree("input88.txt",3)
+flowFree("input55.txt",2)
 print(time.time() - start_time)
 
 
