@@ -722,7 +722,6 @@ def backTracking(board, const, const_num, dumb):
             curr_value = random.choice(const[row][col])
         elif dumb == 2 or dumb == 3:
             curr_value = leastConstrainingValue(const,row,col)
-        print(curr_value)
 #        print(const[row][col])
 #        curr_value = leastConstrainingValue(const,row,col)
 #        print(curr_value)
@@ -780,7 +779,7 @@ def flowFree(filename, dumb):
 #    print(const_board_num)
 #    selectVar(board)
     #print(const_board_num)
-    # createQueue()
+    createQueue()
     
     temp = copy.deepcopy(const_board)      
     print(backTracking(board, temp, const_board_num, dumb))
@@ -800,7 +799,7 @@ def flowFree(filename, dumb):
 #print(time.time() - start_time)
 
 start_time = time.time()
-flowFree("input55.txt",2)
+flowFree("input77.txt",3)
 print(time.time() - start_time)
 
 

@@ -8,211 +8,3865 @@ a a a a a a a a
 b b b b b b b b
 b b b b b b b b
 ****************************************
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
 ****************************************
 a a a a a a a a
-a a a a a a * *
-* * * * * * a a
+a a a a * a a a
+* * * a * * * *
 * * * * * * * *
 * * * * * * * *
-b * * * * * * *
-b * b b b b b b
+* * * * * * * *
+b b b b b b b b
 b b b b b b b b
 ****************************************
-('Player 2 move from ', (6, 5), ' to ', (5, 5))
 ****************************************
 a a a a a a a a
-a a a * a a * *
-* * * a * * a a
+a a a a * a a a
+* * * a * * * *
 * * * * * * * *
 * * * * * * * *
-b * * * * b * *
-b * b b b b b b
-b b b b b b * b
+* * * b * * * *
+b b * b b b b b
+b b b b b b b b
 ****************************************
-('counter ', 1, ' Max positions len ', 16, ' Min positions len ', 16)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
+('counter ', 1, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
 ****************************************
-a a a a a a * *
-a a a * a a a a
-* * * a * * a a
+a a a a a a a a
+a a a a * a * a
+* * * a * * * a
 * * * * * * * *
 * * * * * * * *
-b b * * * b * *
-* * b b b b b b
-b b b b b b * b
+* * * b * * * *
+b b * b b b b b
+b b b b b b b b
 ****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
 ****************************************
-a a a a a a * *
-a a a * a a a a
-* * * * * * a a
-* * * * a * * *
-* * b * b * * *
+a a a a a a a a
+a a a a * a * a
+* * * a * * * a
+* * * * * * * *
+* * * * * * * *
+b * * b * * * *
+* b * b b b b b
+b b b b b b b b
+****************************************
+('counter ', 2, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+a a a a a a a a
+a a a a * a * a
+* * * a * * * *
+* * * * * * a *
+* * * * * * * *
+b * * b * * * *
+* b * b b b b b
+b b b b b b b b
+****************************************
+****************************************
+a a a a a a a a
+a a a a * a * a
+* * * a * * * *
+* * * * * * a *
+* * * b * * * *
 b * * * * * * *
-* * b b b b b b
-b b b b b b * b
+* b * b b b b b
+b b b b b b b b
 ****************************************
-('counter ', 2, ' Max positions len ', 16, ' Min positions len ', 16)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
+('counter ', 3, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
 ****************************************
-a a a a a a * *
-a a a * a a a a
-* * * * * * * *
-* * * * a a a *
-* * b * b * * *
-b * * * * * * *
-* b b b b b b b
-* b b b b b * b
-****************************************
-('Player 2 move from ', (3, 5), ' to ', (4, 4))
-****************************************
-a a a a a a * *
-a a a * a a * a
-* * * * * a * *
-* * * b a a a *
-* * b * * * * *
-b b * * * * * *
-* * b b b b b b
-* b b b b b * b
-****************************************
-('counter ', 3, ' Max positions len ', 16, ' Min positions len ', 16)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
-****************************************
-a a a a a a * *
-a a a * * a * a
-* * * b a a * *
-* * * * a a * *
-* * b * * * a *
-b b * * * * * *
-* * b b b b b b
-* b b b b b * b
-****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
-****************************************
-a a a a a a * *
-a a a * * a * a
-* * * b a a * *
-* * * * * a * *
-b * b * a * a *
-* b * * * b * *
-* * b b b * b b
-* b b b b b * b
-****************************************
-('counter ', 4, ' Max positions len ', 16, ' Min positions len ', 16)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
-****************************************
-a a a a a a * *
-a a * * * a * a
-* * * a a a * *
-* * * * * * * *
-b * b * a * a *
-* b * * * * * *
-* * b b b * b b
-* b b b b b * b
-****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
-****************************************
-a a a a a * * *
-a a * * * a a a
-* * * a a a * *
-* b * * * * * *
-* b b * a * a *
-* * * * * * * *
-* * b b b * b b
-* b b b b b * b
-****************************************
-('counter ', 5, ' Max positions len ', 15, ' Min positions len ', 14)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
-****************************************
-a a a a a * * *
-a a * * * a a a
-* * * a a a * *
-* b * * * * * *
-* b b * * * a *
-* * b * * * * *
-* * b * a * b b
-* b b b b b * b
-****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
-****************************************
-a a a a a * * *
-a a * * * a a a
+a a a a a a a a
+a a a a * * * a
 * * * a a * * *
-* b * * * * a *
+* * * * * * a *
+* * * b * * * *
+b * * * * * * *
+* b * b b b b b
+b b b b b b b b
+****************************************
+****************************************
+a a a a a a a a
+a a a a * * * a
+* * * a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * * * * b *
+* b * b b b b *
+b b b b b b b b
+****************************************
+('counter ', 4, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+a a a a a a a a
+* a a a * * * a
+a * * a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * * * * b *
+* b * b b b b *
+b b b b b b b b
+****************************************
+****************************************
+a a a a a a a a
+* a a a * * * a
+a * * a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * * * b b *
+* b * b b * b *
+b b b b b b b b
+****************************************
+('counter ', 5, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+a a a a a a a a
+* a * a * * * a
+a * a a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * * * b b *
+* b * b b * b *
+b b b b b b b b
+****************************************
+****************************************
+a a a a a a a a
+* a * a * * * a
+a * a a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * * * b b *
+* b * b b * b b
+b b b b b b * b
+****************************************
+('counter ', 6, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a a a a a a a
+a a * a * * * a
+a * a a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * * * b b *
+* b * b b * b b
+b b b b b b * b
+****************************************
+****************************************
+* a a a a a a a
+a a * a * * * a
+a * a a a * * *
+* * * * * * a *
+* * * b * * * *
+b * * b * b b *
+* b * b * * b b
+b b b b b b * b
+****************************************
+('counter ', 7, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a a a a a a a
+a a * a * * * *
+a * a a a * * a
+* * * * * * a *
+* * * b * * * *
+b * * b * b b *
+* b * b * * b b
+b b b b b b * b
+****************************************
+****************************************
+* a a a a a a a
+a a * a * * * *
+a * a a a * * a
+* * * * * * a *
+* * * b * * * *
+b * * b b b b *
+* b * * * * b b
+b b b b b b * b
+****************************************
+('counter ', 8, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a a a a a a *
+a a * a * * a *
+a * a a a * * a
+* * * * * * a *
+* * * b * * * *
+b * * b b b b *
+* b * * * * b b
+b b b b b b * b
+****************************************
+****************************************
+* a a a a a a *
+a a * a * * a *
+a * a a a * * a
+* * * * * * a *
+* * * b * * * *
+b * * b b b b *
+* b * b * * b b
+b b b b * b * b
+****************************************
+('counter ', 9, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a a * a a a *
+a a * a a * a *
+a * a a a * * a
+* * * * * * a *
+* * * b * * * *
+b * * b b b b *
+* b * b * * b b
+b b b b * b * b
+****************************************
+****************************************
+* a a * a a a *
+a a * a a * a *
+a * a a a * * a
+* * * * * * a *
+* * * b * * * *
+b * b b b b b *
+* * * b * * b b
+b b b b * b * b
+****************************************
+('counter ', 10, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a a * a a a *
+a a * a a * * *
+a * a a a * a a
+* * * * * * a *
+* * * b * * * *
+b * b b b b b *
+* * * b * * b b
+b b b b * b * b
+****************************************
+****************************************
+* a a * a a a *
+a a * a a * * *
+a * a a a * a a
+* * * * * * a *
+* * * b b * * *
+b * b b b * b *
+* * * b * * b b
+b b b b * b * b
+****************************************
+('counter ', 11, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a a * a a a *
+a a * a a * * *
+* * a a a * a a
+a * * * * * a *
+* * * b b * * *
+b * b b b * b *
+* * * b * * b b
+b b b b * b * b
+****************************************
+****************************************
+* a a * a a a *
+a a * a a * * *
+* * a a a * a a
+a * * * * * a *
+* * b b b * * *
+b * * b b * b *
+* * * b * * b b
+b b b b * b * b
+****************************************
+('counter ', 12, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * a a a *
+a a a a a * * *
+* * a a a * a a
+a * * * * * a *
+* * b b b * * *
+b * * b b * b *
+* * * b * * b b
+b b b b * b * b
+****************************************
+****************************************
+* a * * a a a *
+a a a a a * * *
+* * a a a * a a
+a * * * * * a *
+* * b b b * * *
+b * * b b * b *
+* b * b * * b b
+b * b b * b * b
+****************************************
+('counter ', 13, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * a a a *
+a a a a a * * *
+* * a a a * a a
+* * * * * * a *
+a * b b b * * *
+b * * b b * b *
+* b * b * * b b
+b * b b * b * b
+****************************************
+****************************************
+* a * * a a a *
+a a a a a * * *
+* * a a a * a a
+* * * * * * a *
+a * b b b * * *
+b * * b b * b b
+* b * b * * * b
+b * b b * b * b
+****************************************
+('counter ', 14, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * a a a *
+a * a a a * * *
+a * a a a * a a
+* * * * * * a *
+a * b b b * * *
+b * * b b * b b
+* b * b * * * b
+b * b b * b * b
+****************************************
+****************************************
+* a * * a a a *
+a * a a a * * *
+a * a a a * a a
+* * * * * * a *
+a * b b b * b *
+b * * b b * b *
+* b * b * * * b
+b * b b * b * b
+****************************************
+('counter ', 15, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * a a a *
+* * a a a * * *
+a a a a a * a a
+* * * * * * a *
+a * b b b * b *
+b * * b b * b *
+* b * b * * * b
+b * b b * b * b
+****************************************
+****************************************
+* a * * a a a *
+* * a a a * * *
+a a a a a * a a
+* * * * * * a *
+a * b b b * b *
+b * * b b * b b
+* b * b * * * *
+b * b b * b * b
+****************************************
+('counter ', 16, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * * a a *
+* * a a a a * *
+a a a a a * a a
+* * * * * * a *
+a * b b b * b *
+b * * b b * b b
+* b * b * * * *
+b * b b * b * b
+****************************************
+****************************************
+* a * * * a a *
+* * a a a a * *
+a a a a a * a a
+* * * * * * a *
+a * b b b * b *
+b * * b b * b b
+* b b b * * * *
+b * b * * b * b
+****************************************
+('counter ', 17, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * * a a *
+* * a a a a * *
+* a a a a * a a
+a * * * * * a *
+a * b b b * b *
+b * * b b * b b
+* b b b * * * *
+b * b * * b * b
+****************************************
+****************************************
+* a * * * a a *
+* * a a a a * *
+* a a a a * a a
+a * * * * * a *
+a * b b b * b *
+b * * b b * b b
+b b b b * * * *
+* * b * * b * b
+****************************************
+('counter ', 18, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * * a a *
+* * a a a * * *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * * b b * b b
+b b b b * * * *
+* * b * * b * b
+****************************************
+****************************************
+* a * * * a a *
+* * a a a * * *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * * b b * b b
+b b b b b * * *
+* * b * * * * b
+****************************************
+('counter ', 19, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* a * * * * a *
+* * a a a a * *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * * b b * b b
+b b b b b * * *
+* * b * * * * b
+****************************************
+****************************************
+* a * * * * a *
+* * a a a a * *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b * b b
+b b * b b * * *
+* * b * * * * b
+****************************************
+('counter ', 20, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * a *
+a * a a a a * *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b * b b
+b b * b b * * *
+* * b * * * * b
+****************************************
+****************************************
+* * * * * * a *
+a * a a a a * *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b * b b
+b b * b b * b *
+* * b * * * * *
+****************************************
+('counter ', 21, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+a * a a a a a *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b * b b
+b b * b b * b *
+* * b * * * * *
+****************************************
+****************************************
+* * * * * * * *
+a * a a a a a *
+* a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b b b b
+b b * b b * * *
+* * b * * * * *
+****************************************
+('counter ', 22, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * a a a a a *
+a a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b b b b
+b b * b b * * *
+* * b * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * a a a a a *
+a a a a a a a a
+a * * * * * a *
+a * b b b * b *
+b * b b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 23, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * a a a a a *
+a a a a * a a a
+a * * * a * a *
+a * b b b * b *
+b * b b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * a a a a a *
+a a a a * a a a
+a b * * a * a *
+a * * b b * b *
+b * b b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 24, ' Player1 positions len ', 16, ' Player2 positions len ', 16, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * a a a a a *
+a a * a * a a a
+a a * * a * a *
+a * * b b * b *
+b * b b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * a a a a a *
+a a * a * a a a
+a a * b a * a *
+a * * * b * b *
+b * b b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 25, ' Player1 positions len ', 16, ' Player2 positions len ', 15, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * a a a a a *
+a * * a * a a a
+a a a b a * a *
+a * * * b * b *
+b * b b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * a a a a a *
+a * * a * a a a
+a a a b a * a *
+a b * * b * b *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 26, ' Player1 positions len ', 16, ' Player2 positions len ', 15, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * a a a a a *
+a * * a * a a a
+* a a b a * a *
+a a * * b * b *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * a a a a a *
+a * * a * a a a
+* a a b a * a b
+a a * * b * * *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 27, ' Player1 positions len ', 16, ' Player2 positions len ', 14, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * a a a a a *
+a * * a * a * a
+* a a b a * a a
+a a * * b * * *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * a a a a a *
+a * * a * a * a
+* a a b a b a a
+a a * * * * * *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 28, ' Player1 positions len ', 16, ' Player2 positions len ', 13, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * * a a a a *
+a a * a * a * a
+* a a b a b a a
+a a * * * * * *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * *
+* * * a a a a *
+a a * a * a b a
+* a a b a * a a
+a a * * * * * *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 29, ' Player1 positions len ', 16, ' Player2 positions len ', 13, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * * a a a a *
+a a * a * a b a
+* a * b a * a a
+a a * a * * * *
+b * * b b b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * *
+* * * a a a a *
+a a * a * a b a
+* a * b a * a a
+a a * a b * * *
+b * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 30, ' Player1 positions len ', 16, ' Player2 positions len ', 13, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * *
+* * * a * a a *
+a a * a a a b a
+* a * b a * a a
+a a * a b * * *
+b * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * *
+* * * a * a a b
+a a * a a a * a
+* a * b a * a a
+a a * a b * * *
+b * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 31, ' Player1 positions len ', 16, ' Player2 positions len ', 13, ' Num in Player 1 row ', 0, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * *
+* * * a * a a b
+a * * a a a * a
+* a a b a * a a
+a a * a b * * *
+b * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b a * a a
+a a * a b * * *
+b * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 32, ' Player1 positions len ', 16, ' Player2 positions len ', 13, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * a a
+a a * a b a * *
+b * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * a a
+a b * a b a * *
+* * * b * b b b
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 33, ' Player1 positions len ', 15, ' Player2 positions len ', 13, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * a a
+a b * a b * * *
+* * * b * b a b
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * a a
+a b * a b * b *
+* * * b * b a *
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 34, ' Player1 positions len ', 15, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * * a
+a b * a b * b a
+* * * b * b a *
+b b b b b * * *
+* * * * * * * *
+****************************************
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * * b
+a b * a b * * a
+* * * b * b a *
+b b b b b * * *
+* * * * * * * *
+****************************************
+('counter ', 35, ' Player1 positions len ', 14, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * * b
+a b * a b * * a
+* * * b * b * *
+b b b b b * * a
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * a a *
+a * * a a a * a
+* a a b * * * b
+a b * a b * * a
+b * * b * b * *
+* b b b b * * a
+* * * * * * * *
+****************************************
+('counter ', 36, ' Player1 positions len ', 14, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a a a a a
+* a a b * * * b
+a b * a b * * a
+b * * b * b * *
+* b b b b * * a
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a a a a a
+* a a b * * * b
+a b * a b * b a
+b * * b * * * *
+* b b b b * * a
+* * * * * * * *
+****************************************
+('counter ', 37, ' Player1 positions len ', 14, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a a a a a
+* * a b * * * b
+a b a a b * b a
+b * * b * * * *
+* b b b b * * a
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a a a a a
+* * a b * * * b
+a b a a b * b a
+b * * b b * * *
+* b b * b * * a
+* * * * * * * *
+****************************************
+('counter ', 38, ' Player1 positions len ', 14, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a a * a a
+* * a b * * a b
+a b a a b * b a
+b * * b b * * *
+* b b * b * * a
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a a * a a
+* b a b * * a b
+a * a a b * b a
+b * * b b * * *
+* b b * b * * a
+* * * * * * * *
+****************************************
+('counter ', 39, ' Player1 positions len ', 14, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a * * a * * a a
+* b a b a * a b
+a * a a b * b a
+b * * b b * * *
+* b b * b * * a
+* * * * * * * *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a b * a * * a a
+* * a b a * a b
+a * a a b * b a
+b * * b b * * *
+* b b * b * * a
+* * * * * * * *
+****************************************
+('counter ', 40, ' Player1 positions len ', 14, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 0)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a b * a * * a a
+* * a b a * a b
+a * a a b * b a
+b * * b b * * *
+* b b * b * * *
+* * * * * * a *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a b * a * * a a
+* * a b a * a b
+a * b a b * b a
+b * * * b * * *
+* b b * b * * *
+* * * * * * a *
+****************************************
+('counter ', 41, ' Player1 positions len ', 13, ' Player2 positions len ', 12, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 1)
+****************************************
+* * * * * * * b
+* * * a * * a *
+a b * a * * a a
+* * a b a * a b
+a * b * b * b a
+b * * * a * * *
+* b b * b * * *
+* * * * * * a *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a b * a * * b a
+* * a b a * a *
+a * b * b * b a
+b * * * a * * *
+* b b * b * * *
+* * * * * * a *
+****************************************
+('counter ', 42, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* * * a * * a *
+a b * a * * b a
+* * a b * * a *
+a * b a b * b a
+b * * * a * * *
+* b b * b * * *
+* * * * * * a *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* b * a * * a *
+a * * a * * b a
+* * a b * * a *
+a * b a b * b a
+b * * * a * * *
+* b b * b * * *
+* * * * * * a *
+****************************************
+('counter ', 43, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 1, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* * * * * * * b
+* b * a * * a *
+a * * a * * b a
+* * a b * * a *
+a * b a b * b *
+b * * * a * * a
+* b b * b * * *
+* * * * * * a *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * * a *
+a * * a * * b a
+* * a b * * a *
+a * b a b * b *
+b * * * a * * a
+* b b * b * * *
+* * * * * * a *
+****************************************
+('counter ', 44, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * * a *
+a * * a * * b a
+* * a b * * a *
+a * b a b * b *
+b * * * a * * *
+* b b * b * a *
+* * * * * * a *
+****************************************
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * * a * * * a
+* * a b * * a *
+a * b a b * b *
+b * * * a * * *
+* b b * b * a *
+* * * * * * a *
+****************************************
+('counter ', 45, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * * a * * * a
+* * a b * * a *
+a * b a b * b *
+b * * * a * * *
+* b b * b * a *
+* * * * * * a *
+****************************************
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * * a * * * a
+* * a b * * a *
+a * b a b * b *
+b * * b a * * *
 * b b * * * a *
-* * b * * * * *
-* * b * b b b b
-* b b * * b * b
+* * * * * * a *
 ****************************************
-('counter ', 6, ' Max positions len ', 14, ' Min positions len ', 13)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
+('counter ', 46, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
 ****************************************
-a a a a a * * *
-* a * * * a a a
-* a * * a * * *
-* b b a * * a *
-* b * * * * a *
-* * b * * * * *
-* * b * b b b b
-* b b * * b * b
+* b * * * * * b
+* * * a * b a *
+a * * a * * * a
+* * a b * * a *
+a * b a b * b *
+b * * b a * * *
+* b b * * * a *
+* * * * * * a *
 ****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
+yay
+yay
 ****************************************
-a a a a a * * *
-* a * * * a a a
-* b * * a * * *
-* b * * * * a *
-* b * * a * a *
-* * b * * * b *
-* * b * b b b *
-* b b * * b * b
+* b * * * * * b
+* * * a * b a *
+a * * a * * * a
+* * a b * b a *
+a * b a b * * *
+b * * b a * * *
+* b b * * * a *
+* * * * * * a *
 ****************************************
-('counter ', 7, ' Max positions len ', 13, ' Min positions len ', 13)
-('Player 1 move from ', (0, 0), ' to ', (0, 0))
+('counter ', 47, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
 ****************************************
-* a a a a * * *
-* a * * * a a a
-* a * * a * * *
-* b * * * * a *
-* b * * a * a *
-* * b * * * b *
-* b b * b b b *
-* b * * * b * b
+* b * * * * * b
+* * * a * b a *
+a * * a * * * a
+* * a b * b a *
+a * b a b * * *
+b * * b a * * *
+* b b * * * a *
+* * * * * * a *
 ****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
+yay
+yay
 ****************************************
-* a a a a * * *
-* a * * * a a a
-* a * * a * * *
-* b * * * * a *
-* b * * * * a *
-* b b a b * b *
-* b * * b * b *
-* b * * * b * b
+* b * * * * * b
+* * * a * b a *
+a * b a * * * a
+* * a * * b a *
+a * b a b * * *
+b * * b a * * *
+* b b * * * a *
+* * * * * * a *
 ****************************************
-('counter ', 8, ' Max positions len ', 13, ' Min positions len ', 12)
-('Player 1 move from ', (5, 3), ' to ', (6, 3))
+('counter ', 48, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
 ****************************************
-* a a a a * * *
-* a * * * a a a
-* a * * a * * *
-* b * * * * a *
-* b * * * * a *
-* b b * b * b *
-* b * a b * b *
-* b * * * b * b
+* b * * * * * b
+* * * a * b a *
+a * b a * * * a
+* * a * * b a *
+a * b a b * * *
+b * * b a * * *
+* b b * * * a *
+* * * * * * a *
 ****************************************
-('Player 2 move from ', (0, 0), ' to ', (0, 0))
+yay
+yay
 ****************************************
-* a a a a * * *
-* a * * * a a a
-* a * * a * * *
-* b * * * * a *
-* b * * * * a *
-* b b * b * b *
-* b * a b * b *
-* b * * * b * b
+* b * * * * * b
+* * * a * b a *
+a * b a * * * a
+* * a * * b a *
+a * b a b * * *
+b b * b a * * *
+* * b * * * a *
+* * * * * * a *
 ****************************************
-('counter ', 9, ' Max positions len ', 13, ' Min positions len ', 12)
-Game over winner is Player1
+('counter ', 49, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * b a * * * a
+* * a * * b a *
+a * b a b * * *
+b b * b a * * *
+* * b * * * a *
+* * * * * * a *
+****************************************
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * b a * * * a
+* * a b * b a *
+a * b a * * * *
+b b * b a * * *
+* * b * * * a *
+* * * * * * a *
+****************************************
+('counter ', 50, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * b a * * * a
+* * a b * b a *
+a * b a * * * *
+b b * b a * * *
+* * b * * * a *
+* * * * * * a *
+****************************************
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * b a b * * a
+* * a * * b a *
+a * b a * * * *
+b b * b a * * *
+* * b * * * a *
+* * * * * * a *
+****************************************
+('counter ', 51, ' Player1 positions len ', 12, ' Player2 positions len ', 11, ' Num in Player 1 row ', 2, ' Num in Player 2 row ', 1)
+yay
+yay
+****************************************
+* b * * * * * b
+* * * a * b a *
+a * b a b * * a
+* * a * * b a *
+a * b a * * * *
+b b * b a * * *
+* * b * * * a *
+* * * * * * a *
+****************************************
+Game over winner is Player2
