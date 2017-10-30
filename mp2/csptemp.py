@@ -2,17 +2,21 @@ import copy
 import random
 import sys
 import time
+
 board = []
 colors = set()
 listcolors = []
 num_colors = 0
-WIDTH = 9
-HEIGHT = 9
-filename = "input991.txt"
+WIDTH = 7
+HEIGHT = 7
+filename = "input88.txt"
 remaining_colors = []
 num_remaining = []
 colorPoints = []
+q = []
+SMART = 1
 num_expanded = [0]
+
 def initialize():
 	nr = 0
 	nc = 0
@@ -46,7 +50,7 @@ def initialize():
 	#colors.remove('\r')
 	num_colors = len(colors)
 	for item in board:
-		if (len(item) == 10):
+		if (len(item) == 9):
 			del item[-1]
 	WIDTH = len(board)
 	HEIGHT = len(board[0])
@@ -374,11 +378,88 @@ def initializecolorlist(temp):
 						num_remaining[i][j] += 1
 
 
+def initializequeue():
+	for i in range(HEIGHT):
+		for j in range(WIDTH):
+			row = i
+			col = j
+			rowNum = [-1, 0, 0, 1, -1, -1, 1, 1]
+			colNum = [0, -1, 1, 0, 1, -1, 1, -1]
+			for k in range(8):
+				newrow = row + rowNum[k]
+				newcol = col + colNum[k]
+				if (isValid(newrow, newcol)):
+					q.append(((newrow, newcol), (row, col)))
+	return
+
+
+def addToQueue(qtemp, pos):
+	row = pos[0]
+	col = pos[1]
+	rowNum = [-1, 0, 0, 1, -1, -1, 1, 1]
+	colNum = [0, -1, 1, 0, 1, -1, 1, -1]
+	for i in range(8):
+		newrow = row + rowNum[i]
+		newcol = col + colNum[i]
+		if (isValid(newrow, newcol)):
+			if ((row, col), (newrow, newcol)) not in q:
+				qtemp.append( ((row, col), (newrow, newcol)) )
+	return
+
+
+def arcConsistency(qtemp, remcolor, remnum, temp):
+	while(len(qtemp) > 0):
+	 	flag1 = False
+	 	flag2 = False
+	 	item = qtemp.pop(0)
+	 	row = item[0][0]
+	 	col = item[0][1]
+	 	row2 = item[1][0]
+	 	col2 = item[1][1]
+	 	oldval = temp[row][col]
+	 	if (temp[row][col] == '_'):
+	 		values = list(remcolor[row][col])
+	 	else:
+	 		values = [temp[row][col]]
+	 	for i in range(len(values)):
+	 		item1 = values[i]
+	 		print(item1)
+	 		temp[row][col] = item1
+	 		if (temp[row2][col2] == '_'):
+	 			num = remnum[row2][col2]
+	 			for j in range(len(remcolor[row2][col2])):
+	 				value = remcolor[row2][col2][j]
+	 				if (checkconsistency(temp, (row2, col2), value)):
+	 					num = num - 1
+	 					if (num == 0):
+	 						flag1 = True
+	 		else:
+	 			value = temp[row2][col2]
+	 			if (checkconsistency(temp, (row2, col2), value)):
+	 				flag1 = True
+
+	 		if (flag1):
+	 			remcolor[row][col].remove(item1)
+	 			remnum[row][col] -= 1
+	 			flag1 = False
+	 			flag2 = True
+
+	 	if (flag2):
+	 		addToQueue(qtemp, (row, col))
+	 		flag2 = False
+	 	temp[row][col] = oldval
+	return
+
+
+
 def backtrack(board, remcolor, remnum):
 	if (isComplete()):
 		return board
 	num_expanded[0] += 1
+	qtemp = list(q)
 	temp = copy.deepcopy(board)
+	if (SMART == 2):
+		arcConsistency(qtemp, remcolor, remnum, temp)
 	var = getnextvar(board, remnum)
 	if (var == None):
 		print('full failiure')
@@ -411,6 +492,7 @@ def main():
 	WIDTH = len(board)
 	HEIGHT = len(board[0])
 	initializecolorlist(board)
+	#initializequeue()
 	num_expanded[0] = 0
 	starttime = time.time()
 	print(backtrack(board, remaining_colors, num_remaining))

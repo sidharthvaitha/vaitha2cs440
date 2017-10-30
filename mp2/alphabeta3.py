@@ -1,11 +1,17 @@
 import copy
 import random
 import sys
+import time
 
 
 WIDTH = 8
 HEIGHT = 8
 
+numExpandedPlayer1 = [0]
+numExpandedPlayer2 = [0]
+player1Time = 0
+player2Time = 0
+counter = 0
 
 # WIDTH = 5
 # HEIGHT = 10
@@ -155,7 +161,7 @@ def calulateScorePlayer1Heuristic(curstate):
 	 return offensiveheuristic2(curstate, True)
 
 def calulateScorePlayer2Heuristic(curstate):
-	 return -1 * defensiveheuristic(curstate, False)
+	 return -1 * defensiveheuristic2(curstate, False)
 
 
 def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuristic):
@@ -166,6 +172,11 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 			return calulateScorePlayer1Heuristic(curstate), copy.deepcopy(curstate)
 		else:
 			return calulateScorePlayer2Heuristic(curstate), copy.deepcopy(curstate)
+
+	if (Player1Heuristic):
+		numExpandedPlayer1[0] += 1
+	elif (Player1Heuristic == False):
+		numExpandedPlayer2[0] += 1
 
 
 	isbreak = False
@@ -194,6 +205,10 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 					if ((nextrow == HEIGHT - 1 and curstate.numPlayer2row >= 2) or len(curstate.player2positions) == 0):
 						if (curdepth == 0):
 							print('Game over winner is Player1')
+							print('Number of nodes expanded by Player1 is ', numExpandedPlayer1[0])
+							print('Number of nodes expanded by Player2 is ', numExpandedPlayer2[0])
+							print('Total time for moves for player 1 is ', player1Time)
+							print('Total time for moves for player 2 is ', player2Time)
 							sys.exit()
 						else:
 							curscore = float("inf")
@@ -219,6 +234,10 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 						if (len(curstate.player2positions) == 0):
 							if (curdepth == 0):
 								print('Game over winner is Player1')
+								print('Number of nodes expanded by Player1 is ', numExpandedPlayer1[0])
+								print('Number of nodes expanded by Player2 is ', numExpandedPlayer2[0])
+								print('Total time for moves for player 1 is ', player1Time)
+								print('Total time for moves for player 2 is ', player2Time)
 								sys.exit()
 							else:
 								curscore = float("inf")
@@ -287,6 +306,10 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 					if ((nextrow == 0 and curstate.numPlayer1row >= 2) or len(curstate.player1positions) == 0):
 						if (curdepth == 0):
 							print('Game over winner is Player2')
+							print('Number of nodes expanded by Player1 is ', numExpandedPlayer1[0])
+							print('Number of nodes expanded by Player2 is ', numExpandedPlayer2[0])
+							print('Total time for moves for player 1 is ', player1Time)
+							print('Total time for moves for player 2 is ', player2Time)
 							sys.exit()
 						else:
 							curscore = -1 * float("inf")
@@ -309,6 +332,10 @@ def alphabeta(curstate, isPlayer1, alpha, beta, curdepth, maxdepth, Player1Heuri
 						if (len(curstate.player1positions) == 0):
 							if (curdepth == 0):
 								print('Game over winner is Player2')
+								print('Number of nodes expanded by Player1 is ', numExpandedPlayer1[0])
+								print('Number of nodes expanded by Player2 is ', numExpandedPlayer2[0])
+								print('Total time for moves for player 1 is ', player1Time)
+								print('Total time for moves for player 2 is ', player2Time)
 								sys.exit()
 							else:
 								curscore = -1 * float("inf")
@@ -403,15 +430,21 @@ def main():
 	# testscore, teststate = alphabeta(initState, True, -1 * float("inf"), float("inf"), 0, 3, True)
 	# printstate(teststate)
 
-	counter = 0
 	while (gameOver == False):
-		counter = counter + 1
+		global counter
+		global player2Time
+		global player1Time
+		counter += 1
+		start_time = time.time()
 		score, player1movestate = alphabeta(player2movestate, True, -1 * float("inf"), float("inf"), 0, 3, True)
+		player1Time += (time.time() - start_time)
 		printstate(player1movestate)
 		if (len(player1movestate.player1positions) == 0):
 			print('reached break condition 1')
 			break
+		start_time = time.time()
 		score, player2movestate = alphabeta(player1movestate, False, -1 * float("inf"), float("inf"), 0, 3, False)
+		player2Time += (time.time() - start_time)
 		printstate(player2movestate)
 		if (len(player2movestate.player1positions) == 0):
 			print('reached break condition 3')
