@@ -1,10 +1,6 @@
 import pprint
 import time
 import math
-# >>> n = 3
-# >>> distance = [[[0 for k in xrange(n)] for j in xrange(n)] for i in xrange(n)]
-# >>> pprint.pprint(distance)
-
 
 data = [[[0 for k in range(28)] for j in range(28)] for i in range(10)]
 count = [0] * 10
@@ -42,7 +38,7 @@ def normalize():
 		item = data[x]
 		for i in range(len(item)):
 			for j in range(len(item[0])):
-				item[i][j] = item[i][j]/count[x]
+				item[i][j] = (item[i][j])/count[x]
 		# for line in item:
 		# 	print(''.join(str(v) for v in line))
 
@@ -127,9 +123,9 @@ def main():
 	starttime = time.time()
 	readtraindata()
 	normalize()
-	getcountsum()
-	classify()
-	reporting()
+	# getcountsum()
+	# classify()
+	# reporting()
 	print(time.time() - starttime)
 	#print(count)
 
