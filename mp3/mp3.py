@@ -1,6 +1,6 @@
 import time
 import math
-
+import sys
 #k, f height, f width, overlap, numclass, height, width, chars
 info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
 
@@ -8,7 +8,7 @@ info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
 train_data = open("digitdata/trainingimages","r")
 train_labels = open("digitdata/traininglabels","r")
 
-testdata = open("digitdata/testimages","r")
+testdata1 = open("digitdata/testimages","r")
 testlabels = open("digitdata/testlabels","r")
 
 
@@ -113,7 +113,7 @@ while(1):
 			data[i][j][value][index] += 1
 
 train_data.close()
-traininglabels.close()
+train_labels.close()
 
 for i in range(0, info[5], rowinc):
 	for j in range(0, info[6], colinc):
@@ -123,9 +123,10 @@ for i in range(0, info[5], rowinc):
 
 
 total = sum(count)
-
 for i in range(info[4]):
-	countprob[i] /= total
+	countprob[i] = count[i]/total
+
+# print(prob[0][0])
 
 correct = 0
 wrong = 0
@@ -140,7 +141,7 @@ while(1):
 
 	for i in range(info[5]):
 		for j in range(info[6] + 1):
-			c = testimages.read(1)
+			c = testdata1.read(1)
 			if (c != '\n'):
 				if c == info[7]:
 					curtestimage[i][j] = 0
@@ -155,20 +156,26 @@ while(1):
 			index = 0
 			for r in range(info[1]):
 				for c in range(info[2]):
-					index |= curimage[i + r][j + c] << r + c
+					index |= curtestimage[i + r][j + c] << r + c
 
 			testdata[i][j] = index
 
-	maxp = -1
+	maxp = -100000
 	best = -1
+	# for line in testdata:
+	# 	print (' '.join(str(v) for v in line))
+	# sys.exit()
 	for x in range(info[4]):
 		p = math.log(countprob[x])
+		# print(p)
+		# sys.exit()
+		#p = 0
 		for i in range(0, info[5] - buffr, rowinc):
 			for j in range(0, info[6] - buffc, colinc):
-				p += math.log(prob[i][j][testdata[i][j]])
-	if (p > maxp):
-		maxp = p
-		best = x
+				p += math.log(prob[i][j][x][testdata[i][j]])
+		if (p > maxp):
+			maxp = p
+			best = x
 
 	if (best == value):
 		correct += 1
@@ -178,12 +185,16 @@ while(1):
 	confdata[value][best] += 1
 
 testlabels.close()
-testimages.close()
+testdata1.close()
 
 
 for i in range(info[4]):
 	for j in range(info[4]):
 		confmatrix[i][j] = 100 * confdata[i][j]/testcount[i]
+
+for line in confmatrix:
+		print (' '.join(str(v) for v in line))
+
 
 
 
