@@ -38,6 +38,7 @@ test = [0.2, 1, 1, 0, 10, 28, 28, ' ', '+', '#' ]
 # 3x3 Feature with overlap
 #test = [0.2, 3, 3, 1, 10, 28, 28, ' ', '+', '#' ]
 #%%
+test = [0.2, 4, 4, 1, 10, 28, 28, ' ', '+', '#' ]
 
 
 k_smooth = test[0]
@@ -79,14 +80,14 @@ for k in range(0,test[6],1): #col
 for k in range(0,test[6],1): 
     for j in range(0,test[5],1):
         for l in range(test[4]):#class
-            count_data[j][k].append([])
+            count_data[j][k].append({})
             prob_mat[j][k].append([])
-for k in range(0,test[6],1): 
-    for j in range(0, test[5], 1):
-        for l in range(test[4]):
-            for m in range(V):#features
-                count_data[j][k][l].append(0)
-                prob_mat[j][k][l].append([])
+# for k in range(0,test[6],1): 
+#     for j in range(0, test[5], 1):
+#         for l in range(test[4]):
+#             for m in range(V):#features
+#                 count_data[j][k][l].append(0)
+#                 prob_mat[j][k][l].append([])
    
 for j in range(test[4]): #row
     conf_mat_data.append([])
@@ -150,21 +151,31 @@ while(True):
                    # print([row + f_row, col + f_col])
                     feature |= temp_image[row + f_row][col + f_col] << f_row + f_col
 #            print(feature)
-            count_data[row][col][class_label][feature] += 1
+
+            dictvalue =  (count_data[row][col][class_label].get(feature, -1))
+            if (dictvalue == -1):
+                count_data[row][col][class_label][feature] = 1
+            else:
+                count_data[row][col][class_label][feature] = dictvalue + 1
             
 train_label.close()
 train_image.close()
+
+
+# print(count_data[0][0])
+# sys.exit()
+
 
 #%%
 """
 Create the probability matrices based on the training data
 """   
 
-for row in range(0, test[6], row_adv): 
-    for col in range(0, test[5], col_adv):
-        for l in range(test[4]):
-            for m in range(V): #features              
-                prob_mat[row][col][l][m] = (count_data[row][col][l][m] + k_smooth)/(count_class[l] + V*k_smooth)
+# for row in range(0, test[6], row_adv): 
+#     for col in range(0, test[5], col_adv):
+#         for l in range(test[4]):
+#             for m in range(V): #features              
+#                 prob_mat[row][col][l][m] = (count_data[row][col][l][m] + k_smooth)/(count_class[l] + V*k_smooth)
 #                print([k,j,l,m,prob_mat[j][k][l][m]])
                 
 train_size = sum(count_class)
@@ -173,7 +184,6 @@ for c in range(test[4]):
     class_prob[c] = count_class[c]/train_size
 
 
-#print(prob_mat[0][0])
 
 # #%%
 # """
@@ -225,9 +235,11 @@ while(True):
         for row in range(0,test[5] - row_buff, row_adv):
             for col in range(0, test[6] - col_buff, col_adv):
 #                print([row,col])
-                total += math.log(prob_mat[row][col][c][test_data[row][col]])
-                print(total)
-                sys.exit()
+                dictvalue =  (count_data[row][col][c].get(test_data[row][col], -1))
+                if (dictvalue == -1):
+                    total += math.log((0 + k_smooth)/(count_class[c] + V*k_smooth))
+                else:
+                    total += math.log((dictvalue + k_smooth)/(count_class[c] + V*k_smooth))
         if total > best:
             best = total
             best_class = c

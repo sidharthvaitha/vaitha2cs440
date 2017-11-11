@@ -2,7 +2,9 @@ import time
 import math
 import sys
 #k, f height, f width, overlap, numclass, height, width, chars
-info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
+#info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
+# info = [0.2, 2, 2, False, 10, 28, 28, ' ', '+', '#']
+info = [0.2, 4, 4, True, 10, 28, 28, ' ', '+', '#']
 
 
 train_data = open("digitdata/trainingimages","r")
@@ -10,6 +12,10 @@ train_labels = open("digitdata/traininglabels","r")
 
 testdata1 = open("digitdata/testimages","r")
 testlabels = open("digitdata/testlabels","r")
+
+
+def prettyfloat(x):
+	return "%0.2f" % x
 
 
 smooth = info[0]
@@ -52,15 +58,15 @@ for i in range(0, info[6]):
 for i in range(0, info[6]):
 	for j in range(0, info[5]):
 		for k in range(0, info[4]):
-			data[i][j].append([])
+			data[i][j].append({})
 			prob[i][j].append([])
 
-for i in range(0, info[6]):
-	for j in range(0, info[5]):
-		for k in range(0, info[4]):
-			for l in range(V):
-				data[i][j][k].append(0)
-				prob[i][j][k].append([])
+# for i in range(0, info[6]):
+# 	for j in range(0, info[5]):
+# 		for k in range(0, info[4]):
+# 			for l in range(V):
+# 				data[i][j][k].append(0)
+# 				prob[i][j][k].append([])
 
 for i in range(0, info[4]):
 	confmatrix.append([])
@@ -110,16 +116,20 @@ while(1):
 				for c in range(info[2]):
 					index |= curimage[i + r][j + c] << r + c
 
-			data[i][j][value][index] += 1
+			dictvalue = data[i][j][value].get(index, -1)
+			if (dictvalue == -1):
+				data[i][j][value][index] = 1
+			else:
+				data[i][j][value][index] = dictvalue + 1
 
 train_data.close()
 train_labels.close()
 
-for i in range(0, info[5], rowinc):
-	for j in range(0, info[6], colinc):
-		for k in range(info[4]):
-			for l in range(V):
-				prob[i][j][k][l] = (data[i][j][k][l] + smooth)/(count[k] + V * smooth)
+# for i in range(0, info[5], rowinc):
+# 	for j in range(0, info[6], colinc):
+# 		for k in range(info[4]):
+# 			for l in range(V):
+# 				prob[i][j][k][l] = (data[i][j][k][l] + smooth)/(count[k] + V * smooth)
 
 
 total = sum(count)
@@ -172,7 +182,11 @@ while(1):
 		#p = 0
 		for i in range(0, info[5] - buffr, rowinc):
 			for j in range(0, info[6] - buffc, colinc):
-				p += math.log(prob[i][j][x][testdata[i][j]])
+				dictvalue = data[i][j][x].get(testdata[i][j], -1)
+				if (dictvalue == -1):
+					p += math.log((0 + smooth)/(count[x] + V * smooth))
+				else:
+					p += math.log((dictvalue + smooth)/(count[x] + V * smooth))
 		if (p > maxp):
 			maxp = p
 			best = x
@@ -193,7 +207,7 @@ for i in range(info[4]):
 		confmatrix[i][j] = 100 * confdata[i][j]/testcount[i]
 
 for line in confmatrix:
-		print (' '.join(str(v) for v in line))
+		print (' '.join(str(prettyfloat(v)) for v in line))
 
 
 
