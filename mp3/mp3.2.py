@@ -6,14 +6,14 @@ import copy
 #k, f height, f width, overlap, numclass, height, width, chars
 #info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
 # info = [0.2, 2, 2, False, 10, 28, 28, ' ', '+', '#']
-info = [0.2, 4, 4, True, 10, 28, 28, ' ', '+', '#']
+info = [0.2, 1, 1, False, 2, 25, 10, ' ', '%', '#']
 
 
-train_data = open("digitdata/trainingimages","r")
-train_labels = open("digitdata/traininglabels","r")
+train_data1 = open("yesno/yes_train.txt","r")
+train_data2 = open("yesno/no_train.txt","r")
 
-testdata1 = open("digitdata/testimages","r")
-testlabels = open("digitdata/testlabels","r")
+testdata1 = open("yesno/yes_test.txt","r")
+testdata2 = open("yesno/no_test.txt","r")
 
 
 def prettyfloat(x):
@@ -42,6 +42,7 @@ for i in range(info[4]):
 	count.append(0)
 	testcount.append(0)
 	countprob.append([])
+
 for i in range(info[5]):
 	data.append([])
 	testdata.append([])
@@ -57,8 +58,10 @@ for i in range(0, info[6]):
 			curimage[j].append([])
 			curtestimage[j].append([])
 
-for i in range(0, info[6]):
-	for j in range(0, info[5]):
+# print(len(data), len(data[0]))
+
+for i in range(0, info[5]):
+	for j in range(0, info[6]):
 		for k in range(0, info[4]):
 			data[i][j].append({})
 			prob[i][j].append([])
@@ -86,16 +89,13 @@ else:
 	rowinc = 1
 	colinc = 1
 
+breakFlag = False
 while(1):
-	c = train_labels.read(1)
-	if not c:
-		break
-	value = int(c)
+	value = 1
 	count[value] += 1
-	train_labels.read(1)
 	for i in range(info[5]):
 		for j in range(info[6] + 1):
-			c = train_data.read(1)
+			c = train_data1.read(1)
 			if (c != '\n'):
 				if c == info[7]:
 					curimage[i][j] = 0
@@ -103,7 +103,20 @@ while(1):
 					curimage[i][j] = 1
 				if c == info[9]:
 					curimage[i][j] = 1
+			if not c:
+				breakFlag = True
+				break
 
+	if (breakFlag):
+		break
+
+	# print(len(curimage), len(curimage[0]))
+	# for line in curimage:
+	# 	print(' '.join(str(v) for v in line))
+	# print()
+	train_data1.read(1)
+	train_data1.read(1)
+	train_data1.read(1)
 	if (info[3] == True):
 		buffr = info[1]
 		buffc = info[2]
@@ -124,8 +137,52 @@ while(1):
 			else:
 				data[i][j][value][index] = dictvalue + 1
 
-train_data.close()
-train_labels.close()
+train_data1.close()
+# print('yay')
+breakFlag = False
+while(1):
+	value = 0
+	count[value] += 1
+	for i in range(info[5]):
+		for j in range(info[6] + 1):
+			c = train_data2.read(1)
+			if (c != '\n'):
+				if c == info[7]:
+					curimage[i][j] = 0
+				if c == info[8]:
+					curimage[i][j] = 1
+				if c == info[9]:
+					curimage[i][j] = 1
+				if not c:
+					breakFlag = True
+					break
+
+	if (breakFlag):
+		break
+
+	train_data2.read(3)
+	if (info[3] == True):
+		buffr = info[1]
+		buffc = info[2]
+	else:
+		buffr = 0
+		buffc = 0
+
+	for i in range(0, info[5] - buffr, rowinc):
+		for j in range(0, info[6] - buffc, colinc):
+			index = 0
+			for r in range(info[1]):
+				for c in range(info[2]):
+					index |= curimage[i + r][j + c] << r + c
+
+			dictvalue = data[i][j][value].get(index, -1)
+			if (dictvalue == -1):
+				data[i][j][value][index] = 1
+			else:
+				data[i][j][value][index] = dictvalue + 1
+
+train_data2.close()
+
 
 # for i in range(0, info[5], rowinc):
 # 	for j in range(0, info[6], colinc):
@@ -142,15 +199,10 @@ for i in range(info[4]):
 
 correct = 0
 wrong = 0
-
+breakFlag = False
 while(1):
-	c = testlabels.read(1)
-	if not c:
-		break
-	value = int(c)
+	value = 1
 	testcount[value] += 1
-	testlabels.read(1)
-
 	for i in range(info[5]):
 		for j in range(info[6] + 1):
 			c = testdata1.read(1)
@@ -161,8 +213,14 @@ while(1):
 					curtestimage[i][j] = 1
 				if c == info[9]:
 					curtestimage[i][j] = 1
+				if not c:
+					breakFlag = True
+					break
 
+	if (breakFlag):
+		break
 
+	testdata1.read(3)
 	for i in range(0, info[5] - buffr, rowinc):
 		for j in range(0, info[6] - buffc, colinc):
 			index = 0
@@ -200,13 +258,74 @@ while(1):
 
 	confdata[value][best] += 1
 
-testlabels.close()
 testdata1.close()
 
+breakFlag = False
+while(1):
+	value = 0
+	testcount[value] += 1
+	for i in range(info[5]):
+		for j in range(info[6] + 1):
+			c = testdata2.read(1)
+			if (c != '\n'):
+				if c == info[7]:
+					curtestimage[i][j] = 0
+				if c == info[8]:
+					curtestimage[i][j] = 1
+				if c == info[9]:
+					curtestimage[i][j] = 1
+				if not c:
+					breakFlag = True
+					break
+
+	if (breakFlag):
+		break
+
+	testdata2.read(3)
+	for i in range(0, info[5] - buffr, rowinc):
+		for j in range(0, info[6] - buffc, colinc):
+			index = 0
+			for r in range(info[1]):
+				for c in range(info[2]):
+					index |= curtestimage[i + r][j + c] << r + c
+
+			testdata[i][j] = index
+
+	maxp = -100000
+	best = -1
+	# for line in testdata:
+	# 	print (' '.join(str(v) for v in line))
+	# sys.exit()
+	for x in range(info[4]):
+		p = math.log(countprob[x])
+		# print(p)
+		# sys.exit()
+		#p = 0
+		for i in range(0, info[5] - buffr, rowinc):
+			for j in range(0, info[6] - buffc, colinc):
+				dictvalue = data[i][j][x].get(testdata[i][j], -1)
+				if (dictvalue == -1):
+					p += math.log((0 + smooth)/(count[x] + V * smooth))
+				else:
+					p += math.log((dictvalue + smooth)/(count[x] + V * smooth))
+		if (p > maxp):
+			maxp = p
+			best = x
+
+	if (best == value):
+		correct += 1
+	else:
+		wrong += 1
+
+	confdata[value][best] += 1
+
+testdata2.close()
+
+#print(testcount)
 
 for i in range(info[4]):
 	for j in range(info[4]):
-		confmatrix[i][j] = 100 * confdata[i][j]/testcount[i]
+		confmatrix[i][j] = 100 * confdata[i][j]/(testcount[i] - 1)
 
 for line in confmatrix:
 		print (' '.join(str(prettyfloat(v)) for v in line))
