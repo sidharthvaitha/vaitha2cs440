@@ -6,7 +6,7 @@ import copy
 #k, f height, f width, overlap, numclass, height, width, chars
 #info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
 # info = [0.2, 2, 2, False, 10, 28, 28, ' ', '+', '#']
-info = [0.2, 1, 1, False, 2, 25, 10, ' ', '%', '#']
+info = [3, 1, 1, False, 2, 25, 10, ' ', '%', '#']
 
 
 train_data1 = open("yesno/yes_train.txt","r")
@@ -329,6 +329,8 @@ for i in range(info[4]):
 
 for line in confmatrix:
 		print (' '.join(str(prettyfloat(v)) for v in line))
+
+print('Percentage is ', correct/(correct + wrong))
 
 
 dup = copy.deepcopy(confmatrix)

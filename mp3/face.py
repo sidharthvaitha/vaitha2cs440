@@ -6,60 +6,22 @@ import copy
 import matplotlib.pyplot as plt
 import plotly.plotly as py
 import plotly.graph_objs as go
-
-
-
-
 # plotly.tools.set_credentials_file(username='vaitha2', api_key='JLt6NeaQ3o3YOUSaVxit')
 #k, f height, f width, overlap, numclass, height, width, chars
-#info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
+info = [2, 1, 1, False, 2, 70, 60, ' ', '+', '#']
 # info = [0.2, 2, 2, False, 10, 28, 28, ' ', '+', '#']
 #info = [0.1, 4, 4, True, 10, 28, 28, ' ', '+', '#']
 
 
+train_data = open("facedata/facedatatrain","r")
+train_labels = open("facedata/facedatatrainlabels","r")
 
-# 1x1 Feature K set
-#info = [0.2, 1, 1, 0, 10, 28, 28, ' ', '+', '#' ]
-# 2x2 Feature with no overlap K set
-info = [0.1, 2, 2, 0, 10, 28, 28, ' ', '+', '#' ]
-# 2x4 Feature with no overlap K set
-#info = [0.1, 2, 4, 0, 10, 28, 28, ' ', '+', '#' ]
-# 4x2 Feature with no overlap k set
-#info = [0.1, 4, 2, 0, 10, 28, 28, ' ', '+', '#' ]
-# 4x4 Feature with no overlap kset
-#info = [0.1, 4, 4, 0, 10, 28, 28, ' ', '+', '#' ]
-# Overlapping Features
-# 2x2 Feature with Overlap
-#info = [0.1, 2, 2, 1, 10, 28, 28, ' ', '+', '#' ]
-# 2x4 Feature with overlap
-#info = [0.1, 2, 4, 1, 10, 28, 28, ' ', '+', '#' ]
-# 4x2 Feature with overlap
-#info = [0.1, 4, 2, 1, 10, 28, 28, ' ', '+', '#' ]
-# 4x4 Feature with overlap
-#info = [0.1, 4, 4, 1, 10, 28, 28, ' ', '+', '#' ]
-# 2x3 Feature with overlap
-#info = [0.1, 2, 3, 1, 10, 28, 28, ' ', '+', '#' ]
-# 3x2 Feature with overlap
-#info = [0.1, 3, 2, 1, 10, 28, 28, ' ', '+', '#' ]
-# 3x3 Feature with overlap
-#info = [0.2, 3, 3, 1, 10, 28, 28, ' ', '+', '#' ]
-
-train_data = open("digitdata/trainingimages","r")
-train_labels = open("digitdata/traininglabels","r")
-
-testdata1 = open("digitdata/testimages","r")
-testlabels = open("digitdata/testlabels","r")
+testdata1 = open("facedata/facedatatest","r")
+testlabels = open("facedata/facedatatestlabels","r")
 
 
 def prettyfloat(x):
 	return "%0.2f" % x
-
-
-highvalues = [-1 * float('inf')] * info[4]
-lowvalues = [float('inf')] * info[4]
-
-highs = []
-lows = []
 
 
 smooth = info[0]
@@ -84,16 +46,12 @@ for i in range(info[4]):
 	count.append(0)
 	testcount.append(0)
 	countprob.append([])
-	highs.append([])
-	lows.append([])
-
 for i in range(info[5]):
 	data.append([])
 	testdata.append([])
 	prob.append([])
 	curimage.append([])
 	curtestimage.append([])
-
 
 for i in range(0, info[6]):
 	for j in range(0, info[5]):
@@ -103,26 +61,11 @@ for i in range(0, info[6]):
 			curimage[j].append([])
 			curtestimage[j].append([])
 
-
-for i in range(0, info[6]):
-	for j in range(0, info[5]):
+for i in range(0, info[5]):
+	for j in range(0, info[6]):
 		for k in range(0, info[4]):
 			data[i][j].append({})
 			#prob[i][j].append([])
-
-
-for i in range(0, info[4]):
-	for j in range(0, info[5]):
-		highs[i].append([])
-		lows[i].append([])
-
-
-for i in range(0, info[4]):
-	for j in range(0, info[5]):
-		for K in range(0, info[6]):
-			highs[i][j].append([])
-			lows[i][j].append([])
-
 
 # for i in range(0, info[6]):
 # 	for j in range(0, info[5]):
@@ -256,13 +199,6 @@ while(1):
 
 	if (best == value):
 		correct += 1
-		if (maxp > highvalues[best]):
-			highvalues[best] = maxp
-			highs[best] = copy.deepcopy(testdata)
-
-		if (maxp < lowvalues[best]):
-			lowvalues[best] = maxp
-			lows[best] = copy.deepcopy(testdata)
 	else:
 		wrong += 1
 
@@ -279,97 +215,5 @@ for i in range(info[4]):
 for line in confmatrix:
 		print (' '.join(str(prettyfloat(v)) for v in line))
 
-
-# for item in lows:
-# 	for line in item:
-# 		print (''.join(str(v) for v in line))
-# 	print()
-# 	print()
-
-
 print('Percentage is ', correct/(correct + wrong))
-
-
-# dup = copy.deepcopy(confmatrix)
-# for i in range(info[4]):
-# 	dup[i][i] = 0
-
-
-# if (info[1] != 1 or info[2]!=1):
-# 	sys.exit()
-
-
-# odds = []
-# minval = -1 * float('inf')
-# first = (minval, -1 , -1)
-# second = (minval, -1 , -1)
-# third = (minval, -1 , -1)
-# fourth = (minval, -1 , -1)
-# for i in range(info[4]):
-# 	for j in range(info[4]):
-# 		item = dup[i][j]
-# 		if (item > first[0]):
-# 			fourth = third
-# 			third = second
-# 			second = first
-# 			first = (item, i, j)
-# 		elif (item > second[0]):
-# 			fourth = third
-# 			third = second
-# 			second = (item, i, j)
-# 		elif (item > third[0]):
-# 			fourth = third
-# 			third = (item, i, j)
-# 		elif (item > fourth[0]):
-# 			fourth = (item, i, j)
-
-# # print(first, second, third)
-# odds.append((first[1], first[2]))
-# odds.append((second[1], second[2]))
-# odds.append((third[1], third[2]))
-# odds.append((fourth[1], fourth[2]))
-
-# print(odds)
-
-
-# for item in odds:
-# 	x1 = item[0]
-# 	x2 = item[1]
-# 	p = -1
-# 	prob1 = copy.deepcopy(prob)
-# 	prob2 = copy.deepcopy(prob)
-# 	for i in range(0, info[5] - buffr, rowinc):
-# 		for j in range(0, info[6] - buffc, colinc):
-# 			dictvalue = data[i][j][x1].get(1, -1)
-# 			if (dictvalue == -1):
-# 				prob1[i][j] = math.log((0 + smooth)/(count[x1] + V * smooth))
-# 			else:
-# 				prob1[i][j] = math.log((dictvalue + smooth)/(count[x1] + V * smooth))
-
-# 			dictvalue2 = data[i][j][x2].get(1, -1)
-# 			if (dictvalue == -1):
-# 				prob2[i][j] = math.log((0 + smooth)/(count[x2] + V * smooth))
-# 			else:
-# 				prob2[i][j] = math.log((dictvalue + smooth)/(count[x2] + V * smooth))
-
-# 	trace = go.Heatmap(z=prob2)
-# 	data = [trace]
-# 	py.plot(data, filename = 'test1')
-
-
-
-
-	# for i in range(0, info[5] - buffr, rowinc):
-	# 	for j in range(0, info[6] - buffc, colinc):
-	# 		dictvalue = data[i][j][x1].get(testdata[i][j], -1)
-	# 		if (dictvalue == -1):
-	# 			prob[i][j] = prob1[i][j]/prob2[i][j]
-	# 		else:
-	# 			prob[i][j] = prob1[i][j] - prob2[i][j]
-
-
-
-
-
-
 

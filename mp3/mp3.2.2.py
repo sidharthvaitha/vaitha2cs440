@@ -6,7 +6,7 @@ import copy
 #k, f height, f width, overlap, numclass, height, width, chars
 #info = [.2, 1, 1, False, 10, 28, 28, ' ', '+', '#']
 # info = [0.2, 2, 2, False, 10, 28, 28, ' ', '+', '#']
-info = [0.2, 1, 1, False, 5, 30, 13, ' ', '%', '#']
+info = [2, 1, 1, False, 5, 30, 13, ' ', '%', '#']
 
 
 train_data = open("data22/training_data.txt","r")
@@ -108,8 +108,8 @@ while(1):
 	train_data.read(3)
 
 	if (info[3] == True):
-		buffr = info[1]
-		buffc = info[2]
+		buffr = info[1] - 1
+		buffc = info[2] - 1
 	else:
 		buffr = 0
 		buffc = 0
@@ -216,6 +216,7 @@ for line in confmatrix:
 		print (' '.join(str(prettyfloat(v)) for v in line))
 
 
+print('Percentage is ', correct/(correct + wrong))
 dup = copy.deepcopy(confmatrix)
 for i in range(info[4]):
 	dup[i][i] = 0
