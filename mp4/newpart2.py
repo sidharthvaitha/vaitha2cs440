@@ -13,7 +13,7 @@ class state:
         self.paddlex = 1
         self.paddleheight = .2
         self.paddley = .5 - (self.paddleheight)/2
-        self.discretepaddley = math.floor(12 * self.paddley/(1- self.paddleheight))
+        self.discretepaddley = int(12 * self.paddley/(1- self.paddleheight))
         self.velocityx = .03
         self.velocityy = .01
         self.discretevelocityx = 1
@@ -57,9 +57,9 @@ class state:
             if abs(self.velocityx) > 1:
                 self.velocityx = numpy.sign(self.velocityx) * .03 
             if abs(self.velocityx) <= 0.03:
-                cur_state.velocityx = numpy.sign(cur_state.velocityx)*0.03 
-            if cur_state.velocityx == 0:
-                cur_state.velocityx = -orig_x*0.03
+                self.velocityx = numpy.sign(self.velocityx)*0.03 
+            if self.velocityx == 0:
+                self.velocityx = -orig_x*0.03
 
         if (self.ballx > 1):
 #            print("miss paddle")
@@ -95,7 +95,8 @@ class state:
             self.movedown()
 
     def convertdiscrete(self):
-        self.discretepaddley = math.floor(12 * self.paddley/(1- self.paddleheight))
+        #self.discretepaddley = math.floor(12 * self.paddley/(1- self.paddleheight))
+        self.discretepaddley = int(12 * self.paddley/(1- self.paddleheight))
         if (self.paddley == (1- self.paddleheight)):
             self.discretepaddley = 11
 
@@ -138,6 +139,25 @@ class state:
         return self.curstatus
 
 
+def duplicatestate(temp):
+    result = state()
+    result.ballx = temp.ballx
+    result.bally = temp.bally
+    result.discrete_ballx = temp.discrete_ballx
+    result.discrete_bally = temp.discrete_bally
+    result.paddlex = temp.paddlex
+    result.paddleheight = temp.paddleheight
+    result.paddley = temp.paddley
+    result.discretepaddley = temp.discretepaddley
+    result.velocityx = temp.velocityx
+    result.velocityy = temp.velocityy
+    result.discretevelocityx = temp.discretevelocityx
+    result.discrete_velocityy = temp.discrete_velocityy
+    result.count = temp.count
+    result.curstatus = temp.curstatus
+    return result
+
+
 def print_game(temp2):
     grid_size = 12
     ans = []
@@ -164,12 +184,12 @@ def print_game(temp2):
     print('***************************************')
 
 
-cur_state = state()
+s = state()
 rewards = 0
 q = {}
 count = {}
 games_lost = 0
-C = 50
+C = 100
 gamma = 0.7
 
 gridlen = 12
@@ -185,12 +205,14 @@ for x in range(gridlen):
                     for ac in range(3):
                         q[(x,y,velx[vx],vely[vy],ploc, ac)] = 0.0
 
+#q[(-1,-1,-1,-1,-1,-1)] = -1
 
-
-def findQdiff(curtuple, j):
+def findMaxQ(sprime):
     maxlist = []
+    if sprime.curstatus == -1:
+        return -1
     for i in range(3):
-        nextstate = copy.deepcopy(cur_state)
+        nextstate = duplicatestate(sprime)
         nextstate.update_state(i)
         nexthash = nextstate.get_hashtuple()
         diff = q[nexthash + (i, )] 
@@ -205,25 +227,46 @@ def evaluate(curtuple, i):
 #    else:
     return q[curactiontuple]
 
-epsilon = 0.1
+
+def findargmax(maxlist):
+    maxval = -8321971928371283
+    maxi = -1
+    for i in range(3):
+        if (maxlist[i] > maxval):
+            maxval = maxlist[i]
+            maxi = i
+    return maxi
+
+
+import cProfile, pstats, io
+pr = cProfile.Profile()
+pr.enable()
+
+
+
+set_reward = 0
+set_game = 0
+epsilon = 0.05
 runcount = 0
 while (games_lost < 100000):
     runcount += 1
-    if (runcount % 1000000 == 0):
-#        epsilon *= 0.999
+    if (runcount % 100000 == 0):
         print ("games_lost", games_lost)
-    curtuple = cur_state.get_hashtuple()
+        # print ("Ave: ", rewards/games_lost)
+        print ("Ave: ", set_reward/set_game)
+        set_reward = 0
+        set_game = 0
+    stuple = s.get_hashtuple()
     for i in range(3):
-        curactiontuple = curtuple + (i, )
-#        print(curactiontuple)
-        if (curactiontuple not in count):
-            count[curactiontuple] = 0
+        sactiontuple = stuple + (i, )
+        if (sactiontuple not in count):
+            count[sactiontuple] = 0
 
     gains = []
     for i in range(3):
-        gains.append(evaluate(curtuple, i))
+        gains.append(evaluate(stuple, i))
         
-    bestaction = numpy.argmax(gains)
+    bestaction = findargmax(gains)
     if gains[0] == 0 and gains[1] == 0 and gains[2] == 0 :
         bestaction = random.choice([0,1,2])
     else:
@@ -232,27 +275,32 @@ while (games_lost < 100000):
             bestaction = random.choice([0,1,2])
             
     
-#    bestaction = numpy.argmax(gains)
-    curactiontuple = curtuple + (bestaction, )
-    alpha = C/(C + count[curactiontuple])
-    # print(curactiontuple)
-    cur_state.update_state(bestaction)
-    q[curactiontuple] += alpha * (cur_state.getstatus() + (gamma * findQdiff(curtuple, bestaction)) -  q[curtuple + (bestaction,)])
-#    print(q[curactiontuple])
-    count[curactiontuple] += 1
-#    cur_state.update_state(bestaction)
-#    print(runcount)
-#    print_game()
-#    time.sleep(.1)
-    if (cur_state.getstatus() == -1):
-        # print("games lost")
+    sactiontuple = stuple + (bestaction, )
+    alpha = C/(C + count[sactiontuple])
+    sprime = duplicatestate(s)
+    sprime.update_state(bestaction)
+    q[sactiontuple] += alpha * (sprime.getstatus() + (gamma * findMaxQ(sprime) -  q[sactiontuple]))
+    count[sactiontuple] += 1
+
+    s = sprime
+
+    if (s.getstatus() == -1):
         games_lost += 1
-    if (cur_state.getstatus() == -1):
-        rewards -= 1
-    if (cur_state.getstatus() == 1):
+        set_game +=1
+#    if (s.getstatus() == -1):
+#        rewards -= 1
+    if (s.getstatus() == 1):
         rewards += 1
-#    print("paddle ",cur_state.discretepaddley)
-#    print("Ball ",cur_state.discrete_bally)
+        set_reward +=1
+
+
+pr.disable()
+s = io.StringIO()
+sortby = 'cumtime'
+ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+ps.print_stats()
+print(s.getvalue())
+
 print("Len of count is ", len(count))
 print("Len of Q is ", len(q))
 #%%
@@ -268,14 +316,10 @@ while(j<1000):
         maxlist = []
         for i in range(3):
             maxlist.append(q[testtuple + (i, )])
-#        print(maxlist)
-        bestmove = numpy.argmax(maxlist)
+        bestmove = findargmax(maxlist)
         teststate.update_state(bestmove)
         total += teststate.getstatus()
-#        print("Count is ", total)
-#        print_game(teststate)
-#        time.sleep(.1)
-#    total += teststate.count
+
     j += 1
     all_total.append(total+1)
     if total+1 > best_total:
@@ -284,4 +328,4 @@ while(j<1000):
 print("Best Run: ", best_total)
 ave = sum(all_total)/len(all_total)
 print("Average: ", ave)
-print ("Variance is ", numpy.var(results))
+print ("Variance is ", numpy.var(all_total))
