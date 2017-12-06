@@ -40,18 +40,26 @@ class state:
 
         if (self.ballx < 0):
 #            print("hit x < 0")
-            self.ballx = -self.ballx
+            self.ballx - -self.ballx
             self.velocityx = - self.velocityx
 
         if (self.ballx >= 1 and self.bally > self.paddley and self.bally <(self.paddley + self.paddleheight)):
 #            print("hit paddle")
             self.ballx = 2 * self.paddlex - self.ballx
+            orig_x = self.velocityx
             self.velocityx = -self.velocityx + random.uniform(-0.015,0.015)
             self.velocityy = self.velocityy +  random.uniform(-0.03,0.03)
             self.count += 1
             self.curstatus = 1
 
-#            self.ballx += self.velocityx
+            if abs(self.velocityy) > 1:
+                self.velocityy = numpy.sign(self.velocityy) * .03
+            if abs(self.velocityx) > 1:
+                self.velocityx = numpy.sign(self.velocityx) * .03 
+            if abs(self.velocityx) <= 0.03:
+                cur_state.velocityx = numpy.sign(cur_state.velocityx)*0.03 
+            if cur_state.velocityx == 0:
+                cur_state.velocityx = -orig_x*0.03
 
         if (self.ballx > 1):
 #            print("miss paddle")
@@ -111,6 +119,12 @@ class state:
             self.discrete_bally = 11
         if (self.discretepaddley >= 12):
             self.discretepaddley = 11
+        if (self.discrete_ballx < 0):
+            self.discrete_ballx = 0
+        if (self.discrete_bally < 0):
+            self.discrete_bally = 0
+        if (self.discretepaddley < 0):
+            self.discretepaddley = 0
 
     def update_state(self, action = 0):
         self.updateball()
@@ -186,16 +200,17 @@ def findQdiff(curtuple, j):
 
 def evaluate(curtuple, i):
     curactiontuple = curtuple + (i, )
-    if (count[curactiontuple] < 3):
-        return 2
-    else:
-        return q[curactiontuple]
+#    if (count[curactiontuple] < 3):
+#        return 2
+#    else:
+    return q[curactiontuple]
 
-
+epsilon = 0.1
 runcount = 0
 while (games_lost < 100000):
     runcount += 1
-    if (runcount % 1000 == 0):
+    if (runcount % 1000000 == 0):
+#        epsilon *= 0.999
         print ("games_lost", games_lost)
     curtuple = cur_state.get_hashtuple()
     for i in range(3):
@@ -207,17 +222,25 @@ while (games_lost < 100000):
     gains = []
     for i in range(3):
         gains.append(evaluate(curtuple, i))
-
+        
     bestaction = numpy.argmax(gains)
+    if gains[0] == 0 and gains[1] == 0 and gains[2] == 0 :
+        bestaction = random.choice([0,1,2])
+    else:
+        rand_test = random.uniform(0,1)
+        if rand_test < epsilon:
+            bestaction = random.choice([0,1,2])
+            
+    
+#    bestaction = numpy.argmax(gains)
     curactiontuple = curtuple + (bestaction, )
     alpha = C/(C + count[curactiontuple])
     # print(curactiontuple)
+    cur_state.update_state(bestaction)
     q[curactiontuple] += alpha * (cur_state.getstatus() + (gamma * findQdiff(curtuple, bestaction)) -  q[curtuple + (bestaction,)])
 #    print(q[curactiontuple])
     count[curactiontuple] += 1
-    cur_state.update_state(bestaction)
-    if (cur_state.count > 6):
-        print("Training count is ", cur_state.count)
+#    cur_state.update_state(bestaction)
 #    print(runcount)
 #    print_game()
 #    time.sleep(.1)
@@ -230,7 +253,8 @@ while (games_lost < 100000):
         rewards += 1
 #    print("paddle ",cur_state.discretepaddley)
 #    print("Ball ",cur_state.discrete_bally)
-
+print("Len of count is ", len(count))
+print("Len of Q is ", len(q))
 #%%
 all_total=[]
 best_total = 0
@@ -244,13 +268,13 @@ while(j<1000):
         maxlist = []
         for i in range(3):
             maxlist.append(q[testtuple + (i, )])
-        # print(maxlist)
+#        print(maxlist)
         bestmove = numpy.argmax(maxlist)
         teststate.update_state(bestmove)
         total += teststate.getstatus()
 #        print("Count is ", total)
-        # print_game(teststate)
-        # time.sleep(.1)
+#        print_game(teststate)
+#        time.sleep(.1)
 #    total += teststate.count
     j += 1
     all_total.append(total+1)
@@ -260,5 +284,4 @@ while(j<1000):
 print("Best Run: ", best_total)
 ave = sum(all_total)/len(all_total)
 print("Average: ", ave)
-print(all_total)
-
+print ("Variance is ", numpy.var(results))

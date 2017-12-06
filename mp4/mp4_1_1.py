@@ -108,17 +108,6 @@ def startTraining():
 						# weight[guess][row][col] -= alpha * train_data[guess][row][col]
 						w[c][k][l] -= l_rate * td[i][k][l]
 
-			'''
-			sign = 0
-			for j in range(num_class):
-				if tl[i] == c:
-					sign = 1
-				else:
-					sign = -1
-				for k in range(num_feat):
-					for l in range(num_feat):
-						w[j][k][l] += (sign * l_rate) * td[i][k][l]
-			'''
 
 def tryTest():
 	correct = 0

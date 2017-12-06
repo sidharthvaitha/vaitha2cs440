@@ -40,7 +40,7 @@ class state:
 
         if (self.ballx < 0):
 #            print("hit x < 0")
-            self.ballx = -self.ballx
+            self.ballx - -self.ballx
             self.velocityx = - self.velocityx
 
         if (self.ballx >= 1 and self.bally > self.paddley and self.bally <(self.paddley + self.paddleheight)):
@@ -155,8 +155,8 @@ rewards = 0
 q = {}
 count = {}
 games_lost = 0
-C = 50
-gamma = 0.7
+C = 100
+gamma = 0.9
 
 gridlen = 12
 velx = [-1,1]
@@ -193,9 +193,11 @@ def evaluate(curtuple, i):
 
 
 runcount = 0
+print("yay")
 while (games_lost < 100000):
     runcount += 1
-    if (runcount % 1000 == 0):
+
+    if (runcount % 100 == 0):
         print ("games_lost", games_lost)
     curtuple = cur_state.get_hashtuple()
     for i in range(3):
@@ -216,13 +218,7 @@ while (games_lost < 100000):
 #    print(q[curactiontuple])
     count[curactiontuple] += 1
     cur_state.update_state(bestaction)
-    if (cur_state.count > 6):
-        print("Training count is ", cur_state.count)
-#    print(runcount)
-#    print_game()
-#    time.sleep(.1)
     if (cur_state.getstatus() == -1):
-        # print("games lost")
         games_lost += 1
     if (cur_state.getstatus() == -1):
         rewards -= 1
@@ -242,15 +238,14 @@ while(j<1000):
     while (teststate.getstatus() != -1):
         testtuple = teststate.get_hashtuple()
         maxlist = []
-        for i in range(3):
+        for i in range(2, -1, -1):
             maxlist.append(q[testtuple + (i, )])
-        # print(maxlist)
         bestmove = numpy.argmax(maxlist)
         teststate.update_state(bestmove)
         total += teststate.getstatus()
 #        print("Count is ", total)
-        # print_game(teststate)
-        # time.sleep(.1)
+        print_game(teststate)
+        time.sleep(.1)
 #    total += teststate.count
     j += 1
     all_total.append(total+1)
