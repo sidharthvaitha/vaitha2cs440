@@ -189,7 +189,7 @@ rewards = 0
 q = {}
 count = {}
 games_lost = 0
-C = 100
+C = 50
 gamma = 0.7
 
 gridlen = 12
@@ -246,11 +246,13 @@ pr.enable()
 
 set_reward = 0
 set_game = 0
-epsilon = 0.05
+epsilon = 0.03
 runcount = 0
 while (games_lost < 100000):
     runcount += 1
-    if (runcount % 100000 == 0):
+    if (runcount > 30000):
+        epsilon = 0
+    if (runcount % 150000 == 0):
         print ("games_lost", games_lost)
         # print ("Ave: ", rewards/games_lost)
         print ("Ave: ", set_reward/set_game)
@@ -282,7 +284,7 @@ while (games_lost < 100000):
     q[sactiontuple] += alpha * (sprime.getstatus() + (gamma * findMaxQ(sprime) -  q[sactiontuple]))
     count[sactiontuple] += 1
 
-    s = sprime
+    s = duplicatestate(sprime)
 
     if (s.getstatus() == -1):
         games_lost += 1

@@ -3,164 +3,118 @@ import math
 import random
 import copy
 import time
+import pickle
+from datetime import datetime
+
+PADDLE_HEIGHT = [.2]
+MIN_X_VEL = .03
+HIT_REWARD = 1
+MISS_REWARD = -1
+MOVE_PADDLE = .04
+tot = [0]
+cur_status = [0]
+
 
 class state:
-    def __init__(self):
-        self.ballx = .5
-        self.bally = .5
-        self.discrete_ballx = int(12 * self.ballx)
-        self.discrete_bally = int(12 * self.bally)
-        self.paddlex = 1
-        self.paddleheight = .2
-        self.paddley = .5 - (self.paddleheight)/2
-        self.discretepaddley = math.floor(12 * self.paddley/(1- self.paddleheight))
-        self.velocityx = .03
-        self.velocityy = .01
-        self.discretevelocityx = 1
-        self.discrete_velocityy = 0
-        self.count = 0
-        self.curstatus = 0
+    def __init__(self, ballx, bally, velocityx, velocityy, paddlepos):
+        self.bx = ballx
+        self.by = bally
+        self.vx = velocityx
+        self.vy = velocityy
+        self.py = paddlepos
 
-    def updateball(self):
-        self.ballx += self.velocityx
-        self.bally += self.velocityy
-        self.curstatus = 0
-#        print(self.ballx)
-      
+def updatestate(s1, a):
+    s1.bx += s1.vx
+    s1.by += s1.vy
+    cur_status[0] = 0
 
-        if (self.bally < 0):
-#            print("hit y = 0")
-            self.bally = - self.bally
-            self.velocityy = - self.velocityy
+    if (a == 2):
+        s1.py += .04
+        if (s1.py > 1 - PADDLE_HEIGHT[0]):
+            s1.py = 1 - PADDLE_HEIGHT[0]
+    if (a == 1):
+        s1.py -= .04
+        if (s1.py < 0):
+            s1.py = 0
 
-        elif (self.bally > 1):
-#            print("hit y = 1")
-            self.bally = 2 - self.bally
-            self.velocityy = - self.velocityy
 
-        if (self.ballx < 0):
-#            print("hit x < 0")
-            self.ballx = -self.ballx
-            self.velocityx = - self.velocityx
+    if (s1.by < 0):
+        s1.by = -s1.by
+        s1.vy = - s1.vy
 
-        if (self.ballx >= 1 and self.bally > self.paddley and self.bally <(self.paddley + self.paddleheight)):
-#            print("hit paddle")
-            self.ballx = 2 * self.paddlex - self.ballx
-            self.velocityx = -self.velocityx + random.uniform(-0.015,0.015)
-            self.velocityy = self.velocityy +  random.uniform(-0.03,0.03)
-            self.count += 1
-            self.curstatus = 1
+    if (s1.by > 1):
+        s1.by = 2 - s1.by
+        s1.vy = - s1.vy
 
-#            self.ballx += self.velocityx
+    if (s1.bx < 0):
+        s1.bx = -s1.bx
+        s1.vx = -s1.vx
 
-        if (self.ballx > 1):
-#            print("miss paddle")
-            self.ballx = .5
-            self.bally = .5
-            self.velocityx = .03
-            self.velocityy = .01
-            self.curstatus = -1
-            self.count = 0
-            self.paddley = .5 - (self.paddleheight)/2
+    if (s1.bx > 1):
+        cur_status[0] = -1
+        if (s1.by > s1.py and s1.by < s1.py + PADDLE_HEIGHT[0]):
+            cur_status[0] = 1
+            tot[0] += 1
+            s1.bx = 2 - s1.bx
+            s1.vy = s1.vy + random.uniform(-.03, .03)
+            ox = numpy.sign(s1.vx)
+            s1.vx = -s1.vx + random.uniform(-.015, .015)
+            if (abs(s1.vy) > 1):
+                s1.vy = numpy.sign(s1.vy)
+            if (abs(s1.vx) > 1):
+                s1.vx = .9 * numpy.sign(s1.vx)
+            if (abs(s1.vx) <= .03):
+                s1.vx = numpy.sign(s1.vx) * .03
+            if (s1.vx == 0):
+                s1.vx = -ox *.03
+    return s1
     
-   
+def convert_discrete(s1):
+    dbx = int(numpy.floor(14 * s1.bx))
+    if (dbx >= 14):
+        dbx = 13
+    if (dbx < 0):
+        dbx = 0
+    dby = int(numpy.floor(14 * s1.by))
+    if (dby >= 14):
+        dby = 13
+    if (dby < 0):
+        dby = 0
+    dvx = int(numpy.sign(s1.vx))
+    if (abs(s1.vy) > .015):
+        dvy = int(numpy.sign(s1.vy))
+    else:
+        dvy = 0
+    dpy = int(numpy.floor(14 * s1.py/(1 - PADDLE_HEIGHT[0])))
+    if (dpy >= 14):
+        dpy = 13
+    if (dpy < 0):
+        dpy = 0
+    return (dbx, dby, dvx, dvy, dpy)
 
-    def moveup(self):
-        # print("paddle up")
-        if (self.paddley < .05):
-            self.paddley = 0
-        else:
-            self.paddley -= .04
+def duplicate_state(cur, copy):
+    copy.bx = cur.bx
+    copy.by = cur.by
+    copy.vx = cur.vx
+    copy.vy = cur.vy
+    copy.py = cur.py
 
-    def movedown(self):
-        # print("paddle down")
-        if (self.paddley > .8):
-            self.paddley = .8
-        else:
-            self.paddley += .04
+print("Starting TIME: ", str(datetime.now()))
 
-
-    def movepaddle(self, action):
-        if (action == 1):
-            self.moveup()
-        elif (action == 2):
-            self.movedown()
-
-    def convertdiscrete(self):
-        self.discretepaddley = math.floor(12 * self.paddley/(1- self.paddleheight))
-        if (self.paddley == (1- self.paddleheight)):
-            self.discretepaddley = 11
-
-        if(self.velocityx < 0):
-            self.discretevelocityx = -1
-        else:
-            self.discretevelocityx = 1
-
-        if (abs(self.velocityy) < .015):
-            self.discrete_velocityy = 0
-        elif (self.velocityy < -.015):
-            self.discrete_velocityy = -1
-        elif (self.velocityy > .015):
-            self.discrete_velocityy = 1
-
-        self.discrete_ballx = int(12 * self.ballx)
-        self.discrete_bally = int(12 * self.bally)
-        if (self.discrete_ballx >= 12):
-            self.discrete_ballx = 11
-        if (self.discrete_bally >= 12):
-            self.discrete_bally = 11
-        if (self.discretepaddley >= 12):
-            self.discretepaddley = 11
-
-    def update_state(self, action = 0):
-        self.updateball()
-        self.movepaddle(action)
-        self.convertdiscrete()
-
-    def get_hashtuple(self):
-        return (self.discrete_ballx, self.discrete_bally, self.discretevelocityx, self.discrete_velocityy, self.discretepaddley)
-
-    def getstatus(self):
-        return self.curstatus
-
-
-def print_game(temp2):
-    grid_size = 12
-    ans = []
-    print('***************************************')
-#    print("Paddle Position ", cur_state.get_hashtuple()[4])
-#    print(runcount)
-    for i in range(grid_size):
-        temp = []
-        for j in range(grid_size):
-            temp.append(' ')
-        ans.append(temp)
-    ball_coordsx = temp2.get_hashtuple()[0]
-    ball_coordsy = temp2.get_hashtuple()[1]
-    paddle_coordsy = temp2.get_hashtuple()[4]
-    ball_coords = [ball_coordsy, ball_coordsx]
-    paddle_coords = [paddle_coordsy, 11]
-    ans[int(paddle_coords[0]*(9/11))][paddle_coords[1]] = '|'
-    ans[int((paddle_coords[0])*(9/11)+1)][paddle_coords[1]] = '|'
-    ans[int((paddle_coords[0])*(9/11)+2)][paddle_coords[1]] = '|'
-    ans[ball_coords[0]][ball_coords[1]] = 'b'
-#    print('***************************************')
-    for line in ans:
-        print (' '.join(str(v) for v in line))
-    print('***************************************')
-
-
-cur_state = state()
-rewards = 0
+s = state(.5,.5,.03,.01, .5 - PADDLE_HEIGHT[0]/2)
+sprime = state(.5,.5,.03,.01, .5 - PADDLE_HEIGHT[0]/2)
+stuple = convert_discrete(s)
 q = {}
 count = {}
 games_lost = 0
-C = 50
-gamma = 0.7
-
-gridlen = 12
+c = 75
+eps = .05
+gamma = .7
+gridlen = 14
 velx = [-1,1]
 vely = [-1,0, 1]
+num = 0
+total = 0
 
 
 for x in range(gridlen):
@@ -172,93 +126,96 @@ for x in range(gridlen):
                         q[(x,y,velx[vx],vely[vy],ploc, ac)] = 0.0
 
 
+t = 0
+while (games_lost < 50000):
+    stuple = convert_discrete(s)
 
-def findQdiff(curtuple, j):
-    maxlist = []
-    for i in range(3):
-        nextstate = copy.deepcopy(cur_state)
-        nextstate.update_state(i)
-        nexthash = nextstate.get_hashtuple()
-        diff = q[nexthash + (i, )] 
-        maxlist.append(diff)
-    return max(maxlist)
+    for a in range(3):
+        if (stuple + (a,) not in count):
+            count[stuple + (a,)] = 0
 
+    alist = []
+    besta = -1
 
-def evaluate(curtuple, i):
-    curactiontuple = curtuple + (i, )
-    if (count[curactiontuple] < 3):
-        return 2
+    if (random.uniform(0, 1) < eps):
+        besta = random.choice([0, 1, 2])
     else:
-        return q[curactiontuple]
+        for a in range(3):
+            alist.append(q[stuple + (a,)])
+        if (alist[0] == 0 and alist[1] == 0 and alist[2]==0):
+            besta = random.choice([0, 1, 2])
+        else:
+            besta = numpy.argmax(alist)
 
+    count[stuple + (besta,)] += 1
+    alpha = c/(c + count[stuple + (besta,)])
+    sprime = updatestate(sprime, besta)
+    sprimetuple = convert_discrete(sprime)
 
-runcount = 0
-while (games_lost < 100000):
-    runcount += 1
-    if (runcount % 1000 == 0):
-        print ("games_lost", games_lost)
-    curtuple = cur_state.get_hashtuple()
-    for i in range(3):
-        curactiontuple = curtuple + (i, )
-#        print(curactiontuple)
-        if (curactiontuple not in count):
-            count[curactiontuple] = 0
+    if (cur_status[0] == -1):
+        nextq = -1
+    if (cur_status[0] == 0 or cur_status[0] == 1):
+        nexta = []
+        for a in range(3):
+            nexta.append(q[sprimetuple + (a,)])
+        nextq = max(nexta)
 
-    gains = []
-    for i in range(3):
-        gains.append(evaluate(curtuple, i))
+    q[stuple + (besta,)] += alpha * (cur_status[0] + (gamma * nextq) - q[stuple + (besta,)])
 
-    bestaction = numpy.argmax(gains)
-    curactiontuple = curtuple + (bestaction, )
-    alpha = C/(C + count[curactiontuple])
-    # print(curactiontuple)
-    q[curactiontuple] += alpha * (cur_state.getstatus() + (gamma * findQdiff(curtuple, bestaction)) -  q[curtuple + (bestaction,)])
-#    print(q[curactiontuple])
-    count[curactiontuple] += 1
-    cur_state.update_state(bestaction)
-    if (cur_state.count > 6):
-        print("Training count is ", cur_state.count)
-#    print(runcount)
-#    print_game()
-#    time.sleep(.1)
-    if (cur_state.getstatus() == -1):
-        # print("games lost")
+    duplicate_state(sprime, s)
+
+    if (cur_status[0] == -1):
+        s = state(.5,.5,.03,.01, .5 - PADDLE_HEIGHT[0]/2)
+        sprime = state(.5,.5,.03,.01, .5 - PADDLE_HEIGHT[0]/2)
         games_lost += 1
-    if (cur_state.getstatus() == -1):
-        rewards -= 1
-    if (cur_state.getstatus() == 1):
-        rewards += 1
-#    print("paddle ",cur_state.discretepaddley)
-#    print("Ball ",cur_state.discrete_bally)
+        num = 0
+        if (games_lost == 30000):
+            eps = 0
 
-#%%
-all_total=[]
-best_total = 0
+        curavg = tot[0]/games_lost
+        if (games_lost % 1000 == 0):
+            print(games_lost, "Average: ", curavg)
+    elif (cur_status[0] == 1):
+        num +=1 
+        total += 1
+    t += 1
+
+
+pickle.dump( q, open( "save.p", "wb" ) )
+
+
+results = []
+best = 0
 total = 0
-j = 0
-while(j<1000):
-    teststate = state()
+games_lost = 0
+while (games_lost < 1000):
+    test = state(.5,.5,.03,.01, .5 - PADDLE_HEIGHT[0]/2)
     total = 0
-    while (teststate.getstatus() != -1):
-        testtuple = teststate.get_hashtuple()
-        maxlist = []
+    reward = 0
+    while (reward != -1):
+        testtuple = convert_discrete(test)
+        alist = []
         for i in range(3):
-            maxlist.append(q[testtuple + (i, )])
-        # print(maxlist)
-        bestmove = numpy.argmax(maxlist)
-        teststate.update_state(bestmove)
-        total += teststate.getstatus()
-#        print("Count is ", total)
-        # print_game(teststate)
-        # time.sleep(.1)
-#    total += teststate.count
-    j += 1
-    all_total.append(total+1)
-    if total+1 > best_total:
-        best_total = total+1
-        
-print("Best Run: ", best_total)
-ave = sum(all_total)/len(all_total)
-print("Average: ", ave)
-print(all_total)
+            alist.append(q[testtuple + (i,)])
+        move = numpy.argmax(alist)
+        test = updatestate(test, move)
+        reward = cur_status[0]
+        total += cur_status[0]
+    games_lost += 1
+    results.append(total + 1)
+    if (total + 1 > best):
+        best = total + 1
+
+print("Best Run: ", best)
+testave = sum(results)/len(results)
+print("Average: ", testave)
+print(results)
+
+
+
+
+
+
+
+
 
